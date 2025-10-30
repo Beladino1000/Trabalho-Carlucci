@@ -1,0 +1,488 @@
+/* Sidebar Esquerda */
+.sidebar-left {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid var(--border-color);
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-content {
+    flex-grow: 1;
+    padding: 0 4px;
+}
+
+.sidebar-logo {
+    font-size: 28px;
+    padding: 16px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    display: inline-block;
+}
+
+/* Navegação */
+.main-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 2px 0;
+    border-radius: 9999px;
+    color: var(--text-color);
+    font-size: 20px;
+    transition: background-color 0.2s;
+}
+
+.nav-item i {
+    margin-right: 16px;
+    width: 26px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: var(--hover-color);
+}
+
+.nav-item.active {
+    font-weight: bold;
+}
+
+.nav-text {
+    margin-left: 4px;
+}
+
+/* Botões */
+.btn {
+    border-radius: 9999px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-large {
+    padding: 16px;
+    font-size: 17px;
+    width: 100%;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 15px;
+}
+
+.btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Perfil do Usuário */
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+.user-profile:hover {
+    background-color: var(--hover-color);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    margin-left: 12px;
+    margin-right: 12px;
+    flex-grow: 1;
+}
+
+.user-name {
+    font-weight: bold;
+    display: block;
+}
+
+.user-handle {
+    color: var(--secondary-text);
+    font-size: 15px;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    border-right: 1px solid var(--border-color);
+    min-width: 600px;
+}
+
+/* Cabeçalho */
+.content-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-tabs {
+    display: flex;
+    height: 53px;
+}
+
+.tab-btn {
+    flex: 1;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--text-color);
+}
+
+.tab-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Compositor de Post */
+.post-composer {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.composer-content {
+    flex-grow: 1;
+    margin-left: 12px;
+}
+
+.composer-content textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    resize: none;
+    overflow: hidden;
+    min-height: 50px;
+    max-height: 150px;
+    outline: none;
+    padding: 12px 0;
+    line-height: 1.4;
+    display: block;
+}
+
+.composer-content textarea::placeholder {
+    color: var(--secondary-text);
+    font-size: 20px;
+}
+
+.composer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.composer-actions {
+    display: flex;
+    gap: 16px;
+    color: var(--primary-color);
+}
+
+/* Sidebar Direita */
+.sidebar-right {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0 16px;
+}
+
+/* Search Box (para mobile) */
+.search-box {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.search-box input {
+    width: 100%;
+    background-color: var(--card-bg);
+    border: none;
+    border-radius: 9999px;
+    padding: 12px 16px 12px 44px;
+    color: var(--text-color);
+    font-size: 15px;
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-text);
+    pointer-events: none;
+}
+
+/* Seções da Sidebar */
+.trending-section, .who-to-follow {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.trending-section h2, .who-to-follow h2 {
+    padding: 16px;
+    font-size: 20px;
+}
+
+.trending-item, .follow-item {
+    padding: 12px 16px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.trending-item:hover, .follow-item:hover {
+    background-color: var(--trend-hover);
+}
+
+.show-more {
+    display: block;
+    padding: 16px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Posts */
+.posts-feed {
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.post:hover {
+    background-color: var(--hover-color);
+}
+
+.post-content {
+    flex-grow: 1;
+    margin-left: 12px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.post-author {
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.post-handle {
+    color: var(--secondary-text);
+    margin-right: 4px;
+}
+
+.post-text {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+    color: var(--secondary-text);
+}
+
+.post-actions span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.post-actions i {
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 1100px) {
+    .app-container {
+        grid-template-columns: 275px 1fr;
+    }
+    
+    .sidebar-right {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .app-container {
+        grid-template-columns: 88px 1fr;
+    }
+    
+    .nav-text {
+        display: none;
+    }
+    
+    .btn-large span {
+        display: none;
+    }
+    
+    .btn-large {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .user-details, .user-profile i {
+        display: none;
+    }
+}
+
+/* Indicator de "Follows" (pode ser reutilizado em outras páginas) */
+.follow-indicator {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-text);
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.follow-indicator i {
+    margin-right: 4px;
+    color: var(--primary-color);
+}
+
+/* Seção Premium (estrutura reutilizável) */
+.premium-section {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.premium-section h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.premium-section p {
+    color: var(--secondary-text);
+    margin-bottom: 16px;
+    font-size: 15px;
+}
+
+/* Seção de Notícias (estrutura reutilizável) */
+.news-section {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.news-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-meta {
+    color: var(--secondary-text);
+    font-size: 13px;
+}
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* Estilo do tooltip */
+[data-tooltip]::after {
+    content: attr(data-tooltip); /* Pega o texto do atributo data-tooltip */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+}
+
+        /* Posicionamento alternativo */
+[data-tooltip-position="right"]::after {
+    left: 100%;
+    bottom: 50%;
+    transform: translateY(50%);
+    margin-left: 5px;
+}
+
+[data-tooltip-position="bottom"]::after {
+    bottom: auto;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+}
+
+        /* Mostra o tooltip ao passar o mouse */
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}

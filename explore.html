@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial / X</title>
+    <title>Explorar / X</title>
     <link rel="stylesheet" href="static/styles/base.css">
     <link rel="stylesheet" href="static/styles/components.css">
     <link rel="stylesheet" href="static/styles/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="for-you-page">
+<body class="explore-page">
     <div class="app-container">
-        <!-- Sidebar Esquerda -->
+        <!-- Sidebar Esquerda (Padronizada) -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-item active">
+                    <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
                     </a>
-                    <a href="explore.html" class="nav-item">
+                    <a href="explore.html" class="nav-item active">
                         <i class="fas fa-hashtag"></i>
                         <span class="nav-text">Explorar</span>
                     </a>
@@ -66,46 +66,86 @@
 
         <!-- Conteúdo Principal -->
         <main class="main-content">
-            <header class="content-header">
-                <div class="header-tabs">
-                    <a href="index.html" class="tab-btn active">For you</a>
-                    <a href="following.html" class="tab-btn">Following</a>
+            <header class="explore-header">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar no X">
                 </div>
             </header>
-            
-            <div class="post-composer">
-                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
-                <div class="composer-content">
-                    <textarea placeholder="What's happening?"></textarea>
-                    <div class="composer-footer">
-                        <div class="composer-actions">
-                            <i class="fas fa-image"></i>
-                            <i class="fas fa-poll"></i>
-                            <i class="fas fa-smile"></i>
-                            <i class="fas fa-calendar"></i>
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <button class="btn btn-primary btn-small" disabled>Postar</button>
-                    </div>
-                </div>
+
+            <!-- Categorias -->
+            <div class="explore-categories">
+                <button class="category-btn active">For you</button>
+                <button class="category-btn">Trending</button>
+                <button class="category-btn">News</button>
+                <button class="category-btn">Sports</button>
+                <button class="category-btn">Entertainment</button>
             </div>
-            
-            <!-- Feed de Posts -->
-            <div class="posts-feed">
-                <!-- Post será carregado via JavaScript (script.js) -->
+
+            <!-- Conteúdo do Explore -->
+            <div class="explore-content">
+                <!-- Seção Today's News -->
+                <section class="news-section">
+                    <h2 class="section-title">Today's News</h2>
+                    
+                    <article class="news-card trending">
+                        <div class="news-content">
+                            <h3>Trump Seizes Control of DC Police, Deploys Guard</h3>
+                            <div class="news-meta">21 hours ago - News - 870K posts</div>
+                        </div>
+                        <div class="trending-badge">Trending</div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-content">
+                            <h3>Taylor Swift's 'The Life of a Showgirl'</h3>
+                            <div class="news-meta">12 hours ago - Entertainment - 482K posts</div>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-content">
+                            <h3>Isak's Ultimatum: Newcastle Star Vows Never to Play Again</h3>
+                            <div class="news-meta">1 day ago - Sports - 147K posts</div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Seção Trending -->
+                <section class="trending-section">
+                    <h2 class="section-title">Trending now</h2>
+                    
+                    <div class="trending-item">
+                        <div class="trend-category">Politics - Trending</div>
+                        <div class="trend-name">Sui Global</div>
+                        <div class="trend-stats">2,248 posts</div>
+                    </div>
+                    
+                    <div class="trending-item">
+                        <div class="trend-category">Politics - Trending</div>
+                        <div class="trend-name">Ultrafarma</div>
+                        <div class="trend-stats">4,670 posts</div>
+                    </div>
+                    
+                    <div class="trending-item">
+                        <div class="trend-category">Trending in Brazil</div>
+                        <div class="trend-name">Marins</div>
+                        <div class="trend-stats">1,819 posts</div>
+                    </div>
+                </section>
             </div>
         </main>
 
-        <!-- Sidebar Direita -->
+        <!-- Sidebar Direita (Padronizada) -->
         <aside class="sidebar-right">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar no X">
+             <div class="premium-section">
+                <h2>Subscribe to Premium</h2>
+                <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p>
+                <button class="btn btn-primary">Subscribe</button>
             </div>
             
             <div class="trending-section">
                 <h2>O que está acontecendo</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="trending-item">
                     <div class="trend-category">Tecnologia · Assunto do momento</div>
                     <div class="trend-name">#ReactJS</div>
@@ -121,7 +161,6 @@
             
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
@@ -137,6 +176,7 @@
 
     <!-- Alterado de main.js para script.js para corresponder ao arquivo enviado -->
     <script src="scripts/script.js"></script>
+    <script src="scripts/explore.js"></script>
 </body>
 </html>
 

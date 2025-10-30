@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial / X</title>
+    <title>Notificações / X</title>
     <link rel="stylesheet" href="static/styles/base.css">
     <link rel="stylesheet" href="static/styles/components.css">
     <link rel="stylesheet" href="static/styles/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="for-you-page">
+<body class="notifications-page">
     <div class="app-container">
-        <!-- Sidebar Esquerda -->
+        <!-- Sidebar Esquerda (Padronizada) -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-item active">
+                    <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
                     </a>
@@ -25,7 +25,7 @@
                         <i class="fas fa-hashtag"></i>
                         <span class="nav-text">Explorar</span>
                     </a>
-                    <a href="notifications.html" class="nav-item">
+                    <a href="notifications.html" class="nav-item active">
                         <i class="fas fa-bell"></i>
                         <span class="nav-text">Notificações</span>
                     </a>
@@ -66,37 +66,51 @@
 
         <!-- Conteúdo Principal -->
         <main class="main-content">
-            <header class="content-header">
+            <header class="notifications-header">
+                <h2>Notificações</h2>
                 <div class="header-tabs">
-                    <a href="index.html" class="tab-btn active">For you</a>
-                    <a href="following.html" class="tab-btn">Following</a>
+                    <a href="#" class="tab-btn active">Todas</a>
+                    <a href="#" class="tab-btn">Verificadas</a>
+                    <a href="#" class="tab-btn">Menções</a>
                 </div>
             </header>
             
-            <div class="post-composer">
-                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
-                <div class="composer-content">
-                    <textarea placeholder="What's happening?"></textarea>
-                    <div class="composer-footer">
-                        <div class="composer-actions">
-                            <i class="fas fa-image"></i>
-                            <i class="fas fa-poll"></i>
-                            <i class="fas fa-smile"></i>
-                            <i class="fas fa-calendar"></i>
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+            <!-- Feed de Notificações -->
+            <div class="notifications-feed">
+                <article class="notification-item">
+                    <i class="fas fa-star notification-icon" style="color: #FFD700;"></i>
+                    <div class="notification-content">
+                        <p>Novos posts para você</p>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Feed de Posts -->
-            <div class="posts-feed">
-                <!-- Post será carregado via JavaScript (script.js) -->
+                </article>
+                
+                <article class="notification-item">
+                    <i class="fas fa-user-friends notification-icon" style="color: var(--primary-color);"></i>
+                    <div class="notification-content">
+                         <img src="https://placehold.co/30x30/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic-small" onerror="this.onerror=null;this.src='https://placehold.co/30x30/1DA1F2/FFFFFF?text=G';">
+                        <p><b>Google</b> seguiu você</p>
+                    </div>
+                </article>
+                
+                <article class="notification-item">
+                     <i class="fas fa-heart notification-icon" style="color: #E0245E;"></i>
+                     <div class="notification-content">
+                        <img src="https://placehold.co/30x30/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic-small" onerror="this.onerror=null;this.src='https://placehold.co/30x30/1F9BF0/FFFFFF?text=BG';">
+                        <p><b>Bill Gates</b> curtiu seu post</p>
+                    </div>
+                </article>
+
+                <article class="notification-item">
+                    <i class="fas fa-retweet notification-icon" style="color: #17BF63;"></i>
+                    <div class="notification-content">
+                        <img src="https://placehold.co/30x30/000000/FFFFFF?text=SX" alt="SpaceX" class="profile-pic-small" onerror="this.onerror=null;this.src='https://placehold.co/30x30/000000/FFFFFF?text=SX';">
+                        <p><b>SpaceX</b> repostou algo que você talvez goste</p>
+                    </div>
+                </article>
             </div>
         </main>
 
-        <!-- Sidebar Direita -->
+        <!-- Sidebar Direita (Padronizada) -->
         <aside class="sidebar-right">
             <div class="search-box">
                 <i class="fas fa-search"></i>
@@ -105,23 +119,16 @@
             
             <div class="trending-section">
                 <h2>O que está acontecendo</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="trending-item">
                     <div class="trend-category">Tecnologia · Assunto do momento</div>
                     <div class="trend-name">#ReactJS</div>
                     <div class="trend-stats">12K posts</div>
-                </div>
-                <div class="trending-item">
-                    <div class="trend-category">Notícias · Assunto do momento</div>
-                    <div class="trend-name">Novas Eleições</div>
-                    <div class="trend-stats">55.2K posts</div>
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
             
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">

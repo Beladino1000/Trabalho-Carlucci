@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial / X</title>
+    <title>Perfil de Nome Usuário (@usuario) / X</title>
     <link rel="stylesheet" href="static/styles/base.css">
     <link rel="stylesheet" href="static/styles/components.css">
     <link rel="stylesheet" href="static/styles/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="for-you-page">
+<body class="profile-page">
     <div class="app-container">
-        <!-- Sidebar Esquerda -->
+        <!-- Sidebar Esquerda (Padronizada) -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-item active">
+                    <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
                     </a>
@@ -41,7 +41,7 @@
                         <i class="fas fa-list"></i>
                         <span class="nav-text">Listas</span>
                     </a>
-                    <a href="profile.html" class="nav-item">
+                    <a href="profile.html" class="nav-item active">
                         <i class="fas fa-user"></i>
                         <span class="nav-text">Perfil</span>
                     </a>
@@ -66,62 +66,79 @@
 
         <!-- Conteúdo Principal -->
         <main class="main-content">
-            <header class="content-header">
-                <div class="header-tabs">
-                    <a href="index.html" class="tab-btn active">For you</a>
-                    <a href="following.html" class="tab-btn">Following</a>
+            <!-- Cabeçalho do Perfil -->
+            <header class="profile-header">
+                <i class="fas fa-arrow-left"></i>
+                <div class="profile-header-details">
+                    <h2>Nome Usuário</h2>
+                    <span class="post-count">123 Posts</span>
                 </div>
             </header>
             
-            <div class="post-composer">
-                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
-                <div class="composer-content">
-                    <textarea placeholder="What's happening?"></textarea>
-                    <div class="composer-footer">
-                        <div class="composer-actions">
-                            <i class="fas fa-image"></i>
-                            <i class="fas fa-poll"></i>
-                            <i class="fas fa-smile"></i>
-                            <i class="fas fa-calendar"></i>
-                            <i class="fas fa-map-marker-alt"></i>
+            <!-- Detalhes do Perfil -->
+            <div class="profile-details-container">
+                <div class="profile-banner">
+                    <img src="https://placehold.co/600x200/333333/FFFFFF?text=Capa" alt="Banner do Perfil" onerror="this.onerror=null;this.src='https://placehold.co/600x200/333333/FFFFFF?text=Capa';">
+                </div>
+                
+                <div class="profile-info-wrapper">
+                    <div class="profile-actions">
+                        <img src="https://placehold.co/134x134/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic-large" onerror="this.onerror=null;this.src='https://placehold.co/134x134/000000/FFFFFF?text=User';">
+                        <button class="btn btn-follow">Editar perfil</button>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <h2 class="user-name">Nome Usuário</h2>
+                        <span class="user-handle">@usuario</span>
+                        <p class="profile-bio">Esta é a minha bio. Falando sobre tecnologia, design e o futuro.</p>
+                        <div class="profile-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Brasil</span>
+                            <span><i class="fas fa-calendar-alt"></i> Ingressou em janeiro de 2024</span>
                         </div>
-                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+                        <div class="profile-stats">
+                            <span><b>123</b> Seguindo</span>
+                            <span><b>456</b> Seguidores</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Feed de Posts -->
+            <!-- Abas do Perfil -->
+            <div class="profile-tabs">
+                <button class="tab-btn active">Posts</button>
+                <button class="tab-btn">Respostas</button>
+                <button class="tab-btn">Destaques</button>
+                <button class="tab-btn">Mídia</button>
+                <button class="tab-btn">Curtidas</button>
+            </div>
+
+            <!-- Feed de Posts do Perfil -->
             <div class="posts-feed">
-                <!-- Post será carregado via JavaScript (script.js) -->
+                <!-- Exemplo de Post do Perfil -->
+                <article class="post">
+                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Nome Usuário</span>
+                            <span class="post-handle">@usuario · 2h</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <p class="post-text">Acabei de criar minha página de perfil nesta réplica do X. Parece ótimo!</p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 5</span>
+                            <span><i class="fas fa-retweet"></i> 2</span>
+                            <span><i class="far fa-heart"></i> 15</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </main>
 
-        <!-- Sidebar Direita -->
+        <!-- Sidebar Direita (Padronizada) -->
         <aside class="sidebar-right">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar no X">
-            </div>
-            
-            <div class="trending-section">
-                <h2>O que está acontecendo</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
-                <div class="trending-item">
-                    <div class="trend-category">Tecnologia · Assunto do momento</div>
-                    <div class="trend-name">#ReactJS</div>
-                    <div class="trend-stats">12K posts</div>
-                </div>
-                <div class="trending-item">
-                    <div class="trend-category">Notícias · Assunto do momento</div>
-                    <div class="trend-name">Novas Eleições</div>
-                    <div class="trend-stats">55.2K posts</div>
-                </div>
-                <a href="#" class="show-more">Mostrar mais</a>
-            </div>
-            
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
@@ -135,11 +152,6 @@
         </aside>
     </div>
 
-    <!-- Alterado de main.js para script.js para corresponder ao arquivo enviado -->
     <script src="scripts/script.js"></script>
 </body>
 </html>
-
-
-
-
