@@ -25,11 +25,19 @@ body {
 
 .app-container {
     display: grid;
-    grid-template-columns: 275px 1fr 350px;
+    /* Ajustado para um layout mais flexível, removendo colunas fixas por enquanto */
+    /* grid-template-columns: 275px 1fr 350px; */
     max-width: 1280px;
     margin: 0 auto;
     min-height: 100vh;
 }
+
+/* Layout principal de 3 colunas (aplicado pela classe no body) */
+.app-container {
+    display: grid;
+    grid-template-columns: 275px 1fr 350px;
+}
+
 
 a {
     text-decoration: none;

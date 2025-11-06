@@ -1,6 +1,6 @@
 /* Estilos específicos para a página For You */
 .for-you-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .for-you-page .posts-feed {
     /* Estilos específicos para o feed For You */
@@ -8,7 +8,7 @@
 
 /* Following Page Specific Styles */
 .following-page .main-content {
-    border-right: 1px solid var(--border-color);
+   /* A borda já é aplicada por .main-content em components.css */
 }
 .following-page .posts-feed {
     /* Estilos específicos do feed Following */
@@ -26,7 +26,7 @@
 }
 /* Explore Page Styles */
 .explore-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 
 .explore-header {
@@ -35,37 +35,62 @@
     background-color: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(12px);
     z-index: 10;
-    padding: 16px;
+    padding: 0 16px;
     border-bottom: 1px solid var(--border-color);
 }
 
 .explore-header .search-box {
-    margin: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .explore-categories {
     display: flex;
     overflow-x: auto;
-    padding: 16px;
-    gap: 12px;
+    gap: 4px;
     border-bottom: 1px solid var(--border-color);
+    /* Remover scrollbar visualmente */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE e Edge */
+}
+.explore-categories::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
 }
 
+
 .category-btn {
-    padding: 8px 16px;
-    border-radius: 9999px;
+    padding: 16px;
     background-color: transparent;
-    color: var(--text-color);
+    color: var(--secondary-text);
     border: none;
     font-weight: 600;
     white-space: nowrap;
     cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.category-btn:hover {
+    background-color: var(--hover-color);
 }
 
 .category-btn.active {
-    background-color: var(--text-color);
-    color: var(--background-color);
+    color: var(--text-color);
+    font-weight: bold;
 }
+
+.category-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
 
 /* News Cards (Explore) */
 .news-section {
@@ -118,8 +143,8 @@
 
 /* Trending Items (Explore) */
 .trending-section .trending-item {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-color);
+    /* padding: 12px 0; */
+    /* border-bottom: 1px solid var(--border-color); */
     cursor: pointer;
 }
 .trending-section .trending-item:last-child {
@@ -151,16 +176,19 @@
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .mobile-only {
         display: block;
         margin-bottom: 12px;
+    }
+    .explore-header .search-box {
+        display: none; /* Oculta a barra de pesquisa fixa do explore */
     }
 }
 
 /* Notifications Page */
 .notifications-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .notifications-header {
     position: sticky;
@@ -169,15 +197,15 @@
     backdrop-filter: blur(12px);
     z-index: 10;
     border-bottom: 1px solid var(--border-color);
-    padding: 16px;
 }
 .notifications-header h2 {
     font-size: 20px;
     font-weight: 800;
+    padding: 16px;
 }
 .notifications-header .header-tabs {
-    margin-top: 16px;
-    height: auto; /* Sobrescreve o components.css */
+    margin-top: 0px; /* Sobrescreve o components.css */
+    height: auto;
 }
 
 .notifications-feed {
@@ -215,12 +243,7 @@
 }
 
 /* Messages Page */
-.messages-page .app-container {
-    grid-template-columns: 275px 1fr; /* Layout de 2 colunas */
-}
-.messages-page .sidebar-right {
-    display: none;
-}
+/* O layout de 3 colunas é aplicado em base.css */
 .messages-layout {
     grid-template-columns: 275px 400px 1fr !important;
 }
@@ -232,6 +255,7 @@
 .conversation-list {
     border-right: 1px solid var(--border-color);
     overflow-y: auto;
+    height: 100vh;
 }
 .messages-header {
     display: flex;
@@ -241,7 +265,8 @@
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    background-color: var(--background-color);
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
     z-index: 5;
 }
 .messages-header h2 {
@@ -249,6 +274,10 @@
 }
 .conversation-list .search-box {
     padding: 16px;
+    position: sticky;
+    top: 69px; /* Altura do header */
+    background-color: var(--background-color);
+    z-index: 4;
 }
 .conversation-item {
     display: flex;
@@ -295,6 +324,11 @@
     padding: 16px;
     border-bottom: 1px solid var(--border-color);
     gap: 12px;
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10;
 }
 .chat-user-details .user-name {
     font-weight: bold;
@@ -363,9 +397,33 @@
     outline: none;
 }
 
+@media (max-width: 1000px) {
+    .messages-layout {
+        grid-template-columns: 88px 1fr !important;
+    }
+    .messages-container {
+        grid-template-columns: 1fr;
+    }
+    .conversation-list {
+        display: none; /* Oculta a lista de conversas em telas menores */
+    }
+}
+@media (max-width: 600px) {
+    .messages-layout {
+        grid-template-columns: 1fr !important;
+    }
+    .messages-container {
+        grid-template-columns: 1fr;
+    }
+    .conversation-list {
+        display: none;
+    }
+}
+
+
 /* Bookmarks Page */
 .bookmarks-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .bookmarks-header {
     position: sticky;
@@ -387,7 +445,7 @@
 
 /* Lists Page */
 .lists-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .lists-header {
     position: sticky;
@@ -455,18 +513,11 @@
     font-weight: bold;
     color: var(--text-color);
 }
-.btn-follow {
-    background-color: var(--text-color);
-    color: var(--background-color);
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 9999px;
-    font-size: 14px;
-}
+
 
 /* Profile Page */
 .profile-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .profile-header {
     position: sticky;
@@ -531,6 +582,7 @@
 }
 .profile-meta {
     display: flex;
+    flex-wrap: wrap; /* Para quebrar a linha em telas pequenas */
     gap: 12px;
     color: var(--secondary-text);
     font-size: 15px;
@@ -555,9 +607,17 @@
 .profile-tabs {
     display: flex;
     border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    /* Remover scrollbar visualmente */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE e Edge */
+}
+.profile-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
 }
 .profile-tabs .tab-btn {
     height: 53px;
+    min-width: 100px; /* Garante que os botões tenham espaço */
 }
 
 /* Auth Page */
@@ -566,6 +626,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    padding: 16px;
 }
 .auth-container {
     background-color: var(--background-color);
@@ -574,6 +635,7 @@
     width: 100%;
     max-width: 450px;
     margin: 0 auto;
+    border: 1px solid var(--border-color);
 }
 .auth-logo {
     font-size: 40px;
@@ -654,7 +716,7 @@
 
 /* Settings Page */
 .settings-page .main-content {
-    border-right: 1px solid var(--border-color);
+    /* A borda já é aplicada por .main-content em components.css */
 }
 .settings-header {
     position: sticky;
@@ -670,21 +732,23 @@
     font-weight: 800;
 }
 .settings-section {
-    padding: 16px;
+    padding: 0;
     border-bottom: 1px solid var(--border-color);
 }
 .settings-section h3 {
     font-size: 18px;
     font-weight: 800;
     margin-bottom: 16px;
+    padding: 16px 16px 0 16px;
 }
 .settings-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
+    padding: 16px;
     font-size: 15px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 .settings-item:hover {
     background-color: var(--hover-color);
