@@ -46,6 +46,17 @@ def profile():
     """Serve a página 'Perfil' (profile.html)"""
     return render_template('profile.html')
 
+# --- Novas Rotas ---
+@app.route('/auth.html')
+def auth():
+    """Serve a página de autenticação (auth.html)"""
+    return render_template('auth.html')
+
+@app.route('/settings.html')
+def settings():
+    """Serve a página de configurações (settings.html)"""
+    return render_template('settings.html')
+
 # --- Funções para PyWebview e Servidor ---
 
 def run_pywebview():

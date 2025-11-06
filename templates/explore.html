@@ -54,7 +54,8 @@
                         <i class="fas fa-user"></i>
                         <span class="nav-text">Perfil</span>
                     </a>
-                    <a href="#" class="nav-item">
+                    <!-- Link "Mais" atualizado -->
+                    <a href="settings.html" class="nav-item">
                         <i class="fas fa-ellipsis-h"></i>
                         <span class="nav-text">Mais</span>
                     </a>
@@ -63,13 +64,16 @@
                 <button class="btn btn-primary btn-large">Postar</button>
             </div>
             
-            <div class="user-profile">
-                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
-                <div class="user-details">
-                    <span class="user-name">Nome Usuário</span>
-                    <span class="user-handle">@usuario</span>
-                </div>
-                <i class="fas fa-ellipsis-h"></i>
+            <!-- Perfil de usuário agora é um link para "Sair" -->
+            <div class="user-profile" data-tooltip="Sair">
+                <a href="auth.html" class="user-profile-link">
+                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                    <div class="user-details">
+                        <span class="user-name">Nome Usuário</span>
+                        <span class="user-handle">@usuario</span>
+                    </div>
+                    <i class="fas fa-sign-out-alt"></i> <!-- Ícone de Sair -->
+                </a>
             </div>
         </aside>
 
