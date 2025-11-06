@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Nome Usuário (@usuario) / X</title>
-    <link rel="stylesheet" href="static/styles/base.css">
-    <link rel="stylesheet" href="static/styles/components.css">
-    <link rel="stylesheet" href="static/styles/pages.css">
+    <!-- Links Flask/PyWebview -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
+    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <link rel="stylesheet" href="../static/styles/base.css">
+    <link rel="stylesheet" href="../static/styles/components.css">
+    <link rel="stylesheet" href="../static/styles/pages.css">
+    
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="profile-page">
@@ -17,6 +25,7 @@
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
+                    <!-- Links revertidos para estáticos -->
                     <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -152,6 +161,10 @@
         </aside>
     </div>
 
-    <script src="scripts/script.js"></script>
+    <!-- Links Flask/PyWebview -->
+    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
+    <!-- Caminho revertido para estático (PHP) -->
+    <script src="../static/scripts/script.js"></script>
+    
 </body>
 </html>

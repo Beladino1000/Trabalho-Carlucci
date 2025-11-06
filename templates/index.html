@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itens salvos / X</title>
-    <link rel="stylesheet" href="static/styles/base.css">
-    <link rel="stylesheet" href="static/styles/components.css">
-    <link rel="stylesheet" href="static/styles/pages.css">
+    <title>Página Inicial / X</title>
+    <!-- Links Flask/PyWebview -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
+    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <link rel="stylesheet" href="../static/styles/base.css">
+    <link rel="stylesheet" href="../static/styles/components.css">
+    <link rel="stylesheet" href="../static/styles/pages.css">
+    
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bookmarks-page">
+<body class="for-you-page">
     <div class="app-container">
-        <!-- Sidebar Esquerda (Padronizada) -->
+        <!-- Sidebar Esquerda -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-item">
+                    <!-- Links revertidos para estáticos -->
+                    <a href="index.html" class="nav-item active">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
                     </a>
@@ -33,7 +42,7 @@
                         <i class="fas fa-envelope"></i>
                         <span class="nav-text">Mensagens</span>
                     </a>
-                    <a href="bookmarks.html" class="nav-item active">
+                    <a href="bookmarks.html" class="nav-item">
                         <i class="fas fa-bookmark"></i>
                         <span class="nav-text">Itens salvos</span>
                     </a>
@@ -66,54 +75,38 @@
 
         <!-- Conteúdo Principal -->
         <main class="main-content">
-            <header class="bookmarks-header">
-                <h2>Itens salvos</h2>
-                <span class="user-handle">@usuario</span>
+            <header class="content-header">
+                <div class="header-tabs">
+                    <!-- Links revertidos para estáticos -->
+                    <a href="index.html" class="tab-btn active">For you</a>
+                    <a href="following.html" class="tab-btn">Following</a>
+                </div>
             </header>
             
-            <!-- Feed de Posts Salvos -->
+            <div class="post-composer">
+                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                <div class="composer-content">
+                    <textarea placeholder="What's happening?"></textarea>
+                    <div class="composer-footer">
+                        <div class="composer-actions">
+                            <i class="fas fa-image"></i>
+                            <i class="fas fa-poll"></i>
+                            <i class="fas fa-smile"></i>
+                            <i class="fas fa-calendar"></i>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feed de Posts -->
             <div class="posts-feed">
-                <!-- Post 1 (Exemplo de post salvo) -->
-                <article class="post">
-                    <img src="https://placehold.co/40x40/E60023/FFFFFF?text=N" alt="NASA" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E60023/FFFFFF?text=N';">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">NASA</span>
-                            <span class="post-handle">@NASA · 1d</span>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <p class="post-text">Nossa última imagem do Telescópio Webb revela detalhes inéditos da Nebulosa de Órion. Uma janela para a formação de estrelas.</p>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 1.2K</span>
-                            <span><i class="fas fa-retweet"></i> 7.8K</span>
-                            <span><i class="far fa-heart"></i> 25K</span>
-                            <span><i class="fas fa-share"></i></span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Post 2 (Exemplo de post salvo) -->
-                <article class="post">
-                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=V" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=V';">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Vercel</span>
-                            <span class="post-handle">@Vercel · 2d</span>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <p class="post-text">O v0 do Next.js agora suporta a geração de componentes diretamente de prompts de imagem. O futuro do desenvolvimento front-end está aqui.</p>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 305</span>
-                            <span><i class="fas fa-retweet"></i> 2.1K</span>
-                            <span><i class="far fa-heart"></i> 9.4K</span>
-                            <span><i class="fas fa-share"></i></span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Post será carregado via JavaScript (script.js) -->
             </div>
         </main>
 
-        <!-- Sidebar Direita (Padronizada) -->
+        <!-- Sidebar Direita -->
         <aside class="sidebar-right">
             <div class="search-box">
                 <i class="fas fa-search"></i>
@@ -122,16 +115,23 @@
             
             <div class="trending-section">
                 <h2>O que está acontecendo</h2>
+                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="trending-item">
                     <div class="trend-category">Tecnologia · Assunto do momento</div>
                     <div class="trend-name">#ReactJS</div>
                     <div class="trend-stats">12K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">Notícias · Assunto do momento</div>
+                    <div class="trend-name">Novas Eleições</div>
+                    <div class="trend-stats">55.2K posts</div>
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
             
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
+                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
@@ -145,7 +145,10 @@
         </aside>
     </div>
 
-    <script src="scripts/script.js"></script>
+    <!-- Links Flask/PyWebview -->
+    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
+    <!-- Caminho revertido para estático (PHP) -->
+    <script src="../static/scripts/script.js"></script>
+    
 </body>
 </html>
-

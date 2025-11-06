@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial / X</title>
-    <link rel="stylesheet" href="static/styles/base.css">
-    <link rel="stylesheet" href="static/styles/components.css">
-    <link rel="stylesheet" href="static/styles/pages.css">
+    <title>Listas / X</title>
+    <!-- Links Flask/PyWebview -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
+    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <link rel="stylesheet" href="../static/styles/base.css">
+    <link rel="stylesheet" href="../static/styles/components.css">
+    <link rel="stylesheet" href="../static/styles/pages.css">
+    
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="for-you-page">
+<body class="lists-page">
     <div class="app-container">
-        <!-- Sidebar Esquerda -->
+        <!-- Sidebar Esquerda (Padronizada) -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-item active">
+                    <!-- Links revertidos para estáticos -->
+                    <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
                     </a>
@@ -37,7 +46,7 @@
                         <i class="fas fa-bookmark"></i>
                         <span class="nav-text">Itens salvos</span>
                     </a>
-                    <a href="lists.html" class="nav-item">
+                    <a href="lists.html" class="nav-item active">
                         <i class="fas fa-list"></i>
                         <span class="nav-text">Listas</span>
                     </a>
@@ -66,62 +75,60 @@
 
         <!-- Conteúdo Principal -->
         <main class="main-content">
-            <header class="content-header">
-                <div class="header-tabs">
-                    <a href="index.html" class="tab-btn active">For you</a>
-                    <a href="following.html" class="tab-btn">Following</a>
-                </div>
+            <header class="lists-header">
+                <h2>Listas</h2>
+                <i class="fas fa-plus"></i>
             </header>
             
-            <div class="post-composer">
-                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
-                <div class="composer-content">
-                    <textarea placeholder="What's happening?"></textarea>
-                    <div class="composer-footer">
-                        <div class="composer-actions">
-                            <i class="fas fa-image"></i>
-                            <i class="fas fa-poll"></i>
-                            <i class="fas fa-smile"></i>
-                            <i class="fas fa-calendar"></i>
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+            <!-- Listas -->
+            <div class="lists-container">
+                <section class="your-lists">
+                    <h3>Suas Listas</h3>
+                    <div class="list-card empty">
+                        <p>Você ainda não criou nenhuma Lista</p>
+                        <button class="btn btn-primary btn-small">Criar uma Lista</button>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Feed de Posts -->
-            <div class="posts-feed">
-                <!-- Post será carregado via JavaScript (script.js) -->
+                </section>
+
+                <section class="discover-lists">
+                    <h3>Descobrir novas Listas</h3>
+                    <!-- Exemplo de Lista -->
+                    <div class="list-card">
+                        <img src="https://placehold.co/50x50/1DA1F2/FFFFFF?text=Tech" alt="Tech" class="list-image" onerror="this.onerror=null;this.src='https://placehold.co/50x50/1DA1F2/FFFFFF?text=Tech';">
+                        <div class="list-details">
+                            <span class="list-name">Tech News</span>
+                            <div class="list-owner">
+                                <span class="user-name">Google</span>
+                                <span class="user-handle">@Google</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-follow">Seguir</button>
+                    </div>
+                    <!-- Exemplo de Lista 2 -->
+                    <div class="list-card">
+                        <img src="https://placehold.co/50x50/E0245E/FFFFFF?text=Design" alt="Design" class="list-image" onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0245E/FFFFFF?text=Design';">
+                        <div class="list-details">
+                            <span class="list-name">Designers</span>
+                            <div class="list-owner">
+                                <span class="user-name">Figma</span>
+                                <span class="user-handle">@Figma</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-follow">Seguir</button>
+                    </div>
+                </section>
             </div>
         </main>
 
-        <!-- Sidebar Direita -->
+        <!-- Sidebar Direita (Padronizada) -->
         <aside class="sidebar-right">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Buscar no X">
             </div>
             
-            <div class="trending-section">
-                <h2>O que está acontecendo</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
-                <div class="trending-item">
-                    <div class="trend-category">Tecnologia · Assunto do momento</div>
-                    <div class="trend-name">#ReactJS</div>
-                    <div class="trend-stats">12K posts</div>
-                </div>
-                <div class="trending-item">
-                    <div class="trend-category">Notícias · Assunto do momento</div>
-                    <div class="trend-name">Novas Eleições</div>
-                    <div class="trend-stats">55.2K posts</div>
-                </div>
-                <a href="#" class="show-more">Mostrar mais</a>
-            </div>
-            
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
@@ -135,11 +142,9 @@
         </aside>
     </div>
 
-    <!-- Alterado de main.js para script.js para corresponder ao arquivo enviado -->
-    <script src="scripts/script.js"></script>
+    <!-- Links Flask/PyWebview -->
+    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
+    <!-- Caminho revertido para estático (PHP) -->
+    <script src="../static/scripts/script.js"></script>
 </body>
 </html>
-
-
-
-
