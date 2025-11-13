@@ -52,10 +52,10 @@
                         <span class="nav-text">Perfil</span>
                     </a>
                     <!-- Link "Mais" atualizado -->
-                    <a href="settings.html" class="nav-item">
+                    <button type="button" class="nav-item nav-more" onclick="toggleSidebarContextMenu()">
                         <i class="fas fa-ellipsis-h"></i>
                         <span class="nav-text">Mais</span>
-                    </a>
+                    </button>
                 </nav>
                 
                 <button class="btn btn-primary btn-large">Postar</button>
@@ -72,11 +72,8 @@
                     <i class="fas fa-sign-out-alt"></i> <!-- Ícone de Sair -->
                 </a>
             </div>
-            <!-- Menu de Contexto abaixo do perfil (botão 'Mais') -->
+            <!-- Context menu (single, toggled by nav 'Mais') -->
             <div class="context-menu">
-                <button class="context-menu-btn" onclick="toggleContextMenu(this)">
-                    <span class="more-btn">Mais</span>
-                </button>
                 <nav class="context-menu-items">
                     <a href="lists.html" class="context-menu-item">
                         <i class="fas fa-list"></i>
