@@ -6,6 +6,23 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
+// Função para alternar menu de contexto
+function toggleContextMenu(btn) {
+    const menu = btn.nextElementSibling;
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
+// Fechar menu de contexto ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.context-menu')) {
+        document.querySelectorAll('.context-menu-items').forEach(menu => {
+            menu.classList.remove('active');
+        });
+    }
+});
+
 // Ativar/desativar botão Postar baseado no conteúdo
 const textarea = document.querySelector('.composer-content textarea');
 const postBtn = document.querySelector('.composer-footer .btn-primary');

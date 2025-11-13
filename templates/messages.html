@@ -4,31 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagens / X</title>
-    <!-- Links Flask/PyWebview -->
     <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="messages-page">
     <div class="app-container messages-layout">
-        <!-- Sidebar Esquerda (Padronizada) -->
+        <!-- Sidebar Esquerda -->
         <aside class="sidebar-left">
             <div class="sidebar-content">
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <!-- Links revertidos para estáticos -->
                     <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
-                        <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
+                        <span class="nav-text">Página Inicial</span>
                     </a>
                     <a href="explore.html" class="nav-item">
                         <i class="fas fa-hashtag"></i>
@@ -54,107 +48,146 @@
                         <i class="fas fa-user"></i>
                         <span class="nav-text">Perfil</span>
                     </a>
-                    <!-- Link "Mais" atualizado -->
                     <a href="settings.html" class="nav-item">
                         <i class="fas fa-ellipsis-h"></i>
                         <span class="nav-text">Mais</span>
                     </a>
                 </nav>
                 
-                <button class="btn btn-primary btn-large">Postar</button>
+                <button class="btn btn-primary btn-large">
+                    <span>Postar</span>
+                </button>
             </div>
             
-            <!-- Perfil de usuário agora é um link para "Sair" -->
-            <div class="user-profile" data-tooltip="Sair">
+            <div class="user-profile">
                 <a href="auth.html" class="user-profile-link">
-                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=User" alt="Perfil" class="profile-pic">
                     <div class="user-details">
-                        <span class="user-name">Nome Usuário</span>
-                        <span class="user-handle">@usuario</span>
+                        <span class="user-name">Seu Nome</span>
+                        <span class="user-handle">@seuusuario</span>
                     </div>
-                    <i class="fas fa-sign-out-alt"></i> <!-- Ícone de Sair -->
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
         </aside>
 
         <!-- Conteúdo Principal - Layout de Mensagens -->
         <main class="main-content messages-container">
-            <!-- Painel da Lista de Conversas -->
+            <!-- Lista de Conversas -->
             <aside class="conversation-list">
-                <header class="messages-header">
+                <div class="messages-header">
                     <h2>Mensagens</h2>
                     <i class="fas fa-cog"></i>
-                </header>
+                </div>
+                
                 <div class="search-box">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Buscar Mensagens Diretas">
                 </div>
                 
-                <!-- Lista de Conversas -->
+                <!-- Conversas -->
                 <div class="conversation-items">
-                    <article class="conversation-item active">
-                        <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
+                    <div class="conversation-item active">
+                        <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic">
                         <div class="conversation-details">
                             <div class="convo-header">
                                 <span class="user-name">Google</span>
-                                <span class="user-handle">@Google · 1h</span>
+                                <span class="user-handle">@google</span>
+                                <span class="convo-time">1h</span>
                             </div>
-                            <p class="convo-snippet">Ótimo, obrigado pela atualização!</p>
+                            <p class="convo-snippet">Ótimo! Obrigado pela atualização.</p>
                         </div>
-                    </article>
-                    <article class="conversation-item">
-                        <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG';">
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic">
                         <div class="conversation-details">
                             <div class="convo-header">
                                 <span class="user-name">Bill Gates</span>
-                                <span class="user-handle">@BillGates · 3h</span>
+                                <span class="user-handle">@billgates</span>
+                                <span class="convo-time">3h</span>
                             </div>
-                            <p class="convo-snippet">Você viu o último relatório sobre...</p>
+                            <p class="convo-snippet">Você viu o último artigo sobre tecnologia?</p>
                         </div>
-                    </article>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://placehold.co/40x40/FF6B6B/FFFFFF?text=E" alt="Elon Musk" class="profile-pic">
+                        <div class="conversation-details">
+                            <div class="convo-header">
+                                <span class="user-name">Elon Musk</span>
+                                <span class="user-handle">@elonmusk</span>
+                                <span class="convo-time">5h</span>
+                            </div>
+                            <p class="convo-snippet">Projeto interessante! Vamos conversar mais.</p>
+                        </div>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://placehold.co/40x40/4ECDC4/FFFFFF?text=SD" alt="Steve Jobs" class="profile-pic">
+                        <div class="conversation-details">
+                            <div class="convo-header">
+                                <span class="user-name">Steve Jobs</span>
+                                <span class="user-handle">@stevejobs</span>
+                                <span class="convo-time">Ontem</span>
+                            </div>
+                            <p class="convo-snippet">Design é tudo! Concordo completamente.</p>
+                        </div>
+                    </div>
                 </div>
             </aside>
             
-            <!-- Painel da Conversa Ativa -->
+            <!-- Chat Window -->
             <section class="chat-window">
                 <header class="chat-header">
-                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
-                    <div class="chat-user-details">
-                        <span class="user-name">Google</span>
-                        <span class="user-handle">@Google</span>
+                    <div class="chat-header-content">
+                        <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic">
+                        <div class="chat-user-details">
+                            <span class="user-name">Google</span>
+                            <span class="user-handle">@google</span>
+                        </div>
                     </div>
                     <i class="fas fa-info-circle"></i>
                 </header>
                 
                 <div class="chat-messages">
-                    <!-- Mensagem Recebida -->
                     <div class="message received">
-                        <p>Ótimo, obrigado pela atualização!</p>
+                        <p>Oi! Tudo bem?</p>
                         <span class="message-time">11:00</span>
                     </div>
-                    <!-- Mensagem Enviada -->
+
+                    <div class="message received">
+                        <p>Como está indo o projeto?</p>
+                        <span class="message-time">11:02</span>
+                    </div>
+
                     <div class="message sent">
-                        <p>Sem problemas! Enviarei o resto amanhã.</p>
+                        <p>Oi! Tudo certo! O projeto está progredindo bem.</p>
                         <span class="message-time">11:05</span>
+                    </div>
+
+                    <div class="message sent">
+                        <p>Vou enviar o relatório em breve.</p>
+                        <span class="message-time">11:06</span>
+                    </div>
+
+                    <div class="message received">
+                        <p>Ótimo! Obrigado pela atualização.</p>
+                        <span class="message-time">11:08</span>
                     </div>
                 </div>
                 
                 <footer class="chat-composer">
                     <i class="fas fa-image"></i>
                     <i class="fas fa-sticky-note"></i>
-                    <input type="text" placeholder="Iniciar uma nova mensagem">
+                    <input type="text" placeholder="Iniciar uma nova mensagem...">
                     <i class="fas fa-paper-plane"></i>
                 </footer>
             </section>
         </main>
-
-        <!-- A Sidebar Direita está oculta nesta página -->
     </div>
 
-    <!-- Links Flask/PyWebview -->
     <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
-    
+    <script src="../static/scripts/script.js"></script>
 </body>
 </html>
