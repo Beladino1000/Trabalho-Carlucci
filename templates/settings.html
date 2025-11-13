@@ -36,9 +36,7 @@
                     <a href="bookmarks.html" class="nav-item">
                         <i class="fas fa-bookmark"></i> <span class="nav-text">Itens salvos</span>
                     </a>
-                    <a href="lists.html" class="nav-item">
-                        <i class="fas fa-list"></i> <span class="nav-text">Listas</span>
-                    </a>
+                    
                     <a href="profile.html" class="nav-item">
                         <i class="fas fa-user"></i> <span class="nav-text">Perfil</span>
                     </a>
@@ -56,8 +54,25 @@
                         <span class="user-name">Nome Usuário</span>
                         <span class="user-handle">@usuario</span>
                     </div>
-                    <i class="fas fa-sign-out-alt"></i> <!-- Ícone de Sair -->
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
+            </div>
+
+            <!-- Menu de Contexto -->
+            <div class="context-menu">
+                <button class="context-menu-btn" onclick="toggleContextMenu(this)">
+                    <span class="more-btn">Mais</span>
+                </button>
+                <nav class="context-menu-items">
+                    <a href="lists.html" class="context-menu-item">
+                        <i class="fas fa-list"></i>
+                        <span>Listas</span>
+                    </a>
+                    <a href="settings.html" class="context-menu-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </nav>
             </div>
         </aside>
 

@@ -208,6 +208,12 @@
     height: auto;
 }
 
+/* Aumenta o padding vertical dos botões de aba em Notificações (Todas/Verificadas/Menções) */
+.notifications-header .header-tabs .tab-btn {
+    padding: 14px 18px; /* vertical 14px para aproximar o espaçamento do X/Twitter */
+    height: auto;
+}
+
 .notifications-feed {
     display: flex;
     flex-direction: column;
@@ -436,9 +442,6 @@
 
 
 /* Bookmarks Page */
-.bookmarks-page .main-content {
-    /* A borda já é aplicada por .main-content em components.css */
-}
 .bookmarks-header {
     position: sticky;
     top: 0;
@@ -458,9 +461,6 @@
 }
 
 /* Lists Page */
-.lists-page .main-content {
-    /* A borda já é aplicada por .main-content em components.css */
-}
 .lists-header {
     position: sticky;
     top: 0;
@@ -530,9 +530,6 @@
 
 
 /* Profile Page */
-.profile-page .main-content {
-    /* A borda já é aplicada por .main-content em components.css */
-}
 .profile-header {
     position: sticky;
     top: 0;
@@ -729,9 +726,6 @@
 }
 
 /* Settings Page */
-.settings-page .main-content {
-    /* A borda já é aplicada por .main-content em components.css */
-}
 .settings-header {
     position: sticky;
     top: 0;

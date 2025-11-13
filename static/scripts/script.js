@@ -14,6 +14,14 @@ function toggleContextMenu(btn) {
     }
 }
 
+// Toggle the sidebar context menu (used by the nav 'Mais' button)
+function toggleSidebarContextMenu() {
+    const menu = document.querySelector('.sidebar-left .context-menu .context-menu-items');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
 // Fechar menu de contexto ao clicar fora
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.context-menu')) {

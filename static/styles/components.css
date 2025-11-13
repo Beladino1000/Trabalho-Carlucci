@@ -694,3 +694,9 @@
     font-size: 18px;
     color: var(--primary-color);
 }
+
+/* Ajuste para o texto 'Mais' dentro do botão de contexto */
+.context-menu-btn .more-btn {
+    font-size: 13px;
+    font-weight: 700;
+}
