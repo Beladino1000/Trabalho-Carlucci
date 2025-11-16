@@ -1,3 +1,13 @@
+// Handle page transition overlay fade-in
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.querySelector('.page-transition-overlay');
+    if (overlay) {
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+        }, 50); // 50ms is sufficient
+    }
+});
+
 // Função para alternar entre as páginas
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
