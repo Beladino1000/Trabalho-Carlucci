@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itens salvos / X</title>
+    <!-- Force black background immediately -->
+    <style>
+        body, html {
+            background-color: #000 !important;
+        }
+    </style>
     <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bookmarks-page">
-    <div class="page-transition-overlay"></div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const overlay = document.querySelector('.page-transition-overlay');
             if (overlay) {
                 setTimeout(() => {
                     overlay.classList.add('hidden');
-                }, 50);
+                }, 500);
             }
         });
     </script>
+</head>
+<body class="bookmarks-page">
+    <div class="page-transition-overlay"></div>
     <div class="app-container">
         <!-- Sidebar Esquerda (Padronizada) -->
         <aside class="sidebar-left">

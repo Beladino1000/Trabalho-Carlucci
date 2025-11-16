@@ -1,10 +1,67 @@
-// Handle page transition overlay fade-in
+// Prefetch pages on hover
+function prefetchPage(href) {
+    // Check if prefetch link already exists
+    const existing = document.querySelector(`link[rel="prefetch"][href="${href}"]`);
+    if (existing) return;
+
+    // Create and append prefetch link
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+// Attach prefetch listeners to all navigation links
+function attachPrefetchListeners() {
+    const links = document.querySelectorAll('a[href^=""], a[href$=".html"], button.nav-item');
+    
+    links.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            let href = this.getAttribute('href');
+            
+            // Skip if not a valid page link or already current page
+            if (!href || href === '#' || href.startsWith('http')) return;
+            
+            prefetchPage(href);
+        });
+        
+        // Add click handler to show overlay before navigation
+        link.addEventListener('click', function(e) {
+            let href = this.getAttribute('href');
+            
+            // Skip if not a valid page link
+            if (!href || href === '#' || href.startsWith('http')) return;
+            
+            e.preventDefault();
+            
+            const overlay = document.querySelector('.page-transition-overlay');
+            if (overlay) {
+                // Show overlay (fade-out effect)
+                overlay.classList.remove('hidden');
+                
+                // Navigate after delay
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500);
+            } else {
+                // Fallback if overlay doesn't exist
+                window.location.href = href;
+            }
+        });
+    });
+}
+
+// Initialize prefetch listeners when DOM is ready
+document.addEventListener('DOMContentLoaded', attachPrefetchListeners);
+
+// Handle page transition overlay fade-in on page load
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.querySelector('.page-transition-overlay');
     if (overlay) {
+        // Fade in (hide overlay) after page loads
         setTimeout(() => {
             overlay.classList.add('hidden');
-        }, 50); // 50ms is sufficient
+        }, 500);
     }
 });
 
