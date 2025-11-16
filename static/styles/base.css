@@ -21,6 +21,25 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     min-height: 100vh;
+    position: relative; /* Adicionado para a transição */
+}
+
+/* Overlay de Transição de Página */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color); /* Cor de fundo preta do site */
+    z-index: 9999;
+    opacity: 1; /* Começa visível */
+    pointer-events: none; /* Não bloqueia cliques quando está sumindo */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.page-transition-overlay.hidden {
+    opacity: 0;
 }
 
 .app-container {
