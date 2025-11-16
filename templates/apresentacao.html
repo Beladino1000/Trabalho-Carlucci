@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação: Gêneros Discursivos no X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos básicos para o apresentador */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Remove barras de rolagem */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #e7e9ea;
+        }
+
+        /* Contêiner dos slides */
+        .slider-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo base de cada slide */
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* Começa invisível */
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Slide ativo (visível) */
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+
+        /* Slide interativo (o iframe) */
+        .slide-iframe {
+            padding: 0;
+            background-color: #fff; /* Fundo branco para o iframe */
+        }
+
+        .slide-iframe iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Conteúdo do slide teórico */
+        .slide-content {
+            padding: 5vw;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            color: #1d9bf0;
+            border-bottom: 2px solid #2f3336;
+            padding-bottom: 15px;
+        }
+         .slide-content h2 {
+            font-size: 2.5rem;
+            color: #e7e9ea;
+            margin-top: 40px;
+        }
+
+        .slide-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .slide-content li {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .slide-content li::before {
+            content: '✓'; /* Ícone de check */
+            color: #1d9bf0;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Instruções de navegação */
+        .nav-instructions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1rem;
+            color: #71767b;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        
+        <!-- Slide 1: Título -->
+        <section class="slide active">
+            <div class="slide-content" style="text-align: center;">
+                <i class="fab fa-x-twitter" style="font-size: 80px; margin-bottom: 20px;"></i>
+                <h1>Gêneros Discursivos no X</h1>
+                <p style="font-size: 1.5rem;">Uma análise da teoria à prática.</p>
+            </div>
+        </section>
+
+        <!-- Slide 2: Parte 1 - Conceitos Teóricos -->
+        <section class="slide">
+            <div class="slide-content">
+                <h1>Parte 1: A Teoria</h1>
+                <h2>O que são Gêneros Discursivos?</h2>
+                <ul>
+                    <li>Formas <strong>relativamente estáveis</strong> de enunciados (Mikhail Bakhtin).</li>
+                    <li>Definidos por <strong>4 componentes</strong>: Finalidade, Conteúdo, Estrutura e Estilo.</li>
+                    <li>Existem em <strong>Esferas de Circulação</strong> (jornalística, jurídica, digital).</li>
+                    <li>Não são rígidos: <strong>transformam-se</strong> com a tecnologia e a sociedade.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 3: Parte 2 - O Slide Interativo (Réplica do X) -->
+        <section class="slide slide-iframe">
+            <!-- O Iframe carrega a réplica. A navegação (para Explorar, etc.)
+                 acontecerá DENTRO deste iframe. -->
+            <iframe src="templates/index.html"></iframe>
+        </section>
+
+    </div>
+
+    <!-- Instruções na tela -->
+    <div class="nav-instructions">
+        Use <i class="fas fa-arrow-left"></i> e <i class="fas fa-arrow-right"></i> para navegar
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                // Esconde o slide atual
+                slides[currentSlide].classList.remove('active');
+                
+                // Define o novo slide
+                currentSlide = (index + slides.length) % slides.length;
+                
+                // Mostra o novo slide
+                slides[currentSlide].classList.add('active');
+            }
+
+            // Navegação por teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    // Só avança o slide se não estiver focado no iframe
+                    if (document.activeElement.tagName !== 'IFRAME') {
+                        showSlide(currentSlide + 1);
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    // Só volta o slide se não estiver focado no iframe
+                    if (document.activeElement.tagName !== 'IFRAME') {
+                        showSlide(currentSlide - 1);
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

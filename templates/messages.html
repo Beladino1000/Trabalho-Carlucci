@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagens / X</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
@@ -40,7 +38,6 @@
                         <i class="fas fa-bookmark"></i>
                         <span class="nav-text">Itens salvos</span>
                     </a>
-                    <!-- Listas movidas para o menu 'Mais' -->
                     <a href="profile.html" class="nav-item">
                         <i class="fas fa-user"></i>
                         <span class="nav-text">Perfil</span>
@@ -108,42 +105,7 @@
                             <p class="convo-snippet">Ótimo! Obrigado pela atualização.</p>
                         </div>
                     </div>
-
-                    <div class="conversation-item">
-                        <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic">
-                        <div class="conversation-details">
-                            <div class="convo-header">
-                                <span class="user-name">Bill Gates</span>
-                                <span class="user-handle">@billgates</span>
-                                <span class="convo-time">3h</span>
-                            </div>
-                            <p class="convo-snippet">Você viu o último artigo sobre tecnologia?</p>
-                        </div>
-                    </div>
-
-                    <div class="conversation-item">
-                        <img src="https://placehold.co/40x40/FF6B6B/FFFFFF?text=E" alt="Elon Musk" class="profile-pic">
-                        <div class="conversation-details">
-                            <div class="convo-header">
-                                <span class="user-name">Elon Musk</span>
-                                <span class="user-handle">@elonmusk</span>
-                                <span class="convo-time">5h</span>
-                            </div>
-                            <p class="convo-snippet">Projeto interessante! Vamos conversar mais.</p>
-                        </div>
-                    </div>
-
-                    <div class="conversation-item">
-                        <img src="https://placehold.co/40x40/4ECDC4/FFFFFF?text=SD" alt="Steve Jobs" class="profile-pic">
-                        <div class="conversation-details">
-                            <div class="convo-header">
-                                <span class="user-name">Steve Jobs</span>
-                                <span class="user-handle">@stevejobs</span>
-                                <span class="convo-time">Ontem</span>
-                            </div>
-                            <p class="convo-snippet">Design é tudo! Concordo completamente.</p>
-                        </div>
-                    </div>
+                    <!-- Outras conversas... -->
                 </div>
             </aside>
             
@@ -165,22 +127,10 @@
                         <p>Oi! Tudo bem?</p>
                         <span class="message-time">11:00</span>
                     </div>
-
-                    <div class="message received">
-                        <p>Como está indo o projeto?</p>
-                        <span class="message-time">11:02</span>
-                    </div>
-
                     <div class="message sent">
                         <p>Oi! Tudo certo! O projeto está progredindo bem.</p>
                         <span class="message-time">11:05</span>
                     </div>
-
-                    <div class="message sent">
-                        <p>Vou enviar o relatório em breve.</p>
-                        <span class="message-time">11:06</span>
-                    </div>
-
                     <div class="message received">
                         <p>Ótimo! Obrigado pela atualização.</p>
                         <span class="message-time">11:08</span>
@@ -197,7 +147,7 @@
         </main>
     </div>
 
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
+    <!-- Caminho estático -->
     <script src="../static/scripts/script.js"></script>
 </body>
 </html>

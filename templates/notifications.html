@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificações / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,7 +19,7 @@
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -114,22 +108,6 @@
                         <p><b>Google</b> seguiu você</p>
                     </div>
                 </article>
-                
-                <article class="notification-item">
-                     <i class="fas fa-heart notification-icon" style="color: #E0245E;"></i>
-                     <div class="notification-content">
-                        <img src="https://placehold.co/30x30/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic-small" onerror="this.onerror=null;this.src='https://placehold.co/30x30/1F9BF0/FFFFFF?text=BG';">
-                        <p><b>Bill Gates</b> curtiu seu post</p>
-                    </div>
-                </article>
-
-                <article class="notification-item">
-                    <i class="fas fa-retweet notification-icon" style="color: #17BF63;"></i>
-                    <div class="notification-content">
-                        <img src="https://placehold.co/30x30/000000/FFFFFF?text=SX" alt="SpaceX" class="profile-pic-small" onerror="this.onerror=null;this.src='https://placehold.co/30x30/000000/FFFFFF?text=SX';">
-                        <p><b>SpaceX</b> repostou algo que você talvez goste</p>
-                    </div>
-                </article>
             </div>
         </main>
 
@@ -165,10 +143,8 @@
         </aside>
     </div>
 
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
+    <!-- Caminho estático -->
+    <script src="../static/scripts/script.js"></script>
     
 </body>
 </html>

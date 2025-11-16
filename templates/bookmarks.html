@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itens salvos / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,7 +19,7 @@
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -115,25 +109,6 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- Post 2 (Exemplo de post salvo) -->
-                <article class="post">
-                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=V" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=V';">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Vercel</span>
-                            <span class="post-handle">@Vercel · 2d</span>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <p class="post-text">O v0 do Next.js agora suporta a geração de componentes diretamente de prompts de imagem. O futuro do desenvolvimento front-end está aqui.</p>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 305</span>
-                            <span><i class="fas fa-retweet"></i> 2.1K</span>
-                            <span><i class="far fa-heart"></i> 9.4K</span>
-                            <span><i class="fas fa-share"></i></span>
-                        </div>
-                    </div>
-                </article>
             </div>
         </main>
 
@@ -169,10 +144,8 @@
         </aside>
     </div>
 
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
+    <!-- Caminho estático -->
+    <script src="../static/scripts/script.js"></script>
     
 </body>
 </html>

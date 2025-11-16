@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
@@ -88,25 +84,6 @@
                         <span>Informações da conta</span>
                         <i class="fas fa-chevron-right"></i>
                     </div>
-                    <div class="settings-item">
-                        <span>Mudar senha</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="settings-item">
-                        <span>Baixar arquivo de dados</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </section>
-                <section class="settings-section">
-                    <h3>Privacidade e Segurança</h3>
-                    <div class="settings-item">
-                        <span>Público e marcação</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="settings-item">
-                        <span>Contas bloqueadas</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
                 </section>
                  <section class="settings-section">
                     <h3>Aparência</h3>
@@ -137,9 +114,7 @@
             </div>
         </aside>
     </div>
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
+    <!-- Caminho estático -->
+    <script src="../static/scripts/script.js"></script>
 </body>
 </html>

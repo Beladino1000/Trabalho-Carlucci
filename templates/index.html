@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,7 +19,7 @@
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="nav-item active">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -94,7 +88,7 @@
         <main class="main-content">
             <header class="content-header">
                 <div class="header-tabs">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="tab-btn active">For you</a>
                     <a href="following.html" class="tab-btn">Following</a>
                 </div>
@@ -103,14 +97,14 @@
             <div class="post-composer">
                 <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
                 <div class="composer-content">
-                    <textarea placeholder="What's happening?"></textarea>
+                    <textarea placeholder="O que está acontecendo?"></textarea>
                     <div class="composer-footer">
                         <div class="composer-actions">
-                            <i class="fas fa-image"></i>
-                            <i class="fas fa-poll"></i>
-                            <i class="fas fa-smile"></i>
-                            <i class="fas fa-calendar"></i>
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-image" data-tooltip="Mídia (Multimodalidade)"></i>
+                            <i class="fas fa-poll" data-tooltip="Enquete (Gênero Interativo)"></i>
+                            <i class="fas fa-smile" data-tooltip="Emoji (Estilo)"></i>
+                            <i class="fas fa-calendar" data-tooltip="Agendar"></i>
+                            <i class="fas fa-map-marker-alt" data-tooltip="Localização"></i>
                         </div>
                         <button class="btn btn-primary btn-small" disabled>Postar</button>
                     </div>
@@ -119,7 +113,24 @@
             
             <!-- Feed de Posts -->
             <div class="posts-feed">
-                <!-- Post será carregado via JavaScript (script.js) -->
+                <!-- Adicione seus posts de exemplo aqui -->
+                <article class="post">
+                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX" alt="Exemplo" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX';">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Exemplo de Post</span>
+                            <span class="post-handle">@exemplo · 10m</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <p class="post-text">Este é o lugar onde vocês colocarão os exemplos de posts, como o tweet de denúncia que mencionaram.</p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 10</span>
+                            <span><i class="fas fa-retweet"></i> 5</span>
+                            <span><i class="far fa-heart"></i> 25</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </main>
 
@@ -132,7 +143,6 @@
             
             <div class="trending-section">
                 <h2>O que está acontecendo</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="trending-item">
                     <div class="trend-category">Tecnologia · Assunto do momento</div>
                     <div class="trend-name">#ReactJS</div>
@@ -148,7 +158,6 @@
             
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
-                <!-- Conteúdo será carregado via JavaScript -->
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
@@ -162,10 +171,8 @@
         </aside>
     </div>
 
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
+    <!-- Caminho estático -->
+    <script src="../static/scripts/script.js"></script>
     
 </body>
 </html>

@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explorar / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,7 +19,7 @@
                 <i class="fab fa-x-twitter sidebar-logo"></i>
                 
                 <nav class="main-nav">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -126,13 +120,6 @@
                             <div class="news-meta">12 hours ago - Entertainment - 482K posts</div>
                         </div>
                     </article>
-                    
-                    <article class="news-card">
-                        <div class="news-content">
-                            <h3>Isak's Ultimatum: Newcastle Star Vows Never to Play Again</h3>
-                            <div class="news-meta">1 day ago - Sports - 147K posts</div>
-                        </div>
-                    </article>
                 </section>
 
                 <!-- Seção Trending -->
@@ -149,12 +136,6 @@
                         <div class="trend-category">Politics - Trending</div>
                         <div class="trend-name">Ultrafarma</div>
                         <div class="trend-stats">4,670 posts</div>
-                    </div>
-                    
-                    <div class="trending-item">
-                        <div class="trend-category">Trending in Brazil</div>
-                        <div class="trend-name">Marins</div>
-                        <div class="trend-stats">1,819 posts</div>
                     </div>
                 </section>
             </div>
@@ -175,11 +156,6 @@
                     <div class="trend-name">#ReactJS</div>
                     <div class="trend-stats">12K posts</div>
                 </div>
-                <div class="trending-item">
-                    <div class="trend-category">Notícias · Assunto do momento</div>
-                    <div class="trend-name">Novas Eleições</div>
-                    <div class="trend-stats">55.2K posts</div>
-                </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
             
@@ -198,12 +174,9 @@
         </aside>
     </div>
 
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <script src="{{url_for('static', filename='scripts/explore.js')}}"></script>
-    <!-- Caminhos revertidos para estáticos (PHP) -->
-    <script src="../scripts/script.js"></script>
-    <script src="../scripts/explore.js"></script>
+    <!-- Caminhos estáticos -->
+    <script src="../static/scripts/script.js"></script>
+    <script src="../static/scripts/explore.js"></script>
     
     
 </body>

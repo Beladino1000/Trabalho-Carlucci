@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seguindo / X</title>
-    <!-- Links Flask/PyWebview -->
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/base.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/components.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/pages.css')}}">
-    <!-- Caminhos revertidos para estáticos (PHP) -->
+    <!-- Links estáticos -->
     <link rel="stylesheet" href="../static/styles/base.css">
     <link rel="stylesheet" href="../static/styles/components.css">
     <link rel="stylesheet" href="../static/styles/pages.css">
-    
-    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -26,7 +20,7 @@
                 
                 <nav class="main-nav">
                     <!-- A classe 'active' permanece em 'Página Inicial', pois 'Seguindo' é uma aba dessa seção -->
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="nav-item active">
                         <i class="fas fa-home"></i>
                         <span class="nav-text" data-tooltip="Essa é a página inicial, clique aqui para ver...">Página Inicial</span>
@@ -93,7 +87,7 @@
         <main class="main-content">
             <header class="content-header">
                 <div class="header-tabs">
-                    <!-- Links revertidos para estáticos -->
+                    <!-- Links estáticos -->
                     <a href="index.html" class="tab-btn">For you</a>
                     <a href="following.html" class="tab-btn active">Following</a>
                 </div>
@@ -120,43 +114,7 @@
                     </div>
                 </article>
                 
-                <!-- Post 2 -->
-                <article class="post">
-                    <img src="https://placehold.co/40x40/E60023/FFFFFF?text=N" alt="NASA" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E60023/FFFFFF?text=N';">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">NASA</span>
-                            <span class="post-handle">@NASA · 4h</span>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <p class="post-text">Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.</p>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 532</span>
-                            <span><i class="fas fa-retweet"></i> 3.4K</span>
-                            <span><i class="far fa-heart"></i> 12.7K</span>
-                            <span><i class="fas fa-share"></i></span>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Post 3 -->
-                <article class="post">
-                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=SX" alt="SpaceX" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=SX';">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">SpaceX</span>
-                            <span class="post-handle">@SpaceX · 6h</span>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <p class="post-text">SpaceX designs, manufactures and launches the world's most advanced rockets and spacecraft</p>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 876</span>
-                            <span><i class="fas fa-retweet"></i> 5.2K</span>
-                            <span><i class="far fa-heart"></i> 18.3K</span>
-                            <span><i class="fas fa-share"></i></span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Outros posts... -->
             </div>
         </main>
 
@@ -200,10 +158,8 @@
         </aside>
     </div>
 
-    <!-- Links Flask/PyWebview -->
-    <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
-    <!-- Caminho revertido para estático (PHP) -->
-    <script src="../scripts/script.js"></script>
+    <!-- Caminho estático -->
+    <script src="../static/scripts/script.js"></script>
     
 </body>
 </html>
