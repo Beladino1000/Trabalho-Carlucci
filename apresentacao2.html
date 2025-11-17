@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação: Gêneros Discursivos no X</title>
+    <title>Apresentação: Gêneros DiscursIVOS no X</title>
     <!-- Ícones e Fontes -->
     <!-- ATUALIZADO: Usando Font Awesome 6.4.0 (all.min.css) que suporta 'fas' e 'far' -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,7 +52,7 @@
             left: 0;
             opacity: 0; /* Começa invisível */
             visibility: hidden;
-            background-color: #000;
+            background-color: var(--background-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -73,38 +73,104 @@
             justify-content: stretch;
         }
 
-        /* Conteúdo do slide teórico */
-        .slide-content {
-            padding: 5vw;
-            max-width: 800px;
+        /* --- ESTILOS VISUAIS (NOVOS) --- */
+        
+        /* Conteúdo do slide teórico (agora imita a coluna do X) */
+        .slide:not(.slide-replica) .slide-content {
+            /* Imita o main-content da réplica */
+            max-width: 900px; /* Mais largo para apresentação */
+            width: 100%;
+            height: 100vh; /* Ocupa a altura inteira */
+            padding: 0 40px;
+            box-sizing: border-box; /* Garante que o padding não estoure */
+
+            /* Adiciona as bordas laterais do feed */
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+
+            /* Alinhamento do conteúdo */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza verticalmente */
             text-align: left;
         }
+
+        /* Estilo do Slide de Título (Slide 1) */
+        .slide[data-slide="1"] .slide-content {
+            align-items: center; /* Centraliza horizontalmente */
+            text-align: center;
+        }
+        .slide-logo {
+            font-size: 80px;
+            color: var(--text-color); /* Logo branco */
+            margin-bottom: 24px;
+        }
+        .slide[data-slide="1"] h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--text-color);
+            border: none;
+            margin: 0;
+        }
+        .slide[data-slide="1"] p {
+            font-size: 1.75rem;
+            color: var(--secondary-text); /* Cinza secundário */
+            margin-top: 16px;
+        }
+
+        /* Estilos dos Slides de Conteúdo (Slides 2, 3, 4) */
         .slide-content h1 {
             font-size: 3.5rem;
-            color: #1d9bf0;
-            border-bottom: 2px solid #2f3336;
-            padding-bottom: 15px;
+            font-weight: 800;
+            color: var(--text-color); /* Branco */
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 16px;
         }
-         .slide-content h2 {
-            font-size: 2.5rem;
-            color: #e7e9ea;
-            margin-top: 40px;
+        .slide-content .accent {
+            color: var(--primary-color); /* Azul X */
         }
-        .slide-content ul { list-style-type: none; padding-left: 0; }
+
+        .slide-content h2 {
+            font-size: 2.25rem;
+            color: var(--secondary-text); /* Cinza */
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 32px;
+        }
+        
+        .slide-content ul { 
+            list-style-type: none; 
+            padding-left: 0; 
+        }
+        
         .slide-content li {
-            font-size: 1.5rem;
+            font-size: 1.75rem; /* Mais legível */
+            color: var(--text-color);
             line-height: 1.6;
-            margin-bottom: 20px;
-            padding-left: 30px;
+            margin-bottom: 24px;
+            padding-left: 40px;
             position: relative;
         }
+        
         .slide-content li::before {
-            content: '✓'; /* Ícone de check */
-            color: #1d9bf0;
+            content: '•'; /* Bullet simples e elegante */
+            color: var(--primary-color); /* Azul X */
             position: absolute;
             left: 0;
+            font-size: 2.5rem;
+            line-height: 1.75rem; /* Alinha com o texto */
             font-weight: bold;
         }
+
+        /* Texto em negrito dentro da lista se destaca */
+        .slide-content li strong {
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        /* --- FIM DOS ESTILOS VISUAIS (NOVOS) --- */
+
 
         /* Instruções de navegação */
         .nav-instructions {
@@ -121,18 +187,25 @@
 
         /* Media Query para Slides Teóricos em telas menores */
         @media (max-width: 768px) {
-            .slide-content {
-                padding: 8vw;
+            .slide:not(.slide-replica) .slide-content {
+                padding: 0 20px;
+                border-left: none;
+                border-right: none;
             }
             .slide-content h1 {
                 font-size: 2.5rem;
             }
             .slide-content h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
             .slide-content li {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 line-height: 1.5;
+                padding-left: 25px;
+            }
+            .slide-content li::before {
+                font-size: 2rem;
+                line-height: 1.2rem;
             }
             .nav-instructions {
                 display: none;
@@ -140,7 +213,8 @@
         }
 
         /* --- ESTILOS DA RÉPLICA DO X (base.css, components.css, pages.css) --- */
-
+        /* ... (O CSS da réplica permanece idêntico ao original) ... */
+        
         /* --- base.css --- */
         :root {
             /* As variáveis já estão definidas em 'html, body' */
@@ -233,26 +307,23 @@
             transition: background-color 0.2s;
         }
         
-        /* CORREÇÃO 2: LÓGICA DE ÍCONES ATIVOS/INATIVOS (Atualizada para SVGs) */
-.nav-item .fa-icon {
-    margin-right: 16px;
-    width: 26px;
-    height: 26px; /* Garantir altura para SVGs */
-    text-align: center;
-    font-size: 24px;
-    line-height: 1;
-    vertical-align: middle; /* Alinhar ícones e SVGs */
-}
+        .nav-item .fa-icon {
+            margin-right: 16px;
+            width: 26px;
+            height: 26px; 
+            text-align: center;
+            font-size: 24px;
+            line-height: 1;
+            vertical-align: middle;
+        }
 
-        /* Por padrão: MOSTRA contorno (fa-regular E svg), OCULTA sólido */
         .nav-item .fa-solid { display: none; }
         .nav-item .fa-regular { display: inline-block; }
-        .nav-item svg.fa-icon { display: inline-block; } /* Adicionado */
+        .nav-item svg.fa-icon { display: inline-block; } 
 
-        /* Quando ATIVO: OCULTA contorno (fa-regular E svg), MOSTRA sólido */
         .nav-item.active .fa-solid { display: inline-block; }
         .nav-item.active .fa-regular { display: none; }
-        .nav-item.active svg.fa-icon { display: none; } /* Adicionado */
+        .nav-item.active svg.fa-icon { display: none; } 
 
         .nav-item.active {
             font-weight: bold;
@@ -499,13 +570,11 @@
             margin-bottom: 16px;
             overflow: hidden;
         }
-        /* CORREÇÃO 4: Estilo para o <p> do Premium */
         .premium-section p {
             padding: 0 16px 16px;
             font-size: 15px;
             line-height: 1.4;
         }
-        /* CORREÇÃO 4: Estilo para o botão Premium */
         .premium-section .btn-primary {
             margin: 0 16px 16px;
         }
@@ -557,14 +626,13 @@
             margin-bottom: 4px;
         }
         
-        /* CORREÇÃO 3: Ícone de Verificação */
         .verified-icon {
             display: inline-block;
             width: 1.1em;
             height: 1.1em;
             margin-left: 4px;
-            vertical-align: -0.15em; /* Alinhamento fino */
-            background-color: var(--primary-color); /* Azul */
+            vertical-align: -0.15em; 
+            background-color: var(--primary-color); 
             -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52-.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.48 4.3l-4.18-4.18 1.41-1.41 2.77 2.78 5.44-5.44 1.41 1.41-6.85 6.85z'%3e%3c/svg%3e");
             mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52-.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.48 4.3l-4.18-4.18 1.41-1.41 2.77 2.78 5.44-5.44 1.41 1.41-6.85 6.85z'%3e%3c/svg%3e");
         }
@@ -572,8 +640,8 @@
         .post-author {
             font-weight: bold;
             margin-right: 4px;
-            display: flex; /* Adicionado para alinhar ícone */
-            align-items: center; /* Adicionado para alinhar ícone */
+            display: flex; 
+            align-items: center; 
         }
         .post-author:hover {
             text-decoration: underline;
@@ -673,7 +741,6 @@
         .follow-item .follow-details {
             flex-grow: 1;
         }
-        /* CORREÇÃO 3: Alinhamento do ícone em "Quem Seguir" */
         .follow-item .follow-details .user-name {
             display: flex;
             align-items: center;
@@ -682,83 +749,7 @@
         .follow-item .btn-follow {
             margin-left: auto;
         }
-        .context-menu {
-            position: relative;
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
-        .context-menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            margin: 0 auto;
-            border-radius: 50%;
-            color: var(--primary-color);
-            font-size: 20px;
-            transition: background-color 0.2s;
-        }
-        .context-menu-btn:hover {
-            background-color: var(--hover-color);
-        }
-        .context-menu-items {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-            display: none;
-            flex-direction: column;
-            margin-bottom: 8px;
-        }
-        .context-menu-items.active {
-            display: flex;
-        }
-        #floating-context-menu {
-            padding: 8px 0;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-        }
-        .context-menu-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            color: var(--text-color);
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.2s;
-        }
-        .context-menu-item:last-child {
-            border-bottom: none;
-        }
-        .context-menu-item:hover {
-            background-color: var(--hover-color);
-        }
-        .context-menu-items a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .context-menu-item i {
-            font-size: 18px;
-            color: var(--primary-color);
-        }
-        .context-menu-btn .more-btn {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* CORREÇÃO 4: Estilos do Rodapé da Sidebar */
+        
         .sidebar-footer {
             padding: 16px;
             font-size: 13px;
@@ -779,19 +770,6 @@
         }
         
         /* --- pages.css --- */
-        .for-you-page .main-content {}
-        .for-you-page .posts-feed {}
-        .following-page .main-content {}
-        .following-page .posts-feed {}
-        .following-page .news-section h2 {
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-        .following-page .news-item h3 {
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-        .explore-page .main-content {}
         .explore-header {
             position: sticky;
             top: 0;
@@ -942,7 +920,7 @@
                 padding: 12px;
                 margin: 2px auto;
             }
-            .nav-item .fa-icon { /* CORREÇÃO 2: Aplicado a .fa-icon */
+            .nav-item .fa-icon { 
                 margin-right: 0;
             }
             .btn-large span {
@@ -1026,30 +1004,58 @@
     <div class="slider-container">
         
         <!-- Slide 1: Título -->
-        <section class="slide active">
-            <div class="slide-content" style="text-align: center;">
-                <i class="fab fa-x-twitter" style="font-size: 80px; margin-bottom: 20px;"></i>
+        <section class="slide active" data-slide="1">
+            <div class="slide-content">
+                <i class="fab fa-x-twitter slide-logo"></i>
                 <h1>Gêneros Discursivos no X</h1>
-                <p style="font-size: 1.5rem;">Uma análise da teoria à prática.</p>
+                <p>Uma análise da teoria à prática.</p>
             </div>
         </section>
 
         <!-- Slide 2: Parte 1 - Conceitos Teóricos -->
-        <section class="slide">
+        <section class="slide" data-slide="2">
             <div class="slide-content">
-                <h1>Parte 1: A Teoria</h1>
-                <h2>O que são Gêneros Discursivos?</h2>
+                <h1>Parte 1: O <span class="accent">Conceito</span></h1>
+                <h2>O que são Gêneros? (Bakhtin)</h2>
                 <ul>
-                    <li>Formas <strong>relativamente estáveis</strong> de enunciados (Mikhail Bakhtin).</li>
-                    <li>Definidos por <strong>4 componentes</strong>: Finalidade, Conteúdo, Estrutura e Estilo.</li>
-                    <li>Existem em <strong>Esferas de Circulação</strong> (jornalística, jurídica, digital).</li>
-                    <li>Não são rígidos: <strong>transformam-se</strong> com a tecnologia e a sociedade.</li>
+                    <li>São "tipos <strong>relativamente estáveis</strong> de enunciados" que usamos para nos comunicar.</li>
+                    <li>Organizam toda a comunicação, da conversa (<strong>Gênero Primário</strong>) ao romance (<strong>Gênero Secundário</strong>).</li>
+                    <li>Permitem reconhecer o <strong>propósito</strong> de um texto (ex: piada, notícia) rapidamente.</li>
+                    <li>Não existe comunicação "neutra"; todo texto <strong>pertence a um gênero</strong>.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Slide 3: Parte 2 - A Réplica do X (em vez de Iframe) -->
-        <section class="slide slide-replica">
+        <!-- Slide 3: Parte 1 - Componentes -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+                <h1>Parte 1: Os <span class="accent">4 Componentes</span></h1>
+                <h2>O que define um Gênero?</h2>
+                <ul>
+                    <li><strong>Finalidade:</strong> O objetivo (Ex: Informar, Convencer, Comprovar).</li>
+                    <li><strong>Conteúdo Temático:</strong> O assunto (Ex: Bula de remédio -> posologia).</li>
+                    <li><strong>Estrutura:</strong> A forma (Ex: Notícia -> Título, Lead, Corpo).</li>
+                    <li><strong>Estilo:</strong> A linguagem (Ex: Edital -> Formal e impessoal).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 4: Parte 1 - Ação e Transformação -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <h1>Parte 1: Ação e <span class="accent">Transformação</span></h1>
+                <h2>Gêneros como fenômeno social</h2>
+                <ul>
+                    <li>Circulam em "<strong>Esferas</strong>" (Jornalística, Jurídica, Digital, etc.).</li>
+                    <li>São "<strong>relativamente estáveis</strong>", não rígidos. Eles mudam com a sociedade.</li>
+                    <li>A tecnologia cria <strong>novos gêneros</strong> (Memes, Threads, Podcasts, Stories).</li>
+                    <li>Muitos são <strong>multimodais</strong> (combinam texto, imagem, som).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 5: Parte 2 - A Réplica do X -->
+        <section class="slide slide-replica" data-slide="5">
             
             <div class="page-transition-overlay hidden"></div>
 
@@ -1110,7 +1116,7 @@
                                 <i class="fa-icon fa-regular fa-user"></i><i class="fa-icon fa-solid fa-user"></i>
                                 <span class="nav-text">Perfil</span>
                             </a>
-                            <button type="button" class="nav-item nav-more" onclick="toggleSidebarContextMenu()">
+                            <button type="button" class="nav-item nav-more">
                                 <!-- Ícone de 'Mais' (elipse) não precisa de estado ativo/inativo -->
                                 <i class="fas fa-ellipsis" style="width: 26px; text-align: center; margin-right: 16px;"></i>
                                 <span class="nav-text">Mais</span>
@@ -1131,12 +1137,6 @@
                         <i class="fas fa-ellipsis user-profile-icon"></i>
                     </div>
 
-                    <div class="context-menu">
-                        <nav class="context-menu-items">
-                            <a href="#" class="context-menu-item"><i class="fas fa-list"></i><span>Listas</span></a>
-                            <a href="#" class="context-menu-item"><i class="fas fa-cog"></i><span>Configurações</span></a>
-                        </nav>
-                    </div>
                 </aside>
 
                 <div id="main-content-area">
@@ -1483,52 +1483,7 @@
 
         // --- 2. LÓGICA DA RÉPLICA DO X (de script.js e explore.js) ---
 
-        function toggleSidebarContextMenu() {
-            const srcMenu = document.querySelector('.sidebar-left .context-menu .context-menu-items');
-            const btn = document.querySelector('.sidebar-left .nav-more');
-            if (!srcMenu || !btn) return;
-
-            let floating = document.getElementById('floating-context-menu');
-            if (floating) {
-                floating.remove();
-                return;
-            }
-
-            floating = srcMenu.cloneNode(true);
-            floating.id = 'floating-context-menu';
-            floating.classList.add('active');
-            floating.style.position = 'fixed';
-            floating.style.zIndex = 10000;
-            
-            const srcWidth = srcMenu.offsetWidth || 200;
-            floating.style.minWidth = srcWidth + 'px';
-            document.body.appendChild(floating);
-
-            const btnRect = btn.getBoundingClientRect();
-            const menuRect = floating.getBoundingClientRect();
-            let left = btnRect.left + btnRect.width / 2;
-            let top = btnRect.top - 8;
-            let transform = 'translate(-50%, -100%)';
-            if (top - menuRect.height < 8) {
-                top = btnRect.bottom + 8;
-                transform = 'translate(-50%, 0)';
-            }
-            floating.style.left = left + 'px';
-            floating.style.top = top + 'px';
-            floating.style.transform = transform;
-        }
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.context-menu') && !e.target.closest('.nav-more') && !e.target.closest('#floating-context-menu')) {
-                document.querySelectorAll('.context-menu-items').forEach(menu => {
-                    if (menu.id === 'floating-context-menu') {
-                        menu.remove();
-                    } else {
-                        menu.classList.remove('active');
-                    }
-                });
-            }
-        });
+        // --- Lógica de Context Menu (toggleSidebarContextMenu e o listener 'click') foi REMOVIDA ---
 
         function initializePageContent(contentRoot) {
             const textarea = contentRoot.querySelector('.composer-content textarea');
