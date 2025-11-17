@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apresentação: Gêneros Discursivos no X</title>
     <!-- Ícones e Fontes -->
+    <!-- ATUALIZADO: Usando Font Awesome 6.4.0 (all.min.css) que suporta 'fas' e 'far' -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,16 +232,28 @@
             font-size: 20px;
             transition: background-color 0.2s;
         }
-        .nav-item i {
+        
+        /* CORREÇÃO 2: LÓGICA DE ÍCONES ATIVOS/INATIVOS */
+        .nav-item .fa-icon {
             margin-right: 16px;
             width: 26px;
             text-align: center;
+            /* Ajuste fino para FA6 */
+            font-size: 24px;
+            line-height: 1;
         }
-        .nav-item:hover {
-            background-color: var(--hover-color);
-        }
+        .nav-item .fas { display: none; } /* Oculta sólido por padrão */
+        .nav-item .far { display: inline-block; } /* Mostra contorno por padrão */
+        
+        .nav-item.active .fas { display: inline-block; } /* Mostra sólido no ativo */
+        .nav-item.active .far { display: none; } /* Oculta contorno no ativo */
         .nav-item.active {
             font-weight: bold;
+        }
+        /* FIM DA CORREÇÃO 2 */
+
+        .nav-item:hover {
+            background-color: var(--hover-color);
         }
         .nav-text {
             margin-left: 4px;
@@ -258,7 +271,6 @@
             background-color: var(--primary-hover);
         }
         
-        /* Botão "Post" Branco da Sidebar (Fidedigno) */
         .btn-light {
             background-color: var(--light-btn-bg);
             color: var(--light-btn-text);
@@ -266,7 +278,6 @@
         .btn-light:hover {
             background-color: var(--light-btn-hover);
         }
-        /* CORREÇÃO: Estilo para btn-light desabilitado (fidedigno) */
         .btn-light[disabled] {
             opacity: 0.5;
             cursor: not-allowed;
@@ -281,9 +292,7 @@
             padding: 8px 16px;
             font-size: 15px;
         }
-        /* Regra [disabled] movida para .btn-light[disabled] */
         
-        /* Perfil de Usuário na Sidebar (Fidedigno) */
         .user-profile {
             display: flex;
             align-items: center;
@@ -484,6 +493,17 @@
             margin-bottom: 16px;
             overflow: hidden;
         }
+        /* CORREÇÃO 4: Estilo para o <p> do Premium */
+        .premium-section p {
+            padding: 0 16px 16px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        /* CORREÇÃO 4: Estilo para o botão Premium */
+        .premium-section .btn-primary {
+            margin: 0 16px 16px;
+        }
+
         .trending-section h2, .who-to-follow h2, .premium-section h2 {
             padding: 16px;
             font-size: 20px;
@@ -530,9 +550,24 @@
             align-items: center;
             margin-bottom: 4px;
         }
+        
+        /* CORREÇÃO 3: Ícone de Verificação */
+        .verified-icon {
+            display: inline-block;
+            width: 1.1em;
+            height: 1.1em;
+            margin-left: 4px;
+            vertical-align: -0.15em; /* Alinhamento fino */
+            background-color: var(--primary-color); /* Azul */
+            -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52-.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.48 4.3l-4.18-4.18 1.41-1.41 2.77 2.78 5.44-5.44 1.41 1.41-6.85 6.85z'%3e%3c/svg%3e");
+            mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52-.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.48 4.3l-4.18-4.18 1.41-1.41 2.77 2.78 5.44-5.44 1.41 1.41-6.85 6.85z'%3e%3c/svg%3e");
+        }
+        
         .post-author {
             font-weight: bold;
             margin-right: 4px;
+            display: flex; /* Adicionado para alinhar ícone */
+            align-items: center; /* Adicionado para alinhar ícone */
         }
         .post-author:hover {
             text-decoration: underline;
@@ -632,6 +667,12 @@
         .follow-item .follow-details {
             flex-grow: 1;
         }
+        /* CORREÇÃO 3: Alinhamento do ícone em "Quem Seguir" */
+        .follow-item .follow-details .user-name {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
         .follow-item .btn-follow {
             margin-left: auto;
         }
@@ -709,6 +750,26 @@
         .context-menu-btn .more-btn {
             font-size: 13px;
             font-weight: 700;
+        }
+
+        /* CORREÇÃO 4: Estilos do Rodapé da Sidebar */
+        .sidebar-footer {
+            padding: 16px;
+            font-size: 13px;
+            color: var(--secondary-text);
+            line-height: 1.6;
+        }
+        .sidebar-footer a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            margin-right: 8px;
+        }
+        .sidebar-footer a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-footer span {
+            display: block;
+            margin-top: 8px;
         }
         
         /* --- pages.css --- */
@@ -875,7 +936,7 @@
                 padding: 12px;
                 margin: 2px auto;
             }
-            .nav-item i {
+            .nav-item .fa-icon { /* CORREÇÃO 2: Aplicado a .fa-icon */
                 margin-right: 0;
             }
             .btn-large span {
@@ -893,7 +954,6 @@
             .user-details {
                 display: none;
             }
-            /* Oculta o ícone de elipse na versão mobile/tablet */
             .user-profile-icon {
                 display: none;
             }
@@ -903,7 +963,6 @@
                 margin-right: auto;
             }
             .user-profile-link {
-                /* Centraliza a foto de perfil quando o texto some */
                 justify-content: center;
             }
         }
@@ -994,41 +1053,41 @@
                     <div class="sidebar-content">
                         <i class="fab fa-x-twitter sidebar-logo"></i>
                         <nav class="main-nav">
+                            <!-- CORREÇÕES 1 e 2: Ícones de Lupa e Lógica Ativo/Inativo -->
                             <a href="#page-home" class="nav-item active">
-                                <i class="fas fa-home"></i>
+                                <i class="fa-icon far fa-home"></i><i class="fa-icon fas fa-home"></i>
                                 <span class="nav-text">Página Inicial</span>
                             </a>
                             <a href="#page-explore" class="nav-item">
-                                <i class="fas fa-hashtag"></i>
+                                <i class="fa-icon far fa-search"></i><i class="fa-icon fas fa-search"></i>
                                 <span class="nav-text">Explorar</span>
                             </a>
                             <a href="#page-notifications" class="nav-item">
-                                <i class="fas fa-bell"></i>
+                                <i class="fa-icon far fa-bell"></i><i class="fa-icon fas fa-bell"></i>
                                 <span class="nav-text">Notificações</span>
                             </a>
                             <a href="#page-messages" class="nav-item">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fa-icon far fa-envelope"></i><i class="fa-icon fas fa-envelope"></i>
                                 <span class="nav-text">Mensagens</span>
                             </a>
                             <a href="#page-bookmarks" class="nav-item">
-                                <i class="fas fa-bookmark"></i>
+                                <i class="fa-icon far fa-bookmark"></i><i class="fa-icon fas fa-bookmark"></i>
                                 <span class="nav-text">Itens salvos</span>
                             </a>
                             <a href="#page-profile" class="nav-item">
-                                <i class="fas fa-user"></i>
+                                <i class="fa-icon far fa-user"></i><i class="fa-icon fas fa-user"></i>
                                 <span class="nav-text">Perfil</span>
                             </a>
                             <button type="button" class="nav-item nav-more" onclick="toggleSidebarContextMenu()">
-                                <i class="fas fa-ellipsis-h"></i>
+                                <!-- Ícone de 'Mais' (elipse) não precisa de estado ativo/inativo -->
+                                <i class="fas fa-ellipsis" style="width: 26px; text-align: center; margin-right: 16px;"></i>
                                 <span class="nav-text">Mais</span>
                             </button>
                         </nav>
                     </div>
                     
-                    <!-- CORREÇÃO BOTÃO FIDEDIGNO: Trocado btn-primary por btn-light -->
                     <button class="btn btn-light btn-large">Post</button>
                     
-                    <!-- CORREÇÃO FIDEDIGNA: Layout do Perfil de Usuário -->
                     <div class="user-profile">
                         <a href="#" class="user-profile-link">
                             <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
@@ -1037,8 +1096,7 @@
                                 <span class="user-handle">@usuario</span>
                             </div>
                         </a>
-                        <!-- Ícone de elipse (fidedigno) -->
-                        <i class="fas fa-ellipsis-h user-profile-icon"></i>
+                        <i class="fas fa-ellipsis user-profile-icon"></i>
                     </div>
 
                     <div class="context-menu">
@@ -1089,7 +1147,6 @@
                             <i class="fas fa-calendar" data-tooltip="Agendar"></i>
                             <i class="fas fa-map-marker-alt" data-tooltip="Localização"></i>
                         </div>
-                        <!-- CORREÇÃO BOTÃO FIDEDIGNO: Trocado btn-grey por btn-light -->
                         <button class="btn btn-light btn-small" disabled>Post</button>
                     </div>
                 </div>
@@ -1099,7 +1156,8 @@
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX" alt="Exemplo" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX';">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Exemplo de Post</span>
+                            <!-- CORREÇÃO 3: Ícone de Verificação -->
+                            <span class="post-author">Exemplo de Post<i class="verified-icon"></i></span>
                             <span class="post-handle">@exemplo · 10m</span>
                             <i class="fas fa-ellipsis-h"></i>
                         </div>
@@ -1114,37 +1172,62 @@
                 </article>
             </div>
         </main>
+        
+        <!-- CORREÇÃO 4: Sidebar da Home Atualizada -->
         <aside class="sidebar-right">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Buscar no X">
             </div>
-            <div class="trending-section">
-                <h2>O que está acontecendo</h2>
-                <div class="trending-item">
-                    <div class="trend-category">Tecnologia · Assunto do momento</div>
-                    <div class="trend-name">#ReactJS</div>
-                    <div class="trend-stats">12K posts</div>
-                </div>
-                <div class="trending-item">
-                    <div class="trend-category">Notícias · Assunto do momento</div>
-                    <div class="trend-name">Novas Eleições</div>
-                    <div class="trend-stats">55.2K posts</div>
-                </div>
-                <a href="#" class="show-more">Mostrar mais</a>
+
+            <!-- Bloco "Subscribe" Adicionado -->
+            <div class="premium-section">
+                <h2>Subscribe to Premium</h2>
+                <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p>
+                <button class="btn btn-primary">Subscribe</button>
             </div>
+
+            <!-- Bloco "Today's News" Adicionado -->
+            <div class="trending-section">
+                <h2>Today's News</h2>
+                <div class="trending-item">
+                    <div class="trend-category">News · 21 hours ago</div>
+                    <div class="trend-name">Trump Seizes Control of DC Police</div>
+                    <div class="trend-stats">870K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">Entertainment · 12 hours ago</div>
+                    <div class="trend-name">Taylor Swift's 'The Life of a Showgirl'</div>
+                    <div class="trend-stats">482K posts</div>
+                </div>
+                <a href="#" class="show-more">Show more</a>
+            </div>
+
+            <!-- Bloco "Quem Seguir" Mantido -->
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
-                        <span class="user-name">Google</span>
+                        <!-- CORREÇÃO 3: Ícone de Verificação -->
+                        <span class="user-name">Google<i class="verified-icon"></i></span>
                         <span class="user-handle">@Google</span>
                     </div>
                     <button class="btn btn-follow">Seguir</button>
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
+            
+            <!-- Rodapé de Fidelidade Adicionado -->
+            <footer class="sidebar-footer">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Política de Cookies</a>
+                <a href="#">Acessibilidade</a>
+                <a href="#">Informações de anúncios</a>
+                <a href="#">Mais...</a>
+                <span>© 2025 X Corp.</span>
+            </footer>
         </aside>
     </template>
 
@@ -1162,7 +1245,8 @@
                     <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG';">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Bill Gates</span>
+                            <!-- CORREÇÃO 3: Ícone de Verificação -->
+                            <span class="post-author">Bill Gates<i class="verified-icon"></i></span>
                             <span class="post-handle">@BillGates · 2h</span>
                             <i class="fas fa-ellipsis-h"></i>
                         </div>
@@ -1200,13 +1284,21 @@
                  <div class="follow-item">
                     <img src="https://placehold.co/40x40/F5C300/000000?text=V" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/F5C300/000000?text=V';">
                     <div class="follow-details">
-                        <span class="user-name">Vercel</span>
+                        <!-- CORREÇÃO 3: Ícone de Verificação -->
+                        <span class="user-name">Vercel<i class="verified-icon"></i></span>
                         <span class="user-handle">@Vercel</span>
                     </div>
                     <button class="btn btn-follow">Seguir</button>
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
+            <!-- CORREÇÃO 4: Rodapé Adicionado -->
+            <footer class="sidebar-footer">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Acessibilidade</a>
+                <span>© 2025 X Corp.</span>
+            </footer>
         </aside>
     </template>
 
@@ -1278,13 +1370,21 @@
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
-                        <span class="user-name">Google</span>
+                        <!-- CORREÇÃO 3: Ícone de Verificação -->
+                        <span class="user-name">Google<i class="verified-icon"></i></span>
                         <span class="user-handle">@Google</span>
                     </div>
                     <button class="btn btn-follow">Seguir</button>
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
+            <!-- CORREÇÃO 4: Rodapé Adicionado -->
+            <footer class="sidebar-footer">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Acessibilidade</a>
+                <span>© 2025 X Corp.</span>
+            </footer>
         </aside>
     </template>
 
@@ -1312,6 +1412,13 @@
                 </div>
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
+            <!-- CORREÇÃO 4: Rodapé Adicionado -->
+            <footer class="sidebar-footer">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Acessibilidade</a>
+                <span>© 2025 X Corp.</span>
+            </footer>
         </aside>
     </template>
 
@@ -1332,7 +1439,7 @@
             const isTextarea = e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT';
             
             if (isInsideReplica && isTextarea) {
-                return;
+                return; // Não navega pelos slides se estiver digitando na réplica
             }
 
             if (e.key === 'ArrowRight') {
@@ -1393,13 +1500,11 @@
 
         function initializePageContent(contentRoot) {
             const textarea = contentRoot.querySelector('.composer-content textarea');
-            // CORREÇÃO: Aponta para o .btn-light
             const postBtn = contentRoot.querySelector('.composer-footer .btn-light.btn-small');
             if (textarea && postBtn) {
                 textarea.addEventListener('input', () => {
                     const hasText = textarea.value.trim() !== '';
                     postBtn.disabled = !hasText;
-                    // A opacidade agora é controlada pelo CSS [.btn-light:disabled]
                 });
                 postBtn.disabled = textarea.value.trim() === ''; // Estado inicial
             }
@@ -1462,12 +1567,14 @@
                 if (titleEl) titleEl.textContent = config.title;
             }
             
+            // CORREÇÃO 2: Lógica de navegação atualiza a classe .active
             sidebarLinks.forEach(link => {
                 link.classList.remove('active');
                 const href = link.getAttribute('href');
                 
                 if (href && href.startsWith('#page-')) {
                     const linkPage = href.substring(6);
+                    // Lógica para 'Following' também ativar 'Home'
                     if (linkPage === pageId || (pageId === 'following' && linkPage === 'home')) {
                         link.classList.add('active');
                     }
@@ -1500,7 +1607,6 @@
                 if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('#page-')) {
                     e.preventDefault();
                     const pageId = link.getAttribute('href').substring(6);
-                    // CORREÇÃO DO BUG: Removido o 'e.g.'
                     navigateTo(pageId);
                 }
             });
