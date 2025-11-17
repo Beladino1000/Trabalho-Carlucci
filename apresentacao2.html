@@ -535,7 +535,8 @@
             transition: opacity 0.3s, visibility 0.3s;
             z-index: 100;
         }
-        [data-tooltip:hover]::after {
+        /* Correção: Mudar de [data-tooltip:hover] para [data-tooltip]:hover */
+        [data-tooltip]:hover::after {
             opacity: 1;
             visibility: visible;
         }
