@@ -29,6 +29,10 @@
             --hover-color: #181818;
             --card-bg: #16181c;
             --trend-hover: #1e1f24;
+            /* Cores para botões fidedignos */
+            --light-btn-bg: var(--text-color); /* Fundo branco/claro */
+            --light-btn-text: var(--background-color); /* Texto preto */
+            --light-btn-hover: #D6D9D9; /* Hover mais escuro */
         }
 
         /* Contêiner dos slides */
@@ -47,7 +51,6 @@
             left: 0;
             opacity: 0; /* Começa invisível */
             visibility: hidden;
-            /* REMOVIDA: transition: opacity 0.4s ease-in-out; */
             background-color: #000;
             display: flex;
             align-items: center;
@@ -65,7 +68,6 @@
         .slide-replica {
             padding: 0;
             background-color: #000;
-            /* Garante que a réplica ocupe todo o slide */
             align-items: stretch;
             justify-content: stretch;
         }
@@ -132,7 +134,6 @@
                 line-height: 1.5;
             }
             .nav-instructions {
-                /* Oculta instruções em telas muito pequenas */
                 display: none;
             }
         }
@@ -148,12 +149,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Adiciona estilização de scrollbar para Firefox */
             scrollbar-width: thin;
             scrollbar-color: var(--border-color) var(--background-color);
         }
         
-        /* O body da apresentação já é preto */
         .slide-replica {
             background-color: var(--background-color);
             color: var(--text-color);
@@ -161,9 +160,8 @@
             position: relative;
         }
 
-        /* Overlay de Transição de Página (só para a réplica) */
         .page-transition-overlay {
-            position: absolute; /* Relativo ao slide-replica */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -172,25 +170,19 @@
             z-index: 9999;
             opacity: 1;
             pointer-events: none;
-            /* REMOVIDA: transition: opacity 0.5s ease-in-out; */
         }
         .page-transition-overlay.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        /* CORREÇÃO DE LAYOUT: 
-           Força o .app-container a ser um grid e ocupar a tela.
-           Isso corrige a barra lateral direita flutuante.
-        */
         .app-container {
             display: grid;
-            /* Define as 3 colunas: Sidebar L, Conteúdo, Sidebar R */
             grid-template-columns: 275px 1fr 350px;
             max-width: 1280px;
             margin: 0 auto;
-            width: 100%; /* Ocupa 100% do slide */
-            height: 100%; /* Ocupa 100% do slide */
+            width: 100%;
+            height: 100%;
         }
         a {
             text-decoration: none;
@@ -265,6 +257,21 @@
         .btn-primary:hover {
             background-color: var(--primary-hover);
         }
+        
+        /* Botão "Post" Branco da Sidebar (Fidedigno) */
+        .btn-light {
+            background-color: var(--light-btn-bg);
+            color: var(--light-btn-text);
+        }
+        .btn-light:hover {
+            background-color: var(--light-btn-hover);
+        }
+        /* CORREÇÃO: Estilo para btn-light desabilitado (fidedigno) */
+        .btn-light[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
         .btn-large {
             padding: 16px;
             font-size: 17px;
@@ -274,10 +281,9 @@
             padding: 8px 16px;
             font-size: 15px;
         }
-        .btn[disabled] {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        /* Regra [disabled] movida para .btn-light[disabled] */
+        
+        /* Perfil de Usuário na Sidebar (Fidedigno) */
         .user-profile {
             display: flex;
             align-items: center;
@@ -285,14 +291,17 @@
             margin-bottom: 12px;
             border-radius: 9999px;
             transition: background-color 0.2s;
-            /* CORREÇÃO 1 (Mantida): 
-              Adiciona margin-top: auto para empurrar o perfil 
-              para o final da barra lateral.
-            */
-            margin-top: auto;
+            margin-top: auto; /* Fixa no fundo */
         }
         .user-profile:hover {
             background-color: var(--hover-color);
+        }
+        .user-profile-link {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            text-decoration: none;
+            color: inherit;
         }
         .profile-pic {
             width: 40px;
@@ -313,29 +322,31 @@
             color: var(--secondary-text);
             font-size: 15px;
         }
+        .user-profile-icon {
+            color: var(--text-color);
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: auto;
+            transition: background-color 0.2s;
+        }
+        .user-profile-icon:hover {
+            background-color: var(--hover-color);
+        }
         
-        /* CORREÇÃO DE LAYOUT:
-           Define a área de conteúdo principal.
-           Ela NÃO é .app-container. É o que sobra
-           DEPOIS da sidebar-left.
-        */
         #main-content-area {
-            /* Esta área é a 2ª coluna do grid .app-container.
-              Ela própria se torna um grid para ter 
-              o conteúdo principal e a sidebar-right.
-            */
             display: grid;
             grid-template-columns: 1fr 350px; /* Conteúdo + Sidebar R */
             height: 100vh;
-            /* Ocupa a 2ª e 3ª coluna do grid pai */
             grid-column: 2 / 4; 
         }
         
         .main-content {
             border-right: 1px solid var(--border-color);
             min-width: 600px;
-            height: 100vh; /* Ocupa altura total */
-            overflow-y: auto; /* Permite scroll */
+            height: 100vh;
+            overflow-y: auto;
         }
         .content-header {
             position: sticky;
@@ -432,7 +443,6 @@
             height: 100vh;
             overflow-y: auto;
             padding: 16px 0 0 16px;
-            /* Garante que ela ocupe a 2ª coluna do grid #main-content-area */
             grid-column: 2 / 3;
         }
         .search-box {
@@ -597,7 +607,6 @@
             transition: opacity 0.3s, visibility 0.3s;
             z-index: 100;
         }
-        /* CORREÇÃO (Mantida): [data-tooltip]:hover */
         [data-tooltip]:hover::after {
             opacity: 1;
             visibility: visible;
@@ -837,10 +846,6 @@
         
         /* --- Responsividade (Media Queries) --- */
         
-        /* CORREÇÃO DE LAYOUT:
-           A regra de 1300px agora controla a Sidebar R 
-           e o layout do #main-content-area
-        */
         @media (max-width: 1300px) {
             .app-container {
                 grid-template-columns: 275px 1fr;
@@ -849,9 +854,8 @@
                 display: none;
             }
             #main-content-area {
-                /* Na tela menor, a área de conteúdo não tem sidebar direita */
                 grid-template-columns: minmax(0, 1fr);
-                grid-column: 2 / 3; /* Ocupa só a 2ª coluna do pai */
+                grid-column: 2 / 3;
             }
         }
         @media (max-width: 1000px) {
@@ -886,7 +890,11 @@
                 border-radius: 50%;
                 margin: 8px auto;
             }
-            .user-details, .user-profile .fa-ellipsis-h {
+            .user-details {
+                display: none;
+            }
+            /* Oculta o ícone de elipse na versão mobile/tablet */
+            .user-profile-icon {
                 display: none;
             }
             .user-profile {
@@ -894,20 +902,24 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            .user-profile-link {
+                /* Centraliza a foto de perfil quando o texto some */
+                justify-content: center;
+            }
         }
         @media (max-width: 600px) {
             .app-container {
                 grid-template-columns: 1fr;
             }
             .sidebar-left {
-                display: none; /* A sidebar vira menu inferior (não implementado) */
+                display: none;
             }
             .main-content {
                 min-width: 0;
                 border-right: none;
             }
             #main-content-area {
-                grid-column: 1 / 2; /* Ocupa a única coluna */
+                grid-column: 1 / 2;
             }
             .post-composer {
                 padding: 8px;
@@ -927,9 +939,6 @@
             }
         }
 
-        /* CORREÇÃO 3 (Mantida): 
-          Estilização de scrollbar customizada 
-        */
         .main-content::-webkit-scrollbar,
         .sidebar-right::-webkit-scrollbar {
             width: 12px;
@@ -977,7 +986,6 @@
         <!-- Slide 3: Parte 2 - A Réplica do X (em vez de Iframe) -->
         <section class="slide slide-replica">
             
-            <!-- Overlay de Transição (só para a réplica) -->
             <div class="page-transition-overlay hidden"></div>
 
             <div class="app-container">
@@ -986,16 +994,14 @@
                     <div class="sidebar-content">
                         <i class="fab fa-x-twitter sidebar-logo"></i>
                         <nav class="main-nav">
-                            <!-- Links atualizados para âncoras JS -->
                             <a href="#page-home" class="nav-item active">
                                 <i class="fas fa-home"></i>
-                                <span class="nav-text" data-tooltip="Essa é a página inicial...">Página Inicial</span>
+                                <span class="nav-text">Página Inicial</span>
                             </a>
                             <a href="#page-explore" class="nav-item">
                                 <i class="fas fa-hashtag"></i>
                                 <span class="nav-text">Explorar</span>
                             </a>
-                            <!-- ATUALIZAÇÃO: Links ativados apontando para o placeholder -->
                             <a href="#page-notifications" class="nav-item">
                                 <i class="fas fa-bell"></i>
                                 <span class="nav-text">Notificações</span>
@@ -1018,18 +1024,23 @@
                             </button>
                         </nav>
                     </div>
-                    <button class="btn btn-primary btn-large">Postar</button>
-                    <div class="user-profile" data-tooltip="Sair">
-                        <a href="#" class="user-profile-link" style="pointer-events: none;">
+                    
+                    <!-- CORREÇÃO BOTÃO FIDEDIGNO: Trocado btn-primary por btn-light -->
+                    <button class="btn btn-light btn-large">Post</button>
+                    
+                    <!-- CORREÇÃO FIDEDIGNA: Layout do Perfil de Usuário -->
+                    <div class="user-profile">
+                        <a href="#" class="user-profile-link">
                             <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
                             <div class="user-details">
                                 <span class="user-name">Nome Usuário</span>
                                 <span class="user-handle">@usuario</span>
                             </div>
-                            <i class="fas fa-sign-out-alt"></i>
                         </a>
+                        <!-- Ícone de elipse (fidedigno) -->
+                        <i class="fas fa-ellipsis-h user-profile-icon"></i>
                     </div>
-                    <!-- Menu de contexto (escondido) -->
+
                     <div class="context-menu">
                         <nav class="context-menu-items">
                             <a href="#" class="context-menu-item"><i class="fas fa-list"></i><span>Listas</span></a>
@@ -1038,8 +1049,6 @@
                     </div>
                 </aside>
 
-                <!-- Área de Conteúdo Principal (controlada por JS) -->
-                <!-- A Sidebar Direita agora é parte dos templates -->
                 <div id="main-content-area">
                     <!-- O JS irá preencher isso -->
                 </div>
@@ -1057,8 +1066,6 @@
 
     <!-- 
       TEMPLATES DE CONTEÚDO
-      O HTML das páginas do X fica aqui, escondido,
-      para o JS copiar e colar na área de conteúdo.
     -->
 
     <!-- TEMPLATE PARA "HOME" (baseado no index.html) -->
@@ -1082,12 +1089,12 @@
                             <i class="fas fa-calendar" data-tooltip="Agendar"></i>
                             <i class="fas fa-map-marker-alt" data-tooltip="Localização"></i>
                         </div>
-                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+                        <!-- CORREÇÃO BOTÃO FIDEDIGNO: Trocado btn-grey por btn-light -->
+                        <button class="btn btn-light btn-small" disabled>Post</button>
                     </div>
                 </div>
             </div>
             <div class="posts-feed">
-                <!-- Posts de exemplo para "For You" -->
                 <article class="post">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX" alt="Exemplo" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX';">
                     <div class="post-content">
@@ -1151,7 +1158,6 @@
                 </div>
             </header>
             <div class="posts-feed">
-                <!-- Posts de exemplo para "Following" -->
                 <article class="post">
                     <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG';">
                     <div class="post-content">
@@ -1199,7 +1205,7 @@
                     </div>
                     <button class="btn btn-follow">Seguir</button>
                 </div>
-                <a href="#" class="show-more">Show more</a>
+                <a href="#" class="show-more">Mostrar mais</a>
             </div>
         </aside>
     </template>
@@ -1282,11 +1288,11 @@
         </aside>
     </template>
 
-    <!-- ATUALIZAÇÃO: Novo Template Placeholder -->
+    <!-- TEMPLATE PLACEHOLDER (Mantido) -->
     <template id="template-placeholder">
         <main class="main-content">
              <header class="content-header" style="padding: 16px; border-bottom: 1px solid var(--border-color);">
-                <h2 style="font-size: 20px; font-weight: bold;">Página em Construção</h2>
+                <h2 style="font-size: 20px; font-weight: bold;" id="placeholder-title">Página em Construção</h2>
             </header>
             <div style="padding: 20px; font-size: 18px; color: var(--secondary-text);">
                 Este é um placeholder para a página.
@@ -1322,12 +1328,11 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            // Não navegar slides se estiver dentro da réplica
             const isInsideReplica = slides[currentSlide].classList.contains('slide-replica');
             const isTextarea = e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT';
             
             if (isInsideReplica && isTextarea) {
-                return; // Não fazer nada se estiver digitando na réplica
+                return;
             }
 
             if (e.key === 'ArrowRight') {
@@ -1339,7 +1344,6 @@
 
         // --- 2. LÓGICA DA RÉPLICA DO X (de script.js e explore.js) ---
 
-        // Função para alternar menu de contexto (de script.js)
         function toggleSidebarContextMenu() {
             const srcMenu = document.querySelector('.sidebar-left .context-menu .context-menu-items');
             const btn = document.querySelector('.sidebar-left .nav-more');
@@ -1361,7 +1365,6 @@
             floating.style.minWidth = srcWidth + 'px';
             document.body.appendChild(floating);
 
-            // Medir e posicionar
             const btnRect = btn.getBoundingClientRect();
             const menuRect = floating.getBoundingClientRect();
             let left = btnRect.left + btnRect.width / 2;
@@ -1376,7 +1379,6 @@
             floating.style.transform = transform;
         }
 
-        // Fechar menu de contexto ao clicar fora
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.context-menu') && !e.target.closest('.nav-more') && !e.target.closest('#floating-context-menu')) {
                 document.querySelectorAll('.context-menu-items').forEach(menu => {
@@ -1389,19 +1391,19 @@
             }
         });
 
-        // Esta função anexa os listeners ao CONTEÚDO recém-carregado
         function initializePageContent(contentRoot) {
-            // Lógica do Composer (de script.js)
             const textarea = contentRoot.querySelector('.composer-content textarea');
-            const postBtn = contentRoot.querySelector('.composer-footer .btn-primary');
+            // CORREÇÃO: Aponta para o .btn-light
+            const postBtn = contentRoot.querySelector('.composer-footer .btn-light.btn-small');
             if (textarea && postBtn) {
                 textarea.addEventListener('input', () => {
-                    postBtn.disabled = textarea.value.trim() === '';
+                    const hasText = textarea.value.trim() !== '';
+                    postBtn.disabled = !hasText;
+                    // A opacidade agora é controlada pelo CSS [.btn-light:disabled]
                 });
                 postBtn.disabled = textarea.value.trim() === ''; // Estado inicial
             }
 
-            // Lógica das Categorias (de explore.js)
             const categoryBtns = contentRoot.querySelectorAll('.category-btn');
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1410,12 +1412,9 @@
                 });
             });
             
-            // Lógica das Abas (For You / Following)
             const tabBtns = contentRoot.querySelectorAll('.header-tabs .tab-btn');
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    // O listener principal de navegação (abaixo) cuidará da troca
-                    // Mas podemos atualizar o estado 'active' visualmente aqui
                     tabBtns.forEach(b => b.classList.remove('active'));
                     e.currentTarget.classList.add('active');
                 });
@@ -1429,55 +1428,54 @@
         const overlay = replicaSlide.querySelector('.page-transition-overlay');
         const sidebarLinks = replicaSlide.querySelectorAll('.sidebar-left .nav-item');
         
-        let currentPageId = 'home'; // Página atual
-        let isNavigating = false; // Prevenir cliques duplos
+        let currentPageId = 'home';
+        let isNavigating = false;
 
-        // ATUALIZAÇÃO: Adicionadas novas páginas ao config
         const pageConfig = {
-            'home': { template: 'template-home', class: 'for-you-page' },
-            'following': { template: 'template-following', class: 'following-page' },
-            'explore': { template: 'template-explore', class: 'explore-page' },
-            'notifications': { template: 'template-placeholder', class: 'notifications-page' },
-            'messages': { template: 'template-placeholder', class: 'messages-page' },
-            'bookmarks': { template: 'template-placeholder', class: 'bookmarks-page' },
-            'profile': { template: 'template-placeholder', class: 'profile-page' },
+            'home': { template: 'template-home', title: 'Página Inicial' },
+            'following': { template: 'template-following', title: 'Seguindo' },
+            'explore': { template: 'template-explore', title: 'Explorar' },
+            'notifications': { template: 'template-placeholder', title: 'Notificações' },
+            'messages': { template: 'template-placeholder', title: 'Mensagens' },
+            'bookmarks': { template: 'template-placeholder', title: 'Itens salvos' },
+            'profile': { template: 'template-placeholder', title: 'Perfil' },
         };
 
         async function navigateTo(pageId) {
             if (isNavigating || pageId === currentPageId || !pageConfig[pageId]) return;
             isNavigating = true;
             
-            // 2. Buscar template
-            const template = document.getElementById(pageConfig[pageId].template);
+            const config = pageConfig[pageId];
+            const template = document.getElementById(config.template);
+            
             if (!template) {
-                console.error('Template not found:', pageConfig[pageId].template);
+                console.error('Template not found:', config.template);
                 isNavigating = false;
                 return;
             }
             
-            // 4. Trocar conteúdo
             contentArea.innerHTML = template.innerHTML;
             currentPageId = pageId;
             
-            // 5. Atualizar estado ativo da sidebar
+            if (config.template === 'template-placeholder') {
+                const titleEl = contentArea.querySelector('#placeholder-title');
+                if (titleEl) titleEl.textContent = config.title;
+            }
+            
             sidebarLinks.forEach(link => {
                 link.classList.remove('active');
                 const href = link.getAttribute('href');
                 
                 if (href && href.startsWith('#page-')) {
-                    const linkPage = href.substring(6); // #page-home -> home
-                    
-                    // Lógica para destacar 'Página Inicial' mesmo em 'Following'
+                    const linkPage = href.substring(6);
                     if (linkPage === pageId || (pageId === 'following' && linkPage === 'home')) {
                         link.classList.add('active');
                     }
                 }
             });
 
-            // 6. Re-anexar JS ao novo conteúdo
             initializePageContent(contentArea);
             
-            // 7. Resetar scroll do conteúdo principal
             const mainContent = contentArea.querySelector('.main-content');
             if (mainContent) {
                 mainContent.scrollTop = 0;
@@ -1488,23 +1486,21 @@
 
         // --- 4. INICIALIZAÇÃO ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Carregar página inicial (Home)
             const initialTemplate = document.getElementById(pageConfig.home.template);
             if (initialTemplate) {
                 contentArea.innerHTML = initialTemplate.innerHTML;
                 initializePageContent(contentArea);
             }
             
-            // Esconder overlay da réplica na carga inicial
             if(overlay) overlay.classList.add('hidden');
 
-            // Anexar listener de navegação principal (delegação de evento)
             replicaSlide.addEventListener('click', (e) => {
                 const link = e.target.closest('a');
                 
                 if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('#page-')) {
                     e.preventDefault();
-                    const pageId = link.getAttribute('href').substring(6); // #page-home -> home
+                    const pageId = link.getAttribute('href').substring(6);
+                    // CORREÇÃO DO BUG: Removido o 'e.g.'
                     navigateTo(pageId);
                 }
             });
