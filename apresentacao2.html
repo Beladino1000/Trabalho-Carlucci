@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação: Gêneros Discursivos no X</title>
+    <!-- Ícones e Fontes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS DA APRESENTAÇÃO (de apresentacao.html) --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Remove barras de rolagem */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #e7e9ea;
+            /* Garante que as variáveis CSS estejam disponíveis globalmente */
+            --primary-color: #1d9bf0;
+            --primary-hover: #1a8cd8;
+            --background-color: #000;
+            --text-color: #e7e9ea;
+            --secondary-text: #71767b;
+            --border-color: #2f3336;
+            --hover-color: #181818;
+            --card-bg: #16181c;
+            --trend-hover: #1e1f24;
+        }
+
+        /* Contêiner dos slides */
+        .slider-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo base de cada slide */
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* Começa invisível */
+            visibility: hidden;
+            /* REMOVIDA: transition: opacity 0.4s ease-in-out; */
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Slide ativo (visível) */
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+
+        /* Slide da Réplica (substitui o iframe) */
+        .slide-replica {
+            padding: 0;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+        
+        /* Conteúdo do slide teórico */
+        .slide-content {
+            padding: 5vw;
+            max-width: 800px;
+            text-align: left;
+        }
+        .slide-content h1 {
+            font-size: 3.5rem;
+            color: #1d9bf0;
+            border-bottom: 2px solid #2f3336;
+            padding-bottom: 15px;
+        }
+         .slide-content h2 {
+            font-size: 2.5rem;
+            color: #e7e9ea;
+            margin-top: 40px;
+        }
+        .slide-content ul { list-style-type: none; padding-left: 0; }
+        .slide-content li {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .slide-content li::before {
+            content: '✓'; 
+            color: #1d9bf0;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Instruções de navegação */
+        .nav-instructions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1rem;
+            color: #71767b;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        /* --- ESTILOS DA RÉPLICA DO X (base.css, components.css, pages.css) --- */
+
+        /* --- base.css --- */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 99999;
+            opacity: 1;
+            /* REMOVIDA: transition: opacity 0.5s ease-out; */
+            pointer-events: none;
+        }
+        .page-transition-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* O body da apresentação já é preto */
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 275px 1fr 350px;
+            max-width: 1280px;
+            margin: 0 auto;
+            min-height: 100vh;
+            width: 100%; /* Para preencher o slide */
+            height: 100%; /* Para preencher o slide */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* --- components.css --- */
+        .sidebar-left {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            border-right: 1px solid var(--border-color);
+            padding: 0 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+        }
+        .sidebar-content {
+            flex-grow: 1;
+            padding: 0 4px;
+            overflow: visible;
+        }
+        .sidebar-logo {
+            font-size: 28px;
+            padding: 16px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            display: inline-block;
+        }
+        .main-nav {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 2px 0;
+            border-radius: 9999px;
+            color: var(--text-color);
+            font-size: 20px;
+            transition: background-color 0.2s;
+        }
+        .nav-item i {
+            margin-right: 16px;
+            width: 26px;
+            text-align: center;
+        }
+        .nav-item:hover {
+            background-color: var(--hover-color);
+        }
+        .nav-item.active {
+            font-weight: bold;
+        }
+        .nav-text {
+            margin-left: 4px;
+        }
+        .btn {
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-large {
+            padding: 16px;
+            font-size: 17px;
+            width: 100%;
+        }
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 15px;
+        }
+        .btn[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+        .user-profile:hover {
+            background-color: var(--hover-color);
+        }
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-details {
+            margin-left: 12px;
+            margin-right: 12px;
+            flex-grow: 1;
+        }
+        .user-name {
+            font-weight: bold;
+            display: block;
+        }
+        .user-handle {
+            color: var(--secondary-text);
+            font-size: 15px;
+        }
+        /* O #main-content-area substitui o .main-content para JS */
+        #main-content-area {
+            border-right: 1px solid var(--border-color);
+            min-width: 600px;
+            height: 100vh;
+            overflow-y: auto; /* Permite scroll no conteúdo principal */
+        }
+        .content-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-tabs {
+            display: flex;
+            height: 53px;
+        }
+        .tab-btn {
+            flex: 1;
+            color: var(--text-color);
+            font-size: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .tab-btn:hover {
+            background-color: var(--hover-color);
+        }
+        .tab-btn.active {
+            color: var(--text-color);
+        }
+        .tab-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        .post-composer {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .composer-content {
+            flex-grow: 1;
+            margin-left: 12px;
+        }
+        .composer-content textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            resize: none;
+            overflow: hidden;
+            min-height: 50px;
+            max-height: 150px;
+            outline: none;
+            padding: 12px 0;
+            line-height: 1.4;
+            display: block;
+        }
+        .composer-content textarea::placeholder {
+            color: var(--secondary-text);
+            font-size: 20px;
+        }
+        .composer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .composer-actions {
+            display: flex;
+            gap: 16px;
+            color: var(--primary-color);
+        }
+        .composer-actions i {
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        .composer-actions i:hover {
+            background-color: var(--primary-hover);
+            color: var(--background-color);
+        }
+        .sidebar-right {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 16px 0 0 16px;
+        }
+        .search-box {
+            position: sticky;
+            top: 0;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background-color: var(--background-color);
+            z-index: 5;
+        }
+        .search-box .search-input-wrapper {
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            background-color: var(--card-bg);
+            border: none;
+            border-radius: 9999px;
+            padding: 12px 16px 12px 44px;
+            color: var(--text-color);
+            font-size: 15px;
+            outline: none;
+        }
+        .search-box input:focus {
+            border: 1px solid var(--primary-color);
+            background-color: var(--background-color);
+        }
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-text);
+            pointer-events: none;
+        }
+        .trending-section, .who-to-follow, .premium-section {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .trending-section h2, .who-to-follow h2, .premium-section h2 {
+            padding: 16px;
+            font-size: 20px;
+        }
+        .trending-item, .follow-item {
+            padding: 12px 16px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .trending-item:hover, .follow-item:hover {
+            background-color: var(--trend-hover);
+        }
+        .show-more {
+            display: block;
+            padding: 16px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 15px;
+            transition: background-color 0.2s;
+        }
+        .show-more:hover {
+            background-color: var(--trend-hover);
+        }
+        .posts-feed {
+            display: flex;
+            flex-direction: column;
+        }
+        .post {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .post:hover {
+            background-color: var(--hover-color);
+        }
+        .post-content {
+            flex-grow: 1;
+            margin-left: 12px;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .post-author {
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        .post-author:hover {
+            text-decoration: underline;
+        }
+        .post-handle {
+            color: var(--secondary-text);
+            margin-right: 4px;
+        }
+        .post-header .fa-ellipsis-h {
+            margin-left: auto;
+            color: var(--secondary-text);
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        .post-header .fa-ellipsis-h:hover {
+            background-color: var(--primary-hover);
+            color: var(--primary-color);
+        }
+        .post-text {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            max-width: 425px;
+            color: var(--secondary-text);
+        }
+        .post-actions span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .post-actions span:nth-child(1):hover { color: var(--primary-color); } /* Comentário */
+        .post-actions span:nth-child(2):hover { color: #00ba7c; } /* Retweet */
+        .post-actions span:nth-child(3):hover { color: #f91880; } /* Curtir */
+        .post-actions span:nth-child(4):hover { color: var(--primary-color); } /* Partilhar */
+        .post-actions i {
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        .post-actions span:nth-child(1):hover i { background-color: rgba(29, 155, 240, 0.1); }
+        .post-actions span:nth-child(2):hover i { background-color: rgba(0, 186, 124, 0.1); }
+        .post-actions span:nth-child(3):hover i { background-color: rgba(249, 24, 128, 0.1); }
+        .post-actions span:nth-child(4):hover i { background-color: rgba(29, 155, 240, 0.1); }
+        
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 100;
+        }
+        [data-tooltip:hover]::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        .btn-follow {
+            background-color: var(--text-color);
+            color: var(--background-color);
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .btn-follow:hover {
+            background-color: #d1d3d4;
+        }
+        .follow-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .follow-item .follow-details {
+            flex-grow: 1;
+        }
+        .follow-item .btn-follow {
+            margin-left: auto;
+        }
+        .context-menu {
+            position: relative;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        .context-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 20px;
+            transition: background-color 0.2s;
+        }
+        .context-menu-btn:hover {
+            background-color: var(--hover-color);
+        }
+        .context-menu-items {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            margin-bottom: 8px;
+        }
+        .context-menu-items.active {
+            display: flex;
+        }
+        #floating-context-menu {
+            padding: 8px 0;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        .context-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+        .context-menu-item:hover {
+            background-color: var(--hover-color);
+        }
+        .context-menu-items a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .context-menu-item i {
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+        .context-menu-btn .more-btn {
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        /* --- pages.css --- */
+        .explore-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .explore-header .search-box {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .explore-categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 4px;
+            border-bottom: 1px solid var(--border-color);
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .explore-categories::-webkit-scrollbar {
+            display: none;
+        }
+        .category-btn {
+            padding: 16px;
+            background-color: transparent;
+            color: var(--secondary-text);
+            border: none;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .category-btn:hover {
+            background-color: var(--hover-color);
+        }
+        .category-btn.active {
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .category-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        .news-section {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .news-card {
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-card:hover {
+            background-color: var(--hover-color);
+        }
+        .news-card.trending {
+            border-left: 4px solid var(--primary-color);
+        }
+        .news-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .news-meta {
+            color: var(--secondary-text);
+            font-size: 13px;
+        }
+        .trending-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .trending-section .trending-item {
+            cursor: pointer;
+        }
+        .trending-section .trending-item:hover {
+            background-color: var(--hover-color);
+        }
+        .trend-category {
+            color: var(--secondary-text);
+            font-size: 13px;
+        }
+        .trend-name {
+            font-weight: 700;
+            margin: 2px 0;
+            font-size: 15px;
+        }
+        .trend-stats {
+            color: var(--secondary-text);
+            font-size: 13px;
+        }
+        
+        /* --- Responsividade (Media Queries) --- */
+        @media (max-width: 1300px) {
+            .app-container {
+                grid-template-columns: 275px 1fr;
+                max-width: 900px;
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+        @media (max-width: 1000px) {
+            .app-container {
+                grid-template-columns: 88px 1fr;
+                max-width: 100%;
+            }
+            .nav-text {
+                display: none;
+            }
+            .sidebar-logo {
+                padding-left: 12px;
+            }
+            .nav-item {
+                width: 50px;
+                height: 50px;
+                padding: 12px;
+                margin: 2px auto;
+            }
+            .nav-item i {
+                margin-right: 0;
+            }
+            .btn-large span {
+                display: none;
+            }
+            .btn-large {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                margin: 8px auto;
+            }
+            .user-details, .user-profile .fa-ellipsis-h {
+                display: none;
+            }
+            .user-profile {
+                width: 64px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left {
+                display: none; /* Em um app real, viraria uma barra inferior */
+            }
+            #main-content-area {
+                min-width: 0;
+                border-right: none;
+            }
+            .post-composer {
+                padding: 8px;
+            }
+            .post {
+                padding: 8px;
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        
+        <!-- Slide 1: Título -->
+        <section class="slide active">
+            <div class="slide-content" style="text-align: center;">
+                <i class="fab fa-x-twitter" style="font-size: 80px; margin-bottom: 20px;"></i>
+                <h1>Gêneros Discursivos no X</h1>
+                <p style="font-size: 1.5rem;">Uma análise da teoria à prática.</p>
+            </div>
+        </section>
+
+        <!-- Slide 2: Parte 1 - Conceitos Teóricos -->
+        <section class="slide">
+            <div class="slide-content">
+                <h1>Parte 1: A Teoria</h1>
+                <h2>O que são Gêneros Discursivos?</h2>
+                <ul>
+                    <li>Formas <strong>relativamente estáveis</strong> de enunciados (Mikhail Bakhtin).</li>
+                    <li>Definidos por <strong>4 componentes</strong>: Finalidade, Conteúdo, Estrutura e Estilo.</li>
+                    <li>Existem em <strong>Esferas de Circulação</strong> (jornalística, jurídica, digital).</li>
+                    <li>Não são rígidos: <strong>transformam-se</strong> com a tecnologia e a sociedade.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 3: Parte 2 - A Réplica do X (em vez de Iframe) -->
+        <section class="slide slide-replica">
+            
+            <!-- Overlay de Transição (só para a réplica) -->
+            <div class="page-transition-overlay hidden"></div>
+
+            <div class="app-container">
+                <!-- Sidebar Esquerda (HTML de _sidebar-left.php) -->
+                <aside class="sidebar-left">
+                    <div class="sidebar-content">
+                        <i class="fab fa-x-twitter sidebar-logo"></i>
+                        <nav class="main-nav">
+                            <!-- Links atualizados para âncoras JS -->
+                            <a href="#page-home" class="nav-item active">
+                                <i class="fas fa-home"></i>
+                                <span class="nav-text" data-tooltip="Essa é a página inicial...">Página Inicial</span>
+                            </a>
+                            <a href="#page-explore" class="nav-item">
+                                <i class="fas fa-hashtag"></i>
+                                <span class="nav-text">Explorar</span>
+                            </a>
+                            <!-- Links desativados (para este demo) -->
+                            <a href="#" class="nav-item" style="opacity: 0.5; pointer-events: none;">
+                                <i class="fas fa-bell"></i>
+                                <span class="nav-text">Notificações</span>
+                            </a>
+                            <a href="#" class="nav-item" style="opacity: 0.5; pointer-events: none;">
+                                <i class="fas fa-envelope"></i>
+                                <span class="nav-text">Mensagens</span>
+                            </a>
+                            <a href="#" class="nav-item" style="opacity: 0.5; pointer-events: none;">
+                                <i class="fas fa-bookmark"></i>
+                                <span class="nav-text">Itens salvos</span>
+                            </a>
+                            <a href="#" class="nav-item" style="opacity: 0.5; pointer-events: none;">
+                                <i class="fas fa-user"></i>
+                                <span class="nav-text">Perfil</span>
+                            </a>
+                            <button type="button" class="nav-item nav-more" onclick="toggleSidebarContextMenu()">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span class="nav-text">Mais</span>
+                            </button>
+                        </nav>
+                    </div>
+                    <button class="btn btn-primary btn-large">Postar</button>
+                    <div class="user-profile" data-tooltip="Sair">
+                        <a href="#" class="user-profile-link" style="pointer-events: none;">
+                            <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                            <div class="user-details">
+                                <span class="user-name">Nome Usuário</span>
+                                <span class="user-handle">@usuario</span>
+                            </div>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                    <!-- Menu de contexto (escondido) -->
+                    <div class="context-menu">
+                        <nav class="context-menu-items">
+                            <a href="#" class="context-menu-item"><i class="fas fa-list"></i><span>Listas</span></a>
+                            <a href="#" class="context-menu-item"><i class="fas fa-cog"></i><span>Configurações</span></a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Área de Conteúdo Principal (controlada por JS) -->
+                <div id="main-content-area">
+                    <!-- O JS irá preencher isso -->
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Instruções na tela (para os slides) -->
+    <div class="nav-instructions">
+        Use <i class="fas fa-arrow-left"></i> e <i class="fas fa-arrow-right"></i> para navegar
+    </div>
+
+
+    <!-- 
+      TEMPLATES DE CONTEÚDO
+      O HTML das páginas do X fica aqui, escondido,
+      para o JS copiar e colar na área de conteúdo.
+    -->
+
+    <!-- TEMPLATE PARA "HOME" (baseado no index.html) -->
+    <template id="template-home">
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-tabs">
+                    <a href="#page-home" class="tab-btn active">For you</a>
+                    <a href="#page-following" class="tab-btn">Following</a>
+                </div>
+            </header>
+            <div class="post-composer">
+                <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
+                <div class="composer-content">
+                    <textarea placeholder="O que está acontecendo?"></textarea>
+                    <div class="composer-footer">
+                        <div class="composer-actions">
+                            <i class="fas fa-image" data-tooltip="Mídia (Multimodalidade)"></i>
+                            <i class="fas fa-poll" data-tooltip="Enquete (Gênero Interativo)"></i>
+                            <i class="fas fa-smile" data-tooltip="Emoji (Estilo)"></i>
+                            <i class="fas fa-calendar" data-tooltip="Agendar"></i>
+                            <i class="fas fa-map-marker-alt" data-tooltip="Localização"></i>
+                        </div>
+                        <button class="btn btn-primary btn-small" disabled>Postar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="posts-feed">
+                <!-- Posts de exemplo para "For You" -->
+                <article class="post">
+                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX" alt="Exemplo" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX';">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Exemplo de Post</span>
+                            <span class="post-handle">@exemplo · 10m</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <p class="post-text">Este é o lugar onde vocês colocarão os exemplos de posts, como o tweet de denúncia que mencionaram.</p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 10</span>
+                            <span><i class="fas fa-retweet"></i> 5</span>
+                            <span><i class="far fa-heart"></i> 25</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+        <aside class="sidebar-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar no X">
+            </div>
+            <div class="trending-section">
+                <h2>O que está acontecendo</h2>
+                <div class="trending-item">
+                    <div class="trend-category">Tecnologia · Assunto do momento</div>
+                    <div class="trend-name">#ReactJS</div>
+                    <div class="trend-stats">12K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-category">Notícias · Assunto do momento</div>
+                    <div class="trend-name">Novas Eleições</div>
+                    <div class="trend-stats">55.2K posts</div>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+            <div class="who-to-follow">
+                <h2>Quem seguir</h2>
+                <div class="follow-item">
+                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
+                    <div class="follow-details">
+                        <span class="user-name">Google</span>
+                        <span class="user-handle">@Google</span>
+                    </div>
+                    <button class="btn btn-follow">Seguir</button>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+        </aside>
+    </template>
+
+    <!-- TEMPLATE PARA "FOLLOWING" (baseado no following.html) -->
+    <template id="template-following">
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-tabs">
+                    <a href="#page-home" class="tab-btn">For you</a>
+                    <a href="#page-following" class="tab-btn active">Following</a>
+                </div>
+            </header>
+            <div class="posts-feed">
+                <!-- Posts de exemplo para "Following" -->
+                <article class="post">
+                    <img src="https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG" alt="Bill Gates" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1F9BF0/FFFFFF?text=BG';">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Bill Gates</span>
+                            <span class="post-handle">@BillGates · 2h</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <p class="post-text">Sharing things I'm learning through my foundation work and other interests.</p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 245</span>
+                            <span><i class="fas fa-retweet"></i> 1.2K</span>
+                            <span><i class="far fa-heart"></i> 5.8K</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+        <aside class="sidebar-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar no X">
+            </div>
+            <div class="premium-section">
+                <h2>Subscribe to Premium</h2>
+                <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p>
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+            <div class="trending-section">
+                <h2>What's happening</h2>
+                <div class="trending-item">
+                    <div class="trend-category">Sports - Trending</div>
+                    <div class="trend-name">Chapecoense</div>
+                </div>
+                <a href="#" class="show-more">Show more</a>
+            </div>
+            <div class="who-to-follow">
+                <h2>Who to follow</h2>
+                 <div class="follow-item">
+                    <img src="https://placehold.co/40x40/F5C300/000000?text=V" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/F5C300/000000?text=V';">
+                    <div class="follow-details">
+                        <span class="user-name">Vercel</span>
+                        <span class="user-handle">@Vercel</span>
+                    </div>
+                    <button class="btn btn-follow">Seguir</button>
+                </div>
+                <a href="#" class="show-more">Show more</a>
+            </div>
+        </aside>
+    </template>
+
+    <!-- TEMPLATE PARA "EXPLORE" (baseado no explore.html) -->
+    <template id="template-explore">
+        <main class="main-content">
+            <header class="explore-header">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar no X">
+                </div>
+            </header>
+            <div class="explore-categories">
+                <button class="category-btn active">For you</button>
+                <button class="category-btn">Trending</button>
+                <button class="category-btn">News</button>
+                <button class="category-btn">Sports</button>
+                <button class="category-btn">Entertainment</button>
+            </div>
+            <div class="explore-content">
+                <section class="news-section">
+                    <h2 class="section-title">Today's News</h2>
+                    <article class="news-card trending">
+                        <div class="news-content">
+                            <h3>Trump Seizes Control of DC Police, Deploys Guard</h3>
+                            <div class="news-meta">21 hours ago - News - 870K posts</div>
+                        </div>
+                        <div class="trending-badge">Trending</div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-content">
+                            <h3>Taylor Swift's 'The Life of a Showgirl'</h3>
+                            <div class="news-meta">12 hours ago - Entertainment - 482K posts</div>
+                        </div>
+                    </article>
+                </section>
+                <section class="trending-section">
+                    <h2 class="section-title">Trending now</h2>
+                    <div class="trending-item">
+                        <div class="trend-category">Politics - Trending</div>
+                        <div class="trend-name">Sui Global</div>
+                        <div class="trend-stats">2,248 posts</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trend-category">Politics - Trending</div>
+                        <div class="trend-name">Ultrafarma</div>
+                        <div class="trend-stats">4,670 posts</div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <aside class="sidebar-right">
+             <div class="premium-section">
+                <h2>Subscribe to Premium</h2>
+                <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p>
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+            <div class="trending-section">
+                <h2>O que está acontecendo</h2>
+                <div class="trending-item">
+                    <div class="trend-category">Tecnologia · Assunto do momento</div>
+                    <div class="trend-name">#ReactJS</div>
+                    <div class="trend-stats">12K posts</div>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+            <div class="who-to-follow">
+                <h2>Quem seguir</h2>
+                <div class="follow-item">
+                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
+                    <div class="follow-details">
+                        <span class="user-name">Google</span>
+                        <span class="user-handle">@Google</span>
+                    </div>
+                    <button class="btn btn-follow">Seguir</button>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+        </aside>
+    </template>
+
+
+    <script>
+        // --- 1. LÓGICA DOS SLIDES (de apresentacao.html) ---
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            // Não navegar slides se estiver dentro da réplica
+            const isInsideReplica = slides[currentSlide].classList.contains('slide-replica');
+            const isTextarea = e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT';
+            
+            if (isInsideReplica && isTextarea) {
+                return; // Não fazer nada se estiver digitando na réplica
+            }
+
+            if (e.key === 'ArrowRight') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            }
+        });
+
+        // --- 2. LÓGICA DA RÉPLICA DO X (de script.js e explore.js) ---
+
+        // Função para alternar menu de contexto (de script.js)
+        function toggleSidebarContextMenu() {
+            const srcMenu = document.querySelector('.sidebar-left .context-menu .context-menu-items');
+            const btn = document.querySelector('.sidebar-left .nav-more');
+            if (!srcMenu || !btn) return;
+
+            let floating = document.getElementById('floating-context-menu');
+            if (floating) {
+                floating.remove();
+                return;
+            }
+
+            floating = srcMenu.cloneNode(true);
+            floating.id = 'floating-context-menu';
+            floating.classList.add('active');
+            floating.style.position = 'fixed';
+            floating.style.zIndex = 10000;
+            
+            const srcWidth = srcMenu.offsetWidth || 200;
+            floating.style.minWidth = srcWidth + 'px';
+            document.body.appendChild(floating);
+
+            // Medir e posicionar
+            const btnRect = btn.getBoundingClientRect();
+            const menuRect = floating.getBoundingClientRect();
+            let left = btnRect.left + btnRect.width / 2;
+            let top = btnRect.top - 8;
+            let transform = 'translate(-50%, -100%)';
+            if (top - menuRect.height < 8) {
+                top = btnRect.bottom + 8;
+                transform = 'translate(-50%, 0)';
+            }
+            floating.style.left = left + 'px';
+            floating.style.top = top + 'px';
+            floating.style.transform = transform;
+        }
+
+        // Fechar menu de contexto ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.context-menu') && !e.target.closest('.nav-more') && !e.target.closest('#floating-context-menu')) {
+                document.querySelectorAll('.context-menu-items').forEach(menu => {
+                    if (menu.id === 'floating-context-menu') {
+                        menu.remove();
+                    } else {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Esta função anexa os listeners ao CONTEÚDO recém-carregado
+        function initializePageContent(contentRoot) {
+            // Lógica do Composer (de script.js)
+            const textarea = contentRoot.querySelector('.composer-content textarea');
+            const postBtn = contentRoot.querySelector('.composer-footer .btn-primary');
+            if (textarea && postBtn) {
+                textarea.addEventListener('input', () => {
+                    postBtn.disabled = textarea.value.trim() === '';
+                });
+                postBtn.disabled = textarea.value.trim() === ''; // Estado inicial
+            }
+
+            // Lógica das Categorias (de explore.js)
+            const categoryBtns = contentRoot.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Lógica das Abas (For You / Following)
+            const tabBtns = contentRoot.querySelectorAll('.header-tabs .tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // O listener principal de navegação (abaixo) cuidará da troca
+                    // Mas podemos atualizar o estado 'active' visualmente aqui
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                });
+            });
+        }
+
+        // --- 3. NOVO ROTEADOR SPA (Single-Page App) ---
+        const appBody = document.body;
+        const contentArea = document.getElementById('main-content-area');
+        const replicaSlide = document.querySelector('.slide-replica');
+        const overlay = replicaSlide.querySelector('.page-transition-overlay');
+        const sidebarLinks = replicaSlide.querySelectorAll('.sidebar-left .nav-item');
+        
+        let currentPageId = 'home'; // Página atual
+        let isNavigating = false; // Prevenir cliques duplos
+
+        const pageConfig = {
+            'home': { template: 'template-home', class: 'for-you-page' },
+            'following': { template: 'template-following', class: 'following-page' },
+            'explore': { template: 'template-explore', class: 'explore-page' },
+        };
+
+        async function navigateTo(pageId) {
+            if (isNavigating || pageId === currentPageId || !pageConfig[pageId]) return;
+            isNavigating = true;
+
+            // 1. Mostrar overlay
+            overlay.classList.remove('hidden');
+            
+            // 2. Buscar template
+            const template = document.getElementById(pageConfig[pageId].template);
+            if (!template) {
+                console.error('Template not found:', pageConfig[pageId].template);
+                overlay.classList.add('hidden');
+                isNavigating = false;
+                return;
+            }
+            
+            // 3. REMOVIDO: await new Promise(resolve => setTimeout(resolve, 400));
+
+            // 4. Trocar conteúdo
+            contentArea.innerHTML = template.innerHTML;
+            currentPageId = pageId;
+
+            // 5. Atualizar classe do body (para estilos da página)
+            // (Não podemos mudar o body, mudamos o contêiner do app)
+            // Esta lógica precisa ser adaptada - vamos manter as classes no app-container se necessário
+            // ou confiar nos seletores de .main-content
+            
+            // 6. Atualizar estado ativo da sidebar
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                
+                // FIX: Verificar se o href existe e é um link de âncora antes de usar substring
+                if (href && href.startsWith('#page-')) {
+                    const linkPage = href.substring(6); // #page-home -> home
+                    
+                    if (linkPage === pageId || (pageId === 'following' && linkPage === 'home')) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+
+            // 7. Re-anexar JS ao novo conteúdo
+            initializePageContent(contentArea);
+
+            // 8. Esconder overlay
+            overlay.classList.add('hidden');
+            isNavigating = false;
+        }
+
+        // --- 4. INICIALIZAÇÃO ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carregar página inicial (Home)
+            const initialTemplate = document.getElementById(pageConfig.home.template);
+            if (initialTemplate) {
+                contentArea.innerHTML = initialTemplate.innerHTML;
+                initializePageContent(contentArea);
+            }
+            
+            // Esconder overlay da réplica na carga inicial
+            if(overlay) overlay.classList.add('hidden');
+
+            // Anexar listener de navegação principal (delegação de evento)
+            replicaSlide.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                
+                if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('#page-')) {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('href').substring(6); // #page-home -> home
+                    navigateTo(pageId);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
