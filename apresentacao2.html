@@ -233,24 +233,30 @@
             transition: background-color 0.2s;
         }
         
-        /* CORREÇÃO 2: LÓGICA DE ÍCONES ATIVOS/INATIVOS */
-        .nav-item .fa-icon {
-            margin-right: 16px;
-            width: 26px;
-            text-align: center;
-            /* Ajuste fino para FA6 */
-            font-size: 24px;
-            line-height: 1;
-        }
-        .nav-item .fas { display: none; } /* Oculta sólido por padrão */
-        .nav-item .far { display: inline-block; } /* Mostra contorno por padrão */
-        
-        .nav-item.active .fas { display: inline-block; } /* Mostra sólido no ativo */
-        .nav-item.active .far { display: none; } /* Oculta contorno no ativo */
+        /* CORREÇÃO 2: LÓGICA DE ÍCONES ATIVOS/INATIVOS (Atualizada para SVGs) */
+.nav-item .fa-icon {
+    margin-right: 16px;
+    width: 26px;
+    height: 26px; /* Garantir altura para SVGs */
+    text-align: center;
+    font-size: 24px;
+    line-height: 1;
+    vertical-align: middle; /* Alinhar ícones e SVGs */
+}
+
+        /* Por padrão: MOSTRA contorno (fa-regular E svg), OCULTA sólido */
+        .nav-item .fa-solid { display: none; }
+        .nav-item .fa-regular { display: inline-block; }
+        .nav-item svg.fa-icon { display: inline-block; } /* Adicionado */
+
+        /* Quando ATIVO: OCULTA contorno (fa-regular E svg), MOSTRA sólido */
+        .nav-item.active .fa-solid { display: inline-block; }
+        .nav-item.active .fa-regular { display: none; }
+        .nav-item.active svg.fa-icon { display: none; } /* Adicionado */
+
         .nav-item.active {
             font-weight: bold;
         }
-        /* FIM DA CORREÇÃO 2 */
 
         .nav-item:hover {
             background-color: var(--hover-color);
@@ -1055,27 +1061,53 @@
                         <nav class="main-nav">
                             <!-- CORREÇÕES 1 e 2: Ícones de Lupa e Lógica Ativo/Inativo -->
                             <a href="#page-home" class="nav-item active">
-                                <i class="fa-icon far fa-home"></i><i class="fa-icon fas fa-home"></i>
+                                <svg
+                                    class="fa-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    >
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                </i><i class="fa-icon fa-solid fa-home"></i>
                                 <span class="nav-text">Página Inicial</span>
                             </a>
                             <a href="#page-explore" class="nav-item">
-                                <i class="fa-icon far fa-search"></i><i class="fa-icon fas fa-search"></i>
+                                <svg
+                                    class="fa-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    >
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                <i class="fa-icon fa-solid fa-search"></i>
                                 <span class="nav-text">Explorar</span>
                             </a>
                             <a href="#page-notifications" class="nav-item">
-                                <i class="fa-icon far fa-bell"></i><i class="fa-icon fas fa-bell"></i>
+                                <i class="fa-icon fa-regular fa-bell"></i><i class="fa-icon fa-solid fa-bell"></i>
                                 <span class="nav-text">Notificações</span>
                             </a>
                             <a href="#page-messages" class="nav-item">
-                                <i class="fa-icon far fa-envelope"></i><i class="fa-icon fas fa-envelope"></i>
+                                <i class="fa-icon fa-regular fa-envelope"></i><i class="fa-icon fa-solid fa-envelope"></i>
                                 <span class="nav-text">Mensagens</span>
                             </a>
                             <a href="#page-bookmarks" class="nav-item">
-                                <i class="fa-icon far fa-bookmark"></i><i class="fa-icon fas fa-bookmark"></i>
+                                <i class="fa-icon fa-regular fa-bookmark"></i><i class="fa-icon fa-solid fa-bookmark"></i>
                                 <span class="nav-text">Itens salvos</span>
                             </a>
                             <a href="#page-profile" class="nav-item">
-                                <i class="fa-icon far fa-user"></i><i class="fa-icon fas fa-user"></i>
+                                <i class="fa-icon fa-regular fa-user"></i><i class="fa-icon fa-solid fa-user"></i>
                                 <span class="nav-text">Perfil</span>
                             </a>
                             <button type="button" class="nav-item nav-more" onclick="toggleSidebarContextMenu()">
