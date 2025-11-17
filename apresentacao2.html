@@ -114,6 +114,27 @@
             border-radius: 20px;
         }
 
+        /* Media Query para Slides Teóricos em telas menores */
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 8vw;
+            }
+            .slide-content h1 {
+                font-size: 2.5rem;
+            }
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            .slide-content li {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+            .nav-instructions {
+                /* Oculta instruções em telas muito pequenas */
+                display: none;
+            }
+        }
+
         /* --- ESTILOS DA RÉPLICA DO X (base.css, components.css, pages.css) --- */
 
         /* --- base.css --- */
