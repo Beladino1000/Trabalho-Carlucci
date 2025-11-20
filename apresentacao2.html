@@ -997,6 +997,88 @@
         .sidebar-right::-webkit-scrollbar-thumb:hover {
             background-color: var(--secondary-text);
         }
+        /* Estilos para o Tooltip de Gênero Discursivo */
+        .tooltip-container {
+            position: relative;
+            display: inline-block; /* Para que o container se ajuste ao tamanho do botão */
+            margin-left: auto; /* Para empurrar o botão para a direita */
+        }
+
+        .post-info-button {
+            cursor: pointer;
+            font-size: 14px; /* Tamanho do ícone de reticências */
+            color: var(--text-color-light); /* Cor do ícone */
+            padding: 5px; /* Área clicável/hover */
+            border-radius: 50%; /* Para que pareça um botão */
+            transition: background-color 0.2s ease;
+        }
+
+        .post-info-button:hover {
+            background-color: var(--hover-color); /* Cor de fundo ao passar o mouse */
+        }
+
+        .post-info-tooltip {
+            visibility: hidden; /* Esconde o tooltip por padrão */
+            width: 300px; /* Largura do tooltip */
+            background-color: var(--background-color-dark); /* Cor de fundo escura */
+            color: var(--text-color); /* Cor do texto */
+            text-align: left;
+            border-radius: 8px;
+            padding: 15px;
+            position: absolute;
+            z-index: 10; /* Garante que o tooltip fique acima de outros elementos */
+            bottom: 125%; /* Posição acima do botão */
+            left: 50%;
+            margin-left: -150px; /* Centraliza o tooltip */
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para destacar */
+            border: 1px solid var(--border-color); /* Borda sutil */
+            font-size: 14px; /* Tamanho da fonte do tooltip */
+            line-height: 1.5; /* Espaçamento entre linhas */
+        }
+
+        .post-info-tooltip h4 {
+            color: var(--primary-color); /* Cor do título do gênero */
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .post-info-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* Seta apontando para baixo */
+            left: 50%;
+            margin-left: -8px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: var(--background-color-dark) transparent transparent transparent;
+        }
+
+        /* Mostra o tooltip ao passar o mouse sobre o botão */
+        .tooltip-container:hover .post-info-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Ajustes no layout para o botão de ellipsis ficar à direita */
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Espaça os itens */
+            margin-bottom: 5px;
+        }
+
+        .post-header .post-author {
+            flex-shrink: 0; /* Previne que o nome do autor encolha */
+        }
+
+        .post-header .post-handle {
+            margin-left: 8px; /* Espaçamento entre autor e handle */
+            flex-grow: 1; /* Permite que o handle ocupe espaço restante antes do botão */
+            text-align: left; /* Garante que o handle fique à esquerda */
+        }
     </style>
 </head>
 <body>
@@ -1184,26 +1266,125 @@
                 </div>
             </div>
             <div class="posts-feed">
+
                 <article class="post">
-                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX" alt="Exemplo" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=EX';">
+                    <img src="https://placehold.co/40x40/b91c1c/FFFFFF?text=G1" alt="G1" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
-                            <!-- CORREÇÃO 3: Ícone de Verificação -->
-                            <span class="post-author">Exemplo de Post<i class="verified-icon"></i></span>
-                            <span class="post-handle">@exemplo · 10m</span>
-                            <i class="fas fa-ellipsis-h"></i>
+                            <span class="post-author">Portal de Notícias<i class="verified-icon"></i></span>
+                            <span class="post-handle">@portalnews · 2m</span>
+                            <div class="tooltip-container">
+                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <div class="post-info-tooltip">
+                                    <h4>Gênero: Tweet Noticioso</h4>
+                                    <p>Caracterizado pela brevidade, objetividade e imediatismo na transmissão de informações. Utiliza emojis e chamadas de atenção para capturar a atenção rapidamente, com um link para a matéria completa, incentivando o clique.</p>
+                                    <p><strong>Exemplo:</strong> Notícias de última hora, comunicados oficiais.</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="post-text">Este é o lugar onde vocês colocarão os exemplos de posts, como o tweet de denúncia que mencionaram.</p>
+                        <p class="post-text">
+                            🚨 <strong>AGORA:</strong> Especialistas confirmam que o estudo dos gêneros discursivos é essencial para compreender a comunicação digital. Confira a matéria completa no link. 👇
+                            <br><span style="color: var(--primary-color);">portal.news/educacao-digital</span>
+                        </p>
                         <div class="post-actions">
-                            <span><i class="far fa-comment"></i> 10</span>
-                            <span><i class="fas fa-retweet"></i> 5</span>
-                            <span><i class="far fa-heart"></i> 25</span>
+                            <span><i class="far fa-comment"></i> 120</span>
+                            <span><i class="fas fa-retweet"></i> 450</span>
+                            <span><i class="far fa-heart"></i> 1.2K</span>
                             <span><i class="fas fa-share"></i></span>
                         </div>
                     </div>
                 </article>
+
+                <article class="post">
+                    <img src="https://placehold.co/40x40/1d9bf0/FFFFFF?text=PF" alt="Prof" class="profile-pic">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Professor Letras<i class="verified-icon"></i></span>
+                            <span class="post-handle">@prof_letras · 1h</span>
+                            <div class="tooltip-container">
+                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <div class="post-info-tooltip">
+                                    <h4>Gênero: Thread (Fio)</h4>
+                                    <p>Sequência de tweets encadeados que permite desenvolver um assunto mais complexo, superando o limite de caracteres de um único post. É frequentemente usado para explicar, narrar ou aprofundar um tema.</p>
+                                    <p><strong>Exemplo:</strong> Tutoriais, análises detalhadas, relatos pessoais.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="post-text">
+                            Muita gente acha que "textão" na internet não tem regra, mas Bakhtin discordaria. 📚<br><br>
+                            Vamos falar sobre como os <strong>Gêneros Discursivos</strong> moldam nossa experiência no X/Twitter? <br><br>
+                            Segue o fio 🧶 (1/5)
+                        </p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 45</span>
+                            <span><i class="fas fa-retweet"></i> 230</span>
+                            <span><i class="far fa-heart"></i> 890</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <img src="https://placehold.co/40x40/ea580c/FFFFFF?text=C" alt="Cidadao" class="profile-pic">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Cidadão Atento</span>
+                            <span class="post-handle">@cidadao_br · 4h</span>
+                            <div class="tooltip-container">
+                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <div class="post-info-tooltip">
+                                    <h4>Gênero: Tweet de Denúncia</h4>
+                                    <p>Visa expor uma situação de injustiça, problema ou irregularidade, buscando atenção e mobilização social. Geralmente contém apelos diretos a autoridades ou à comunidade para cobrar providências.</p>
+                                    <p><strong>Exemplo:</strong> Reclamações sobre serviços públicos, alertas de segurança.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="post-text">
+                            Inaceitável a situação do asfalto na Rua das Flores! 😡 Já abrimos 3 chamados na prefeitura e nada foi feito. Carros quebrando e risco de acidentes.<br><br>
+                            <strong>Alô @Prefeitura, precisamos de resposta!</strong><br>
+                            Por favor, deem RT para ajudar a cobrar! 🔃📢
+                        </p>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 89</span>
+                            <span><i class="fas fa-retweet text-green-500"></i> 3.5K</span>
+                            <span><i class="far fa-heart text-pink-500"></i> 5K</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <img src="https://placehold.co/40x40/8b5cf6/FFFFFF?text=A" alt="Aluno" class="profile-pic">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="post-author">Aluno de Humanas</span>
+                            <span class="post-handle">@fa de_bakhtin · 5h</span>
+                            <div class="tooltip-container">
+                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <div class="post-info-tooltip">
+                                    <h4>Gênero: Meme</h4>
+                                    <p>Unidade cultural de informação que se propaga rapidamente na internet, geralmente em formato de imagem, GIF ou vídeo, com texto curto. Tem como principal objetivo gerar humor, ironia ou identificação, explorando a multimodalidade.</p>
+                                    <p><strong>Exemplo:</strong> Imagens engraçadas com legendas, vídeos curtos virais.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="post-text">
+                            Eu: "Vou só dar uma olhadinha no Twitter rapidinho"<br>
+                            Eu 3 horas depois lendo uma thread sobre fofoca de celebridade que eu nem conheço:
+                        </p>
+                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
+                            <img src="https://placehold.co/500x300/333/FFF?text=Palhaco+olhando+PC" alt="Meme" style="width: 100%; display: block;">
+                        </div>
+                        <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 12</span>
+                            <span><i class="fas fa-retweet"></i> 55</span>
+                            <span><i class="far fa-heart"></i> 200</span>
+                            <span><i class="fas fa-share"></i></span>
+                        </div>
+                    </div>
+                </article>
+
             </div>
-        </main>
         
         <!-- CORREÇÃO 4: Sidebar da Home Atualizada -->
         <aside class="sidebar-right">
