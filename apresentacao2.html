@@ -998,86 +998,94 @@
             background-color: var(--secondary-text);
         }
         /* Estilos para o Tooltip de Gênero Discursivo */
+        /* --- CSS ATUALIZADO PARA O TOOLTIP --- */
+
         .tooltip-container {
             position: relative;
-            display: inline-block; /* Para que o container se ajuste ao tamanho do botão */
-            margin-left: auto; /* Para empurrar o botão para a direita */
+            display: inline-block;
         }
 
         .post-info-button {
             cursor: pointer;
-            font-size: 14px; /* Tamanho do ícone de reticências */
-            color: var(--text-color-light); /* Cor do ícone */
-            padding: 5px; /* Área clicável/hover */
-            border-radius: 50%; /* Para que pareça um botão */
+            font-size: 14px;
+            color: var(--secondary-text); /* Corrigido para usar variável existente */
+            padding: 8px; /* Aumentei a área de clique */
+            border-radius: 50%;
             transition: background-color 0.2s ease;
         }
 
         .post-info-button:hover {
-            background-color: var(--hover-color); /* Cor de fundo ao passar o mouse */
+            background-color: rgba(29, 155, 240, 0.1);
+            color: var(--primary-color);
         }
 
         .post-info-tooltip {
-            visibility: hidden; /* Esconde o tooltip por padrão */
-            width: 300px; /* Largura do tooltip */
-            background-color: var(--background-color-dark); /* Cor de fundo escura */
-            color: var(--text-color); /* Cor do texto */
+            visibility: hidden;
+            width: 280px; /* Levemente menor para caber melhor */
+            background-color: rgba(0, 0, 0, 0.95); /* Fundo mais sólido */
+            color: #fff;
             text-align: left;
             border-radius: 8px;
-            padding: 15px;
+            padding: 12px;
+            
+            /* POSICIONAMENTO CORRIGIDO */
             position: absolute;
-            z-index: 10; /* Garante que o tooltip fique acima de outros elementos */
-            bottom: 125%; /* Posição acima do botão */
-            left: 50%;
-            margin-left: -150px; /* Centraliza o tooltip */
+            z-index: 9999; /* Z-index alto para não ser cortado */
+            bottom: 100%; /* Acima do botão */
+            right: 0; /* Alinhado à direita do botão (cresce para a esquerda) */
+            left: auto; /* Remove alinhamento antigo */
+            margin-left: 0; /* Remove margem antiga */
+            margin-bottom: 10px; /* Espaço entre botão e balão */
+            
             opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para destacar */
-            border: 1px solid var(--border-color); /* Borda sutil */
-            font-size: 14px; /* Tamanho da fonte do tooltip */
-            line-height: 1.5; /* Espaçamento entre linhas */
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+            font-size: 13px;
+            line-height: 1.4;
+            pointer-events: none; /* Evita que o mouse trave no tooltip */
         }
 
         .post-info-tooltip h4 {
-            color: var(--primary-color); /* Cor do título do gênero */
+            color: var(--primary-color);
             margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 16px;
+            margin-bottom: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            padding-bottom: 4px;
         }
 
+        /* Seta do balão ajustada para a direita */
         .post-info-tooltip::after {
             content: "";
             position: absolute;
-            top: 100%; /* Seta apontando para baixo */
-            left: 50%;
-            margin-left: -8px;
-            border-width: 8px;
+            top: 100%;
+            right: 10px; /* Alinhada com o botão à direita */
+            left: auto;
+            border-width: 6px;
             border-style: solid;
-            border-color: var(--background-color-dark) transparent transparent transparent;
+            border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
         }
 
-        /* Mostra o tooltip ao passar o mouse sobre o botão */
         .tooltip-container:hover .post-info-tooltip {
             visibility: visible;
             opacity: 1;
         }
 
-        /* Ajustes no layout para o botão de ellipsis ficar à direita */
+        /* Ajuste do cabeçalho do post para acomodar o botão */
         .post-header {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Espaça os itens */
-            margin-bottom: 5px;
+            justify-content: space-between;
+            position: relative; /* Necessário para contexto */
         }
 
-        .post-header .post-author {
-            flex-shrink: 0; /* Previne que o nome do autor encolha */
-        }
-
-        .post-header .post-handle {
-            margin-left: 8px; /* Espaçamento entre autor e handle */
-            flex-grow: 1; /* Permite que o handle ocupe espaço restante antes do botão */
-            text-align: left; /* Garante que o handle fique à esquerda */
+        .post-author-info {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 85%; /* Deixa espaço para o botão */
         }
     </style>
 </head>
