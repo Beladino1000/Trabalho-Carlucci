@@ -216,9 +216,6 @@
         /* ... (O CSS da réplica permanece idêntico ao original) ... */
         
         /* --- base.css --- */
-        :root {
-            /* As variáveis já estão definidas em 'html, body' */
-        }
         * {
             margin: 0;
             padding: 0;
@@ -1257,36 +1254,39 @@
                     <a href="#page-following" class="tab-btn">Following</a>
                 </div>
             </header>
+            
             <div class="post-composer">
                 <img src="https://placehold.co/40x40/000000/FFFFFF?text=User" alt="Perfil" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/000000/FFFFFF?text=User';">
                 <div class="composer-content">
                     <textarea placeholder="O que está acontecendo?"></textarea>
                     <div class="composer-footer">
                         <div class="composer-actions">
-                            <i class="fas fa-image" data-tooltip="Mídia (Multimodalidade)"></i>
-                            <i class="fas fa-poll" data-tooltip="Enquete (Gênero Interativo)"></i>
-                            <i class="fas fa-smile" data-tooltip="Emoji (Estilo)"></i>
+                            <i class="fas fa-image" data-tooltip="Mídia"></i>
+                            <i class="fas fa-poll" data-tooltip="Enquete"></i>
+                            <i class="fas fa-smile" data-tooltip="Emoji"></i>
                             <i class="fas fa-calendar" data-tooltip="Agendar"></i>
-                            <i class="fas fa-map-marker-alt" data-tooltip="Localização"></i>
+                            <i class="fas fa-map-marker-alt" data-tooltip="Local"></i>
                         </div>
                         <button class="btn btn-light btn-small" disabled>Post</button>
                     </div>
                 </div>
             </div>
+
             <div class="posts-feed">
 
                 <article class="post">
                     <img src="https://placehold.co/40x40/b91c1c/FFFFFF?text=G1" alt="G1" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Portal de Notícias<i class="verified-icon"></i></span>
-                            <span class="post-handle">@portalnews · 2m</span>
+                            <div class="post-author-info">
+                                <span class="post-author">Portal de Notícias<i class="verified-icon"></i></span>
+                                <span class="post-handle">@portalnews · 2m</span>
+                            </div>
                             <div class="tooltip-container">
-                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Tweet Noticioso</h4>
-                                    <p>Caracterizado pela brevidade, objetividade e imediatismo na transmissão de informações. Utiliza emojis e chamadas de atenção para capturar a atenção rapidamente, com um link para a matéria completa, incentivando o clique.</p>
-                                    <p><strong>Exemplo:</strong> Notícias de última hora, comunicados oficiais.</p>
+                                    <h4>Tweet Noticioso</h4>
+                                    <p>Caracterizado pela brevidade, objetividade e imediatismo. Utiliza ancoragem temporal ("AGORA") e links externos.</p>
                                 </div>
                             </div>
                         </div>
@@ -1307,14 +1307,15 @@
                     <img src="https://placehold.co/40x40/1d9bf0/FFFFFF?text=PF" alt="Prof" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Professor Letras<i class="verified-icon"></i></span>
-                            <span class="post-handle">@prof_letras · 1h</span>
+                            <div class="post-author-info">
+                                <span class="post-author">Professor Letras<i class="verified-icon"></i></span>
+                                <span class="post-handle">@prof_letras · 1h</span>
+                            </div>
                             <div class="tooltip-container">
-                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Thread (Fio)</h4>
-                                    <p>Sequência de tweets encadeados que permite desenvolver um assunto mais complexo, superando o limite de caracteres de um único post. É frequentemente usado para explicar, narrar ou aprofundar um tema.</p>
-                                    <p><strong>Exemplo:</strong> Tutoriais, análises detalhadas, relatos pessoais.</p>
+                                    <h4>Thread (Fio)</h4>
+                                    <p>Sequência de tweets encadeados para aprofundar temas complexos. Usa numeração (1/5) e função explicativa.</p>
                                 </div>
                             </div>
                         </div>
@@ -1336,26 +1337,27 @@
                     <img src="https://placehold.co/40x40/ea580c/FFFFFF?text=C" alt="Cidadao" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Cidadão Atento</span>
-                            <span class="post-handle">@cidadao_br · 4h</span>
+                            <div class="post-author-info">
+                                <span class="post-author">Cidadão Atento</span>
+                                <span class="post-handle">@cidadao_br · 4h</span>
+                            </div>
                             <div class="tooltip-container">
-                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Tweet de Denúncia</h4>
-                                    <p>Visa expor uma situação de injustiça, problema ou irregularidade, buscando atenção e mobilização social. Geralmente contém apelos diretos a autoridades ou à comunidade para cobrar providências.</p>
-                                    <p><strong>Exemplo:</strong> Reclamações sobre serviços públicos, alertas de segurança.</p>
+                                    <h4>Tweet de Denúncia</h4>
+                                    <p>Visa expor problemas e mobilizar a comunidade. Usa tom de urgência, marcação de autoridades e pedido de RT.</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
-                            Inaceitável a situação do asfalto na Rua das Flores! 😡 Já abrimos 3 chamados na prefeitura e nada foi feito. Carros quebrando e risco de acidentes.<br><br>
+                            Inaceitável a situação do asfalto na Rua das Flores! 😡 Já abrimos 3 chamados na prefeitura e nada foi feito.<br><br>
                             <strong>Alô @Prefeitura, precisamos de resposta!</strong><br>
                             Por favor, deem RT para ajudar a cobrar! 🔃📢
                         </p>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 89</span>
-                            <span><i class="fas fa-retweet text-green-500"></i> 3.5K</span>
-                            <span><i class="far fa-heart text-pink-500"></i> 5K</span>
+                            <span><i class="fas fa-retweet" style="color: #00ba7c;"></i> 3.5K</span>
+                            <span><i class="far fa-heart" style="color: #f91880;"></i> 5K</span>
                             <span><i class="fas fa-share"></i></span>
                         </div>
                     </div>
@@ -1365,14 +1367,15 @@
                     <img src="https://placehold.co/40x40/8b5cf6/FFFFFF?text=A" alt="Aluno" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Aluno de Humanas</span>
-                            <span class="post-handle">@fa de_bakhtin · 5h</span>
+                            <div class="post-author-info">
+                                <span class="post-author">Aluno de Humanas</span>
+                                <span class="post-handle">@fa_de_bakhtin · 5h</span>
+                            </div>
                             <div class="tooltip-container">
-                                <i class="fas fa-ellipsis-h post-info-button"></i>
+                                <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Meme</h4>
-                                    <p>Unidade cultural de informação que se propaga rapidamente na internet, geralmente em formato de imagem, GIF ou vídeo, com texto curto. Tem como principal objetivo gerar humor, ironia ou identificação, explorando a multimodalidade.</p>
-                                    <p><strong>Exemplo:</strong> Imagens engraçadas com legendas, vídeos curtos virais.</p>
+                                    <h4>Meme (Multimodal)</h4>
+                                    <p>Gênero humorístico que combina texto e imagem (multimodalidade) para gerar identificação rápida.</p>
                                 </div>
                             </div>
                         </div>
@@ -1393,22 +1396,20 @@
                 </article>
 
             </div>
+            </main>
         
-        <!-- CORREÇÃO 4: Sidebar da Home Atualizada -->
         <aside class="sidebar-right">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Buscar no X">
             </div>
 
-            <!-- Bloco "Subscribe" Adicionado -->
             <div class="premium-section">
                 <h2>Subscribe to Premium</h2>
                 <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p>
                 <button class="btn btn-primary">Subscribe</button>
             </div>
 
-            <!-- Bloco "Today's News" Adicionado -->
             <div class="trending-section">
                 <h2>Today's News</h2>
                 <div class="trending-item">
@@ -1424,13 +1425,11 @@
                 <a href="#" class="show-more">Show more</a>
             </div>
 
-            <!-- Bloco "Quem Seguir" Mantido -->
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
                 <div class="follow-item">
                     <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
-                        <!-- CORREÇÃO 3: Ícone de Verificação -->
                         <span class="user-name">Google<i class="verified-icon"></i></span>
                         <span class="user-handle">@Google</span>
                     </div>
@@ -1439,14 +1438,10 @@
                 <a href="#" class="show-more">Mostrar mais</a>
             </div>
             
-            <!-- Rodapé de Fidelidade Adicionado -->
             <footer class="sidebar-footer">
                 <a href="#">Termos de Serviço</a>
                 <a href="#">Política de Privacidade</a>
-                <a href="#">Política de Cookies</a>
                 <a href="#">Acessibilidade</a>
-                <a href="#">Informações de anúncios</a>
-                <a href="#">Mais...</a>
                 <span>© 2025 X Corp.</span>
             </footer>
         </aside>
