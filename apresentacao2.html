@@ -1097,6 +1097,27 @@
         opacity: 0.8; /* Efeito visual leve ao passar o mouse */
         }
 
+        .post-image-gallery {
+            display: flex;
+            gap: 2px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 12px;
+        }
+
+        .post-image-gallery img {
+            width: 50%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .post-image-gallery img:hover {
+            opacity: 0.8;
+        }
+
         /* O Fundo Escuro (Lightbox) */
         .overlay {
         display: none; /* Começa escondido */
@@ -1149,8 +1170,19 @@
             </div>
         </section>
 
-        <!-- Slide 2: Parte 1 - Conceitos Teóricos -->
         <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h1>Sumário</h1>
+                <h2>Roteiro da apresentação</h2>
+                <ul>
+                    <li><strong>Parte 1:</strong> A teoria bakhtiniana e os gêneros discursivos.</li>
+                    <li><strong>Parte 2:</strong> Aplicação da teoria dos gêneros do discurso ao X.</li>
+                    <li><strong>X (Prática):</strong> Utilização de uma réplica interativa para exemplificar a teoria.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Slide 2: Parte 1 - Conceitos Teóricos -->
+        <section class="slide" data-slide="3">
             <div class="slide-content">
                 <h1>Parte 1: O <span class="accent">Conceito</span></h1>
                 <h2>O que são Gêneros? (Bakhtin)</h2>
@@ -1164,7 +1196,7 @@
         </section>
 
         <!-- Slide 3: Parte 1 - Componentes -->
-        <section class="slide" data-slide="3">
+        <section class="slide" data-slide="4">
             <div class="slide-content">
                 <h1>Parte 1: Os <span class="accent">4 Componentes</span></h1>
                 <h2>O que define um Gênero?</h2>
@@ -1178,7 +1210,7 @@
         </section>
 
         <!-- Slide 4: Parte 1 - Ação e Transformação -->
-        <section class="slide" data-slide="4">
+        <section class="slide" data-slide="5">
             <div class="slide-content">
                 <h1>Parte 1: Ação e <span class="accent">Transformação</span></h1>
                 <h2>Gêneros como fenômeno social</h2>
@@ -1191,8 +1223,85 @@
             </div>
         </section>
 
-        <!-- Slide 5: Parte 2 - A Réplica do X -->
-        <section class="slide slide-replica" data-slide="5">
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <h1>Parte 2: O Ecossistema do <span class="accent">X</span></h1>
+                <h2>Como a plataforma molda o discurso?</h2>
+                <ul>
+                    <li>O Twitter/X consolidou-se como esfera privilegiada para <strong>opinião pública</strong> e debate político.</li>
+                    <li>Os gêneros aqui são "nativos", moldados pelas <strong>restrições técnicas</strong> da rede.</li>
+                    <li>Fatores determinantes: <strong>Limite de caracteres</strong>, velocidade, interação (retweets/likes) e a lógica algorítmica.</li>
+                    <li>O texto não é apenas leitura, é <strong>interação pública</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+                <h1>Parte 2: Características <span class="accent">Gerais</span></h1>
+                <h2>O que define um texto no X?</h2>
+                <ul>
+                    <li><strong>Brevidade e Concisão:</strong> Mensagens curtas e de impacto direto.</li>
+                    <li><strong>Conversacionalidade:</strong> Linguagem próxima da oralidade e espontânea.</li>
+                    <li><strong>Imediaticidade:</strong> O discurso do "agora", reagindo em tempo real.</li>
+                    <li><strong>Multimodalidade:</strong> O sentido é construído por texto + imagem + vídeo + meme.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide" data-slide="8">
+            <div class="slide-content">
+                <h1>Parte 2: Tipos de Tweet 1/3: <span class="accent">Opinião & Conteúdo</span></h1>
+                <h2>Expressão pessoal e narrativa</h2>
+                <ul>
+                    <li><strong>Tweet Opinativo:</strong> Expresso subjetividade explícita, muitas vezes com humor, ironia ou posicionamento político.</li>
+                    <li><strong>Thread (Fio):</strong> Sequência encadeada para aprofundamento explicativo, narrativo ou argumentativo.</li>
+                    <li><strong>Meme:</strong> Reinterpretação de imagens/vídeos com humor contextual e alta viralidade.</li>
+                    <li><strong>Enquete:</strong> Gênero nativo focado na interatividade e consulta de tendências da comunidade.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <h1>Parte 2: Tipos de Tweet 2/3: <span class="accent">Informação & Ação</span></h1>
+                <h2>O registro do "agora" e a urgência</h2>
+                <ul>
+                    <li><strong>Tweet Noticioso:</strong> Marcado pela objetividade, concisão e ancoragem temporal ("agora", "neste momento").</li>
+                    <li><strong>Live Tweet:</strong> Cobertura sequencial em tempo real de eventos (jogos, premiações, debates).</li>
+                    <li><strong>Denúncia/Alerta:</strong> Tom urgente focado em mobilização social contra injustiças ou problemas públicos.</li>
+                    <li><strong>Publicitário:</strong> Foco na persuasão, uso de links externos e hashtags de campanha.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+                <h1>Parte 2: Tipos de Tweet 3/3: <span class="accent">Interação</span></h1>
+                <h2>A conversa e a estrutura da rede</h2>
+                <ul>
+                    <li><strong>Reply (Resposta):</strong> Diálogo direto e informal; gera intertextualidade e conversas ramificadas.</li>
+                    <li><strong>Retweet (com ou sem comentário):</strong> Endosso simples ou recontextualização interpretativa de um discurso alheio.</li>
+                    <li><strong>Tweet de Hashtag:</strong> Organização temática para gerar visibilidade em trends, campanhas ou protestos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide" data-slide="11">
+            <div class="slide-content">
+                <h1>Parte 2: O Texto como <span class="accent">Ação Social</span></h1>
+                <h2>Para que escrevemos no X?</h2>
+                <ul>
+                    <li><strong>Construção de Reputação:</strong> Visibilidade e performatividade do sujeito.</li>
+                    <li><strong>Mobilização:</strong> Engajamento político e criação de comunidades.</li>
+                    <li><strong>Disputa de Narrativas:</strong> Conflito de interpretações sobre fatos.</li>
+                    <li>Cada tweet é, simultaneamente, um discurso e um <strong>pedido de engajamento</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 9: Parte 2 - A Réplica do X -->
+        <section class="slide slide-replica" data-slide="12">
             
             <div class="page-transition-overlay hidden"></div>
 
@@ -1336,7 +1445,7 @@
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
                                     <h4>Gênero: Enquete</h4>
-                                    <p>Gênero nativo focado na interatividade. Mede o "termômetro" social e gera engajamento tribal.</p>
+                                    <p>Utiliza da própria ferramenta interativa de enquetes para gerar engajamento e coletar informações quanto a um nicho de usuários.</p>
                                 </div>
                             </div>
                         </div>
@@ -1347,6 +1456,7 @@
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 37</span>
+                            <span><i class="fas fa-retweet"></i> 51</span>
                             <span><i class="far fa-heart"></i> 89</span>
                         </div>
                     </div>
@@ -1363,8 +1473,8 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Thread (Cabeça do Fio)</h4>
-                                    <p>O tweet introdutório que lança a manchete e convida para o aprofundamento ("Vem no fio").</p>
+                                    <h4>Gênero: Thread Híbrida com Tweet Noticioso</h4>
+                                    <p>Ao mesmo tempo que possui a estrutura de uma thread, vários tweets em série, apresenta um escândalo por meio de uma narrativa jornalística.</p>
                                 </div>
                             </div>
                         </div>
@@ -1471,8 +1581,8 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Thread (Conclusão/Prova)</h4>
-                                    <p>O encerramento do raciocínio, geralmente apresentando a prova final ou a chamada para ação (clique no link).</p>
+                                    <h4>Gênero: Thread Noticiosa.</h4>
+                                    <p>Apesar deste material não se comprometer com a precisão quanto a quantidade de curtidas, retweets e comentários, o final das threads geralmente concentram a maior parte destes.</p>
                                 </div>
                             </div>
                         </div>
@@ -1493,6 +1603,8 @@
                             <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
+                            <span><i class="far fa-comment"></i> 36</span>
+                            <span><i class="fas fa-retweet"></i> 50</span>
                             <span><i class="far fa-heart"></i> 150</span>
                         </div>
                     </div>
@@ -1510,13 +1622,13 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Notícia</h4>
-                                    <p>Fonte primária e objetiva que alimenta as narrativas polarizadas subsequentes.</p>
+                                    <h4>Gênero: Tweet Noticioso</h4>
+                                    <p>Apresenta, de maneira mais objetiva em relação a outras abordagens, com pouco texto, a forma em que Merz tratou sua saída do Brasil após a Cop 30. </p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">Merz enaltece Alemanha após viagem a Belém: "Todos ficaram felizes por termos voltado..."</p>
-                        <video src="./static/video_dw.mp4" controls style="
+                        <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441242992706060308/dw.mp4?ex=692115a2&is=691fc422&hm=5db78f7b440c0330d5eb9dbeefb8f1d90a935702e288ace588c4bb34b8cdeeef&" controls style="
                         aspect-ratio:9/16;
                         width: 50%; 
                         height: auto;
@@ -1543,7 +1655,7 @@
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
                                     <h4>Gênero: Tweet de resposta híbrido com tweet opinativo</h4>
-                                    <p>Partilha posicionamento com uma subjetividade explícita enquanto conversa diretamente com uma única entidade.</p>
+                                    <p>Eduardo Bolsonaro partilha seu posicionamento com ironia e uma subjetividade explícita enquanto tenta conversar diretamente com uma única entidade.</p>
                                 </div>
                             </div>
                         </div>
@@ -1567,8 +1679,8 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Thread Narrativa</h4>
-                                    <p>Storytelling de entretenimento ("True Crime"). Cria suspense ("história macabra") para prender a atenção.</p>
+                                    <h4>Gênero: Thread</h4>
+                                    <p>Surpreendentemente, estes tweets não abordam política, preferindo focar no "storytelling" de fatos históricos.</p>
                                 </div>
                             </div>
                         </div>
@@ -1578,7 +1690,7 @@
                             Segue a thread dessa história macabra 👇
                         </p>
                         <img 
-                            src="https://images-ext-1.discordapp.net/external/V6ggcicYnEhsFdk22A04FNOLuHddy9QCoNhWQRAbqw/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/GVmlqFhXoAALo9S?format=webp" 
+                            src="https://images-ext-1.discordapp.net/external/V6ggcgicYnEhsFdk22A04FNOLuHddy9QCoNhWQRAbqw/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/GVmlqFhXoAALo9S?format=webp" 
                             class="miniatura" 
                             onclick="abrirZoom(this)" 
                             alt="Clique para ampliar"
@@ -1655,6 +1767,8 @@
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-heart"></i> 273</span>
+                            <span><i class="far fa-comment"></i> 102</span>
+                            <span><i class="fas fa-retweet"></i> 67</span>
                         </div>
                     </div>
                 </article>
@@ -1671,8 +1785,8 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Meme Político (Sátira)</h4>
-                                    <p>Humor visual agressivo para ridicularizar figuras de autoridade e gerar identificação.</p>
+                                    <h4>Gênero: Tweet de alerta</h4>
+                                    <p>Utiliza de uma ironia para criticar figura de Alexandre de Morais em relação a um possível favorecimento pessoal.</p>
                                 </div>
                             </div>
                         </div>
@@ -1696,36 +1810,36 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Crítica Visual</h4>
-                                    <p>Comparação visual (Expectativa x Realidade) para desconstruir o senso comum sobre criminalidade.</p>
+                                    <h4>Gênero: Tweet de denúncia</h4>
+                                    <p>Denuncia o crime praticado pela parcela rica da população, tentando mudar o foco da parcela mais pobre que geralmente é culpabilizada por tais atos.</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">Onde dizem que o crime está // onde está</p>
-                        <img 
-                            src="https://images-ext-1.discordapp.net/external/g0dNpzLDWzOIac5b_p0i3dXxe6Sg4a7REW_2hqTGQ40/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvsWEAAb-s4?format=webp" 
-                            class="miniatura" 
-                            onclick="abrirZoom(this)" 
-                            alt="Clique para ampliar"
-                            >
+                        <div class="post-image-gallery">
+                            <img 
+                                src="https://images-ext-1.discordapp.net/external/g0dNpzLDWzOIac5b_p0i3dXxe6Sg4a7REW_2hqTGQ40/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvsWEAAb-s4?format=webp" 
+                                onclick="abrirZoom(this)" 
+                                alt="Clique para ampliar"
+                                >
+                            <img 
+                                src="https://images-ext-1.discordapp.net/external/d2kaIJHGk6ZNLW9HkoYuwQTAlX8Niv5FvrCH5tu2BHs/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvPW8AA5nJG?format=webp" 
+                                onclick="abrirZoom(this)" 
+                                alt="Clique para ampliar"
+                                >
+                        </div>
 
                         <div id="overlay" class="overlay" onclick="fecharZoom()">
                             <span class="fechar">&times;</span>
                             
                             <img id="img-grande" class="img-grande">
                         </div>
-                        <img 
-                            src="https://images-ext-1.discordapp.net/external/d2kaIJHGk6ZNLW9HkoYuwQTAlX8Niv5FvrCH5tu2BHs/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvPW8AA5nJG?format=webp" 
-                            class="miniatura" 
-                            onclick="abrirZoom(this)" 
-                            alt="Clique para ampliar"
-                            >
-
                         <div id="overlay" class="overlay" onclick="fecharZoom()">
                             <span class="fechar">&times;</span>
                             
                             <img id="img-grande" class="img-grande">
                         </div>
+                        <div class="post-actions">
                     </div>
                 </article>
             </div>
@@ -1800,17 +1914,21 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Live Tweet</h4>
-                                    <p>Cobertura em tempo real com prova de presença (vídeo/foto) e marcação temporal ("agora").</p>
+                                    <h4>Gênero: Live Tweet e tweet promocional</h4>
+                                    <p>Promove em tempo real um protesto contra o governo Lula</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
-                            🇧🇷🇺🇸 Brasília <strong>agora</strong> 👊🏻 - Saindo <strong>agora</strong> rumo a avenida Paulista 🇧🇷
+                            <img src="https://flagcdn.com/16x12/br.png" alt="Bandeira Brasil" style="display:inline; vertical-align: middle;"><img src="https://flagcdn.com/16x12/us.png" alt="Bandeira EUA" style="display:inline; vertical-align: middle;"> Brasília <strong>agora</strong> 👊🏻 - Saindo <strong>agora</strong> rumo a avenida Paulista <img src="https://flagcdn.com/16x12/br.png" alt="Bandeira Brasil" style="display:inline; vertical-align: middle;">
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Live_tweet_manifestação_D.jpg" alt="Manifestação" style="width: 100%; display: block;">
-                        </div>
+                        <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441253346928496680/manifest.mp4?ex=69211f47&is=691fcdc7&hm=7f823d7e6136cfd0688c0e324efb3e984bc814a18549a750833c1a9b75a459d3&" controls style="
+                        aspect-ratio:9/9;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 44</span>
                             <span><i class="fas fa-retweet"></i> 514</span>
@@ -1828,16 +1946,26 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Guerra Cultural</h4>
-                                    <p>Ataque a instituições (escola) através de casos particulares para gerar pânico moral.</p>
+                                    <h4>Gênero: Tweet de Denúncia</h4>
+                                    <p>Denuncia Peninha por celebrar a tragédia da morte de Charlie Kirk</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             Peninha, lembra? Esse historiador, que ensina história para nossos filhos em escolas do <strong>Brasil</strong>, é o retrato da <strong>esquerda</strong>.
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Kirk.jpg" alt="Adrilles" style="width: 100%; display: block;">
+                        <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441242991879520277/kirk.mp4?ex=692115a2&is=691fc422&hm=c735838f8561671be682e1fdf8d9ded35cc65e2af765ede808a4d03c4ac5d4d8&" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 112</span>
@@ -1856,17 +1984,21 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Comentário Político</h4>
-                                    <p>Reinterpretação de um fato noticioso para validar a narrativa do grupo ("Lula humilha o Brasil").</p>
+                                    <h4>Gênero: Tweet opinativo mascarado de tweet Jornalístico com retweet</h4>
+                                    <p>Controi uma narrativa em que Lula ativamente e unicamente causa a humilhação do Brasil na Cop 30.</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             O Lula humilha o Brasil internacionalmente. Friedrich Merz afirma que não viam a hora de ir embora...
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Alemanha-D.png" alt="Alemanha Direita" style="width: 100%; display: block;">
-                        </div>
+                        <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441252371056562196/merz.mp4?ex=69211e5e&is=691fccde&hm=6a52a8b3d9bebf716aeca18a0c19d7e00abcc5e6e6e9c9c301f10a4b801b39bb&" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 33</span>
                             <span><i class="fas fa-retweet"></i> 326</span>
@@ -1884,17 +2016,21 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Institucional</h4>
-                                    <p>Uso de emojis e linguagem suave para divulgar ações do governo.</p>
+                                    <h4>Gênero: Meme híbrido com Tweet noticioso</h4>
+                                    <p>Utiliza o meme da abelha, fenômeno no contexto de memes, para noticiar de forma lúdica as mudanças relacionadas aos vales refeição e alimentação.</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             🐝💳 Na floresta das abelhinhas ou no Brasil de verdade, o vale-alimentação e o vale-refeição <strong>agora</strong> rendem mais!
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Tweet_promocional_governo_federal.png" alt="Gov BR" style="width: 100%; display: block;">
-                        </div>
+                            <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441242993175560313/govbr.mp4?ex=692115a2&is=691fc422&hm=8de923f6c83534e5fec0c04f93547c29946a8009dcb1d0af867ae455b06b0d96&" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 25</span>
                             <span><i class="fas fa-retweet"></i> 168</span>
@@ -1912,16 +2048,26 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Mobilização</h4>
-                                    <p>Uso de imperativos e Hashtags para marcar território e subir nos Trending Topics.</p>
+                                    <h4>Gênero: Tweet de Mobilização</h4>
+                                    <p>Utiliza de uma montagem e imperativos para tentar convencer indivíduos a apoiarem a anistia de Jair Bolsonaro</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             <strong>ANISTIA</strong> AMPLA GERAL e IRRESTRITA <strong>JÁ</strong>! <span style="color: var(--primary-color);">#LibertemBolsonaro</span> 🇧🇷
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Anistia_já.png" alt="Anistia" style="width: 100%; display: block;">
+                            <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441245127329976320/anistia.mp4?ex=6921179f&is=691fc61f&hm=dbb161b565a57bf516d6c8b1b8e203ced988805a8dd891b59cebfddf6a95c5e1&" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 80</span>
@@ -1940,17 +2086,36 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Denúncia</h4>
-                                    <p>Lista empresas para gerar pressão econômica e associar marcas a figuras políticas antagonistas.</p>
+                                    <h4>Gênero: Tweet de alerta</h4>
+                                    <p>Aponta um fato intrigante quanto a possível correlação do sancionamento pela Lei Magnitsky e a participação de Alexandre de Morais como palestrante em um evento patrocinado.</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             🚨🚨: Sancionado pela Lei Magnitsky, Alexandre de Moraes será palestrante VIP em evento bancado por Coca-Cola...
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="https://images-ext-1.discordapp.net/external/2kgKSgmXU5YE8_YZeiOo-ifcPvOp3Mr3IsaFpBKDuUI/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yXEvW8AAQhl6?format=webp&width=879&height=586" alt="Boicote" style="width: 100%; display: block;">
-                            <img src="https://images-ext-1.discordapp.net/external/AKeI_6kJ60E_EaLqdDw7I6L0Mm1VDfdb4B6B_GoyPH4/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yW8xXQAAAmiM?format=webp&width=686&height=904" alt="Boicote" style="width: 100%; display: block;">
+                        <div class="post-image-gallery">
+                            <img 
+                                src="https://images-ext-1.discordapp.net/external/2kgKSgmXU5YE8_YZeiOo-ifcPvOp3Mr3IsaFpBKDuUI/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yXEvW8AAQhl6?format=webp&width=879&height=586" 
+                                onclick="abrirZoom(this)" 
+                                alt="Clique para ampliar"
+                                >
+                            <img 
+                                src="https://images-ext-1.discordapp.net/external/AKeI_6kJ60E_EaLqdDw7I6L0Mm1VDfdb4B6B_GoyPH4/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yW8xXQAAAmiM?format=webp&width=686&height=904" 
+                                onclick="abrirZoom(this)" 
+                                alt="Clique para ampliar"
+                                >
+                        </div>
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 644</span>
@@ -1969,16 +2134,25 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Disputa de Fatos</h4>
-                                    <p>Usa manchetes da mídia tradicional para combater narrativas catastróficas do oponente.</p>
+                                    <h4>Gênero: Tweet de resposta</h4>
+                                    <p>Utiliza de dados vindos de uma mídea conhecida como conservadora para sustentar seu ponto contrário às visões catastróficas de sua oposições .</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             No final do governo Lula o Brasil não vai virar uma Venezuela, vai virar com o maior recorde na Bolsa.
-                        </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Recorde_bolsa.jpg" alt="Bolsa" style="width: 100%; display: block;">
+                        </p>     
+                        <img 
+                        src="https://images-ext-1.discordapp.net/external/eYqQI8vPq4x6FQmdRwfGt0TrvLAOiCC1kLnH0dovIvI/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G5_ZKtrXIAAA-X_?format=webp" 
+                        class="miniatura" 
+                        onclick="abrirZoom(this)" 
+                        alt="Clique para ampliar"
+                        >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 7</span>
@@ -1997,17 +2171,21 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Fandom Político</h4>
-                                    <p>Afetividade extrema. O político é tratado como ídolo ou figura messiânica ("homem forte", "saudade").</p>
+                                    <h4>Gênero: Tweet promocional e de opinião</h4>
+                                    <p>Promove a imagem de Jair bolsonaro como uma figura messiânica por meio de uma subjetividade explícita</p>
                                 </div>
                             </div>
                         </div>
                         <p class="post-text">
                             Bolsonaro, um homem forte, cheio de vitalidade e energia que conhecemos muito bem por suas andanças pelo Brasil, teve a saúde fragilizada pelo atentado que sofreu, e como aquele golpe não funcionou, agora está sofrendo outro muito duro e cruel!<br>Qdo a justiça retornar, ele volta!
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Bozo_crush.jpg" alt="Fandom" style="width: 100%; display: block;">
-                        </div>
+                        <video src="https://cdn.discordapp.com/attachments/1066094898450796655/1441252065291534488/mi.mp4?ex=69211e15&is=691fcc95&hm=09c858470c22848aa27cf1f250632f716322c98e43b89a793854c7ae2c57dbe5&" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 5</span>
                             <span><i class="fas fa-retweet"></i> 109</span>
@@ -2027,7 +2205,7 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Convocatória / Serviço</h4>
+                                    <h4>Gênero: Tweet Promocional e de Denúncia </h4>
                                     <p>Gênero utilitário e organizativo. O "flyer digital" lista locais e horários para materializar o protesto online no espaço físico.</p>
                                 </div>
                             </div>
@@ -2036,8 +2214,17 @@
                             OS LOCAIS DOS PROTESTOS SAIRAM<br><br>
                             <span style="color: var(--primary-color);">#ANULAENEM</span>
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="https://images-ext-1.discordapp.net/external/-NaP5A13dG6lq_7ySW0APwnnZ5JRl3XAPGkqpdeYPPY/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6I2PtKXMAAKGbt?format=webp" alt="Locais Protesto" style="width: 100%; display: block;">
+                        <img 
+                        src="https://images-ext-1.discordapp.net/external/-NaP5A13dG6lq_7ySW0APwnnZ5JRl3XAPGkqpdeYPPY/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6I2PtKXMAAKGbt?format=webp" 
+                        class="miniatura" 
+                        onclick="abrirZoom(this)" 
+                        alt="Clique para ampliar"
+                        >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 222</span>
@@ -2067,8 +2254,17 @@
                         <p class="post-text">
                             O Brasil precisa de investigação forte... Mas enquanto o governo cria o <strong>PL Antifacção</strong> para combater o crime, a extrema direita tenta enfraquecer a PF...
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="https://images-ext-1.discordapp.net/external/QzqlqLKHLGnLD5BBEvH69hszjnYfHu8imXY0jXIkYIE/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6IEvsqXAAA33v-?format=webp">
+                        <img 
+                        src="https://images-ext-1.discordapp.net/external/QzqlqLKHLGnLD5BBEvH69hszjnYfHu8imXY0jXIkYIE/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6IEvsqXAAA33v-?format=webp" 
+                        class="miniatura" 
+                        onclick="abrirZoom(this)" 
+                        alt="Clique para ampliar"
+                        >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 130</span>
@@ -2099,8 +2295,17 @@
                             Esses que votaram a favor do <strong>PL ANTIFACÇÃO</strong> pode saber que são a favor do PCC e CV. Fazem parte de organizações criminosas de colarinho branco.<br><br>
                             CONGRESSO SINDICATO DO CRIME
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="https://images-ext-1.discordapp.net/external/yck-x10ytM_nu7gAWLFJjhmNu-2fWOJqiVX3_EaVlkQ/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6HafqVXIAAmi3q?format=webp" alt="Crítica PL" style="width: 100%; display: block;">
+                        <img 
+                        src="https://images-ext-1.discordapp.net/external/yck-x10ytM_nu7gAWLFJjhmNu-2fWOJqiVX3_EaVlkQ/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6HafqVXIAAmi3q?format=webp" 
+                        class="miniatura" 
+                        onclick="abrirZoom(this)" 
+                        alt="Clique para ampliar"
+                        >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 327</span>
@@ -2130,44 +2335,23 @@
                         <p class="post-text">
                             Obrigado Bolsonaro <strong>Anistia Já</strong>
                         </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="https://media.discordapp.net/attachments/1066094898450796655/1441211576307945595/image.png?ex=6920f860&is=691fa6e0&hm=1ba8624f175f4d595228682099d88d0b27e10d14e05d64eccb55bd81c8f2521b&=&format=webp&quality=lossless" alt="Meme Bosta" style="width: 100%; display: block;">
+                        <img 
+                        src="https://media.discordapp.net/attachments/1066094898450796655/1441211576307945595/image.png?ex=6920f860&is=691fa6e0&hm=1ba8624f175f4d595228682099d88d0b27e10d14e05d64eccb55bd81c8f2521b&=&format=webp&quality=lossless" 
+                        class="miniatura" 
+                        onclick="abrirZoom(this)" 
+                        alt="Clique para ampliar"
+                        >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 7</span>
                             <span><i class="fas fa-retweet"></i> 32</span>
                             <span><i class="far fa-heart"></i> 267</span>
                             <span><i class="fas fa-chart-bar"></i> 15K</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <img src="https://images-ext-1.discordapp.net/external/yAqHtmOl7g6b8BscsYs2aMhx0PMzVcnmlydtFmqbRtU/https/pbs.twimg.com/profile_images/1298331854978916353/G20dTu8X_400x400.jpg?format=webp" alt="Guilherme" class="profile-pic">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <div class="post-author-info">
-                                <span class="post-author">Guilherme A de P e Silva</span>
-                                <span class="post-handle">@GuilhermeAdePe1 · 1h</span>
-                            </div>
-                            <div class="tooltip-container">
-                                <i class="fas fa-circle-question post-info-button"></i>
-                                <div class="post-info-tooltip">
-                                    <h4>Gênero: Debate Público (Comentários)</h4>
-                                    <p>A profundidade da discussão. Usuários analisam o viés da mídia ("silêncio sepulcral"), cobram autoridades e expandem a crítica social iniciada no post original.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="post-text">
-                            Um caso é tratado com crueldade pelos governadores, políticos e pela imprensa. O outro caso temos o silêncio sepulcral...
-                        </p>
-                        <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/ExpectativaxRealidade_crime_comentários.jpg" alt="Debate Crime" style="width: 100%; display: block;">
-                        </div>
-                        <div class="post-actions">
-                            <span><i class="far fa-comment"></i></span>
-                            <span><i class="fas fa-retweet"></i></span>
-                            <span><i class="far fa-heart"></i> 18</span>
                         </div>
                     </div>
                 </article>
