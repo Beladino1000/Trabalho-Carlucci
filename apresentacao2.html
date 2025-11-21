@@ -1084,6 +1084,56 @@
             flex-wrap: wrap;
             max-width: 85%; /* Deixa espaço para o botão */
         }
+        /* Estilo da miniatura na página */
+        .miniatura {
+        width: 66%;
+        height: auto;
+        cursor: pointer; /* Mãozinha para indicar clique */
+        transition: 0.3s;
+        border-radius: 20px;
+        }
+
+        .miniatura:hover {
+        opacity: 0.8; /* Efeito visual leve ao passar o mouse */
+        }
+
+        /* O Fundo Escuro (Lightbox) */
+        .overlay {
+        display: none; /* Começa escondido */
+        position: fixed; /* Fica fixo na tela, ignorando a rolagem */
+        z-index: 999; /* Garante que fique em cima de tudo */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Fundo preto 90% transparente */
+        
+        /* Centraliza a imagem no meio da tela */
+        justify-content: center;
+        align-items: center;
+        }
+
+        /* A Imagem Ampliada */
+        .img-grande {
+  /* Força a "caixa" da imagem a ter o tamanho da tela (menos uma margem) */
+        width: 90vw;  /* 90% da largura da janela (Viewport Width) */
+        height: 90vh; /* 90% da altura da janela (Viewport Height) */
+  
+        object-fit: contain; 
+  
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        /* Botão de fechar (o X no canto) */
+        .fechar {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -1275,7 +1325,7 @@
             <div class="posts-feed">
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/1d9bf0/FFFFFF?text=E" alt="Enquete" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/hecAAZy6-vl1B-SIaDlrvwlEw0BJcJlNo-SlxhBNE5A/https/pbs.twimg.com/profile_images/1321819135681187840/upZY3D-f_400x400.jpg?format=webp" alt="Enquete" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1303,7 +1353,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/FF9900/FFFFFF?text=DF" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/jSig_iUyIA7Xm5nNE8nIORSM5HzPsdNui8mLDDnQZZo/https/pbs.twimg.com/profile_images/1633927216353378305/NNQkg9FF_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1323,7 +1373,18 @@
                             Escrevi para Revista Fórum e agora vou fazer da forma que vocês gostam que é thread aqui no X.<br>
                             Abuso do poder econômico eleitoral? Vem no fio 👇
                         </p>
-                        <img src="./imagens/Thread_investigação_tarcísio_2.jpg" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/gENRCjimfWEj8z5__Es5mUGkWRbRn0j_jRqPZrGch6Y/%3Fformat%3Dpng%26name%3D360x360/https/pbs.twimg.com/media/G597cOJXQAAFTSx?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 37</span>
                             <span><i class="fas fa-retweet"></i> 321</span>
@@ -1332,8 +1393,9 @@
                     </div>
                 </article>
 
-                <article class="post" style="border-top: none; padding-top: 0;">
+                <article class="post">
                     <div style="width: 40px; display: flex; justify-content: center; margin-right: 12px;"><div style="width: 2px; background-color: var(--border-color);"></div></div>
+                    <img src="https://images-ext-1.discordapp.net/external/jSig_iUyIA7Xm5nNE8nIORSM5HzPsdNui8mLDDnQZZo/https/pbs.twimg.com/profile_images/1633927216353378305/NNQkg9FF_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1344,7 +1406,18 @@
                         <p class="post-text">
                             1) Contextualizando para quem ainda não leu. Tudo começou com um vazamento de print de um painel "campeonato de cortes" e depois outro onde no grupo de whats "equipe do Tarcísio" pedia para não vincular a imagem do Bolsonaro ao Tarcísio. +
                         </p>
-                        <img src="./imagens/Thread_investigação_tarcísio.jpg" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/NK0VeFUrX71seMV3RGHsc2SWogm-qi72o7qni883jRA/%3Fformat%3Dpng%26name%3D360x360/https/pbs.twimg.com/media/G599CnMWAAAI_L2?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 2</span>
                             <span><i class="fas fa-retweet"></i> 23</span>
@@ -1355,6 +1428,7 @@
 
                 <article class="post" style="border-top: none; padding-top: 0;">
                     <div style="width: 40px; display: flex; justify-content: center; margin-right: 12px;"><div style="width: 2px; background-color: var(--border-color);"></div></div>
+                    <img src="https://images-ext-1.discordapp.net/external/jSig_iUyIA7Xm5nNE8nIORSM5HzPsdNui8mLDDnQZZo/https/pbs.twimg.com/profile_images/1633927216353378305/NNQkg9FF_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1365,6 +1439,18 @@
                         <p class="post-text">
                             2) Fiz a matéria na Fórum. E isso fez eles cancelarem o campeonato de cortes. Soltei a matéria eles já possuíam 19 milhões de visualizações em mais de 2 mil vídeos em uma semana. Nós interrompemos antes que conseguissem fazer todo estrago no algoritmo. +
                         </p>
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/mrr9DmnMFJGD4sxYLDfdz-5JxchZIXBCsTizHfM7Kxs/%3Fformat%3Dpng%26name%3D360x360/https/pbs.twimg.com/media/G59-pZzXMAAfOQ7?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 1</span>
                             <span><i class="fas fa-retweet"></i> 24</span>
@@ -1375,6 +1461,7 @@
 
                 <article class="post" style="border-top: none; padding-top: 0;">
                     <div style="width: 40px; display: flex; justify-content: center; margin-right: 12px;"><div style="width: 2px; background-color: var(--border-color);"></div></div>
+                    <img src="https://images-ext-1.discordapp.net/external/jSig_iUyIA7Xm5nNE8nIORSM5HzPsdNui8mLDDnQZZo/https/pbs.twimg.com/profile_images/1633927216353378305/NNQkg9FF_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1393,6 +1480,18 @@
                             3) Porém eu já estava dentro de todos os servidores de cortes faz muito tempo. Eu já vi cortes de diversos artistas, influencers, empresas mas isso não era crime eleitoral e pauta para mim. Vocês nem imaginam o tamanho do ecossistema de vídeos!<br>
                             E claro entrei desta plataforma.
                         </p>
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/SidxKX32uT1PGDjZ9UV3DN9wd1f3niRy9Qu0wu7xnu8/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G59_0o7WUAA9lQ7?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-heart"></i> 150</span>
                         </div>
@@ -1401,7 +1500,7 @@
 
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/005293/FFFFFF?text=DW" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/JPH_rIE4Y7-gyYXymuxBtGCrxMvIlPp6uOimuEDzK7E/https/pbs.twimg.com/profile_images/1799009085783773184/ye3G-8uy_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1417,10 +1516,13 @@
                             </div>
                         </div>
                         <p class="post-text">Merz enaltece Alemanha após viagem a Belém: "Todos ficaram felizes por termos voltado..."</p>
-                        <video controls style="width: 100%; display: block;" poster="./imagens/image_55ec0a.png">
-                            <source src="./static/video_dw.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos.
-                        </video>
+                        <video src="./static/video_dw.mp4" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;
+                        "
+                        ></video>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 2K</span>
                             <span><i class="fas fa-retweet"></i> 5K</span>
@@ -1430,7 +1532,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/000080/FFF?text=EB" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/pEcaFGtq7xebRYKcwevsoPcLvQKE1ZmGUv_xsGiDo7k/https/pbs.twimg.com/profile_images/1603004363160567811/vgi2thgm_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1440,13 +1542,12 @@
                             <div class="tooltip-container">
                                 <i class="fas fa-circle-question post-info-button"></i>
                                 <div class="post-info-tooltip">
-                                    <h4>Gênero: Comentário Polêmico</h4>
-                                    <p>A arena discursiva onde a notícia vira arma política. Mistura de ironia e ataque.</p>
+                                    <h4>Gênero: Tweet de resposta híbrido com tweet opinativo</h4>
+                                    <p>Partilha posicionamento com uma subjetividade explícita enquanto conversa diretamente com uma única entidade.</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">Mas não falaram que Lula é um líder mundial?</p>
-                        <img src="./imagens/Notícia_chanceller_alemão_comentarios.png" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <p class="post-text"><strong style="color:#1a8cd8;">@DW Brasil</strong><br>Mas não falaram que Lula é um líder mundial?</p>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 252</span>
                             <span><i class="fas fa-retweet"></i> 925</span>
@@ -1456,7 +1557,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/000/FFF?text=IC" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/JdMuuLJ0AckXP9OrUxyJUCH0JSkAE7XpmLodoiCqLGs/https/pbs.twimg.com/profile_images/1674875261307744256/yNou8B19_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1476,7 +1577,18 @@
                             Caso Armin Meiwes: O Canibal de Rothenburg.<br>
                             Segue a thread dessa história macabra 👇
                         </p>
-                        <img src="./imagens/Thread_caso_criminal.jpg" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/V6ggcicYnEhsFdk22A04FNOLuHddy9QCoNhWQRAbqw/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/GVmlqFhXoAALo9S?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 1</span>
                             <span><i class="fas fa-retweet"></i> 2</span>
@@ -1497,6 +1609,18 @@
                         <p class="post-text">
                             A infância de Armin Meiwes foi marcada por turbulências. Seu pai, um militar, comprou uma mansão em Rothenburg, Alemanha. Aos 6 anos, foi abandonado pelo pai, que levou os irmãos, deixando Armin com a mãe autoritária, que o submetia a abusos públicos.
                         </p>
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/pB-Y0MKp3VqTgUHgPdlg4X2S_OJTzd8ilYy3VV0EVns/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/GVmlwqBWgAEd81m?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 1</span>
                             <span><i class="fas fa-retweet"></i> 1</span>
@@ -1517,6 +1641,18 @@
                         <p class="post-text">
                             Durante a adolescência, Armin enfrentou humilhações na escola e, em casa, ele expressava a sua perturbação desmembrando e queimando bonecas, de modo a expressar sinais iniciais do seu desejo por carne humana associado à sexualidade.
                         </p>
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/Go3WRT1zaIy0lUGbmEUXzhidZiKDxftm6gQQelVBwdg/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/GVmlxeNXYAA-jXa?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                         <div class="post-actions">
                             <span><i class="far fa-heart"></i> 273</span>
                         </div>
@@ -1525,7 +1661,7 @@
 
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/550000/FFF?text=BD" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/FzO3MVaJT3-sztC01m7D6naHlcfq8gsAW4aN1NSFsbE/https/pbs.twimg.com/profile_images/1642319993743237121/e0s-T1XG_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1541,12 +1677,16 @@
                             </div>
                         </div>
                         <p class="post-text"><strong>Agora</strong> ele sentiu o ferro. 😂</p>
-                        <img src="./imagens/Agora_ele_sentiu_o ferro.jpg" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <video src="./static/video_brasiladeriva.mp4" controls style="
+                        aspect-ratio:9/16;
+                        width: 50%; 
+                        height: auto;
+                        border-radius: 20px;"></video>
                     </div>
                 </article>
                 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/1E90FF/FFF?text=PR" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/FsXJcHNsltnWIqF9PRzyLdm5IExy2N5ZsNKAX7bhfW4/https/pbs.twimg.com/profile_images/1276959793752739840/AWCBYwbE_400x400.jpg?format=webp" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1562,7 +1702,30 @@
                             </div>
                         </div>
                         <p class="post-text">Onde dizem que o crime está // onde está</p>
-                        <img src="./imagens/ExpectativaxRealidade_crime.jpg" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 12px;">
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/g0dNpzLDWzOIac5b_p0i3dXxe6Sg4a7REW_2hqTGQ40/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvsWEAAb-s4?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
+                        <img 
+                            src="https://images-ext-1.discordapp.net/external/d2kaIJHGk6ZNLW9HkoYuwQTAlX8Niv5FvrCH5tu2BHs/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6MgSvPW8AA5nJG?format=webp" 
+                            class="miniatura" 
+                            onclick="abrirZoom(this)" 
+                            alt="Clique para ampliar"
+                            >
+
+                        <div id="overlay" class="overlay" onclick="fecharZoom()">
+                            <span class="fechar">&times;</span>
+                            
+                            <img id="img-grande" class="img-grande">
+                        </div>
                     </div>
                 </article>
             </div>
@@ -1598,7 +1761,7 @@
             <div class="who-to-follow">
                 <h2>Quem seguir</h2>
                 <div class="follow-item">
-                    <img src="https://placehold.co/40x40/1DA1F2/FFFFFF?text=G" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
+                    <img src="https://images-ext-1.discordapp.net/external/TMWdt_neSuHlaGyVSzLuAEDxilzPTR1qTYjnHithDoM/https/pbs.twimg.com/profile_images/1972718204565811200/adTFhODz_400x400.jpg?format=webp" alt="Google" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/1DA1F2/FFFFFF?text=G';">
                     <div class="follow-details">
                         <span class="user-name">Google<i class="verified-icon"></i></span>
                         <span class="user-handle">@Google</span>
@@ -1629,7 +1792,7 @@
             <div class="posts-feed">
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/333333/FFFFFF?text=AA" alt="Antonio" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/6qA5uDs7_llfCMKcRI_aTmArk-T91AAa5emw8orKveY/https/pbs.twimg.com/profile_images/1990140506928492544/_bWFA9ZB_400x400.jpg?format=webp" alt="Antonio" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Antonio Alves</span>
@@ -1657,7 +1820,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/000080/FFF?text=AJ" alt="Adrilles" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/4zJnNOQlWW2lgAX3iZfaecaeHvXGL-KkLl-jLW4aIVY/https/pbs.twimg.com/profile_images/1577796998325051395/gQRLa_mE_400x400.jpg?format=webp" alt="Adrilles" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Adrilles Jorge<i class="verified-icon"></i></span>
@@ -1685,7 +1848,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/333/FFF?text=PT" alt="Paulo" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/5L4NyGRhyDjBAr1Mt0W8zkIG69xOUbMABUnIc9u0Cg8/https/pbs.twimg.com/profile_images/1792931386380242945/BZWL0mnM_400x400.jpg?format=webp" alt="Paulo" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Paulo de Tarso<i class="verified-icon"></i></span>
@@ -1713,7 +1876,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/FFD700/000000?text=BR" alt="GovBR" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/mDCbDmqObt2JallOLr9fvE3bF4JxvsZRBdVC7SnEaeA/https/pbs.twimg.com/profile_images/1861452590451408896/7lAhJygC_400x400.jpg?format=webp" alt="GovBR" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Governo do Brasil<i class="verified-icon"></i></span>
@@ -1741,7 +1904,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/000/FFF?text=ZV" alt="Coringa" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/375-GzIctDp_poVoVbYzWpk0B-W9kD6rA9n2BzNoDv4/https/pbs.twimg.com/profile_images/1983331638609149952/cY_EGpWh_400x400.jpg?format=webp" alt="Coringa" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">O Lendário Coringa Opressor (ZV) 🃏</span>
@@ -1769,7 +1932,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/888/FFF?text=L" alt="Lopez" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/hsRqxHEnuhdegEHqaiQfhv3SvaxNQU-x4laiAYv-5aI/https/pbs.twimg.com/profile_images/1975899538272489472/L0LZo_7E_400x400.jpg?format=webp" alt="Lopez" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Lopez <i class="verified-icon"></i></span>
@@ -1786,7 +1949,8 @@
                             🚨🚨: Sancionado pela Lei Magnitsky, Alexandre de Moraes será palestrante VIP em evento bancado por Coca-Cola...
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Alexandre_cocacola.jpg" alt="Boicote" style="width: 100%; display: block;">
+                            <img src="https://images-ext-1.discordapp.net/external/2kgKSgmXU5YE8_YZeiOo-ifcPvOp3Mr3IsaFpBKDuUI/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yXEvW8AAQhl6?format=webp&width=879&height=586" alt="Boicote" style="width: 100%; display: block;">
+                            <img src="https://images-ext-1.discordapp.net/external/AKeI_6kJ60E_EaLqdDw7I6L0Mm1VDfdb4B6B_GoyPH4/%3Fformat%3Djpg%26name%3Dlarge/https/pbs.twimg.com/media/G59yW8xXQAAAmiM?format=webp&width=686&height=904" alt="Boicote" style="width: 100%; display: block;">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 644</span>
@@ -1797,7 +1961,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/1E90FF/FFF?text=PR" alt="Pedro" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/FsXJcHNsltnWIqF9PRzyLdm5IExy2N5ZsNKAX7bhfW4/https/pbs.twimg.com/profile_images/1276959793752739840/AWCBYwbE_400x400.jpg?format=webp" alt="Pedro" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Pedro Ronchi 🇧🇷<i class="verified-icon"></i></span>
@@ -1825,7 +1989,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/FF69B4/FFF?text=Mi" alt="Mi" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/Pa5WyRhMSxa7YSLbkAnNE1h2kQvDGjBL9difP4bjUwQ/https/pbs.twimg.com/profile_images/1990243364982169601/Rh8jE46K_400x400.jpg?format=webp" alt="Mi" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <span class="post-author">Mi! 🇧🇷</span>
@@ -1839,7 +2003,7 @@
                             </div>
                         </div>
                         <p class="post-text">
-                            Bolsonaro, um homem forte... Qdo a justiça retornar, ele volta!
+                            Bolsonaro, um homem forte, cheio de vitalidade e energia que conhecemos muito bem por suas andanças pelo Brasil, teve a saúde fragilizada pelo atentado que sofreu, e como aquele golpe não funcionou, agora está sofrendo outro muito duro e cruel!<br>Qdo a justiça retornar, ele volta!
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
                             <img src="./imagens/Bozo_crush.jpg" alt="Fandom" style="width: 100%; display: block;">
@@ -1853,32 +2017,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/555/FFF?text=MC" alt="Maria" class="profile-pic">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Maria Clotilde Pedroso</span>
-                            <span class="post-handle">@TildinhaPedroso · 22 set</span>
-                            <div class="tooltip-container">
-                                <i class="fas fa-circle-question post-info-button"></i>
-                                <div class="post-info-tooltip">
-                                    <h4>Gênero: Sátira Grotesca</h4>
-                                    <p>Desumanização do adversário político através de IA e caricaturas animalescas.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="post-text">🤣 🤣 🤣 🤣</p>
-                        <div style="border: 1px solid var(--border-color); border-radius: 12px; margin-top: 8px; padding: 12px;">
-                            <p style="font-size: 14px; margin-bottom: 8px;"><strong>@CarlosBoeno2:</strong> HAHAHAHA galinha e cachaceiro</p>
-                            <img src="./imagens/Chora_xandão_comentarios.jpg" alt="Grotesco" style="width: 100%; display: block; border-radius: 8px;">
-                        </div>
-                        <div class="post-actions">
-                            <span><i class="far fa-heart"></i> 3</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <img src="https://placehold.co/40x40/000/F00?text=AE" alt="Anula" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/e60Uyg77aPd74_C78xfAYEROFqU0-dpr2dEOCNT7DgM/https/pbs.twimg.com/profile_images/1991009690285740032/iP-RnEwE_400x400.jpg?format=webp" alt="Anula" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1898,7 +2037,7 @@
                             <span style="color: var(--primary-color);">#ANULAENEM</span>
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/ENEM2.jpg" alt="Locais Protesto" style="width: 100%; display: block;">
+                            <img src="https://images-ext-1.discordapp.net/external/-NaP5A13dG6lq_7ySW0APwnnZ5JRl3XAPGkqpdeYPPY/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6I2PtKXMAAKGbt?format=webp" alt="Locais Protesto" style="width: 100%; display: block;">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 222</span>
@@ -1910,7 +2049,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/008000/FFF?text=HC" alt="Humberto" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/90ayf6oHYSsFvjjDWVo0aiBPGXbMeSA78C1rvXQpPH0/https/pbs.twimg.com/profile_images/1617500913257553921/MuAkAimx_400x400.jpg?format=webp" alt="Humberto" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1929,7 +2068,7 @@
                             O Brasil precisa de investigação forte... Mas enquanto o governo cria o <strong>PL Antifacção</strong> para combater o crime, a extrema direita tenta enfraquecer a PF...
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/PLantifacção_2.jpg" alt="PL Antifacção" style="width: 100%; display: block;">
+                            <img src="https://images-ext-1.discordapp.net/external/QzqlqLKHLGnLD5BBEvH69hszjnYfHu8imXY0jXIkYIE/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6IEvsqXAAA33v-?format=webp">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 130</span>
@@ -1941,7 +2080,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/FF00FF/FFF?text=A" alt="Amandinha" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/QzqlqLKHLGnLD5BBEvH69hszjnYfHu8imXY0jXIkYIE/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6IEvsqXAAA33v-?format=webp" alt="Amandinha" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1961,7 +2100,7 @@
                             CONGRESSO SINDICATO DO CRIME
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/PLantifação_1.jpg" alt="Crítica PL" style="width: 100%; display: block;">
+                            <img src="https://images-ext-1.discordapp.net/external/yck-x10ytM_nu7gAWLFJjhmNu-2fWOJqiVX3_EaVlkQ/%3Fformat%3Djpg%26name%3Dsmall/https/pbs.twimg.com/media/G6HafqVXIAAmi3q?format=webp" alt="Crítica PL" style="width: 100%; display: block;">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 327</span>
@@ -1973,7 +2112,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/00008B/FFF?text=AK" alt="Arlei" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/pxZ3Wop50olmqExB7sGPoJ5fjazG_0xuyqwhGaNVoFk/https/pbs.twimg.com/profile_images/1144928445/avatar_400x400.jpg?format=webp" alt="Arlei" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -1992,7 +2131,7 @@
                             Obrigado Bolsonaro <strong>Anistia Já</strong>
                         </p>
                         <div style="margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color);">
-                            <img src="./imagens/Bolsonaro_preso_meme.jpg" alt="Meme Bosta" style="width: 100%; display: block;">
+                            <img src="https://media.discordapp.net/attachments/1066094898450796655/1441211576307945595/image.png?ex=6920f860&is=691fa6e0&hm=1ba8624f175f4d595228682099d88d0b27e10d14e05d64eccb55bd81c8f2521b&=&format=webp&quality=lossless" alt="Meme Bosta" style="width: 100%; display: block;">
                         </div>
                         <div class="post-actions">
                             <span><i class="far fa-comment"></i> 7</span>
@@ -2004,7 +2143,7 @@
                 </article>
 
                 <article class="post">
-                    <img src="https://placehold.co/40x40/008080/FFF?text=GS" alt="Guilherme" class="profile-pic">
+                    <img src="https://images-ext-1.discordapp.net/external/yAqHtmOl7g6b8BscsYs2aMhx0PMzVcnmlydtFmqbRtU/https/pbs.twimg.com/profile_images/1298331854978916353/G20dTu8X_400x400.jpg?format=webp" alt="Guilherme" class="profile-pic">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-author-info">
@@ -2055,7 +2194,7 @@
             <div class="who-to-follow">
                 <h2>Who to follow</h2>
                  <div class="follow-item">
-                    <img src="https://placehold.co/40x40/F5C300/000000?text=V" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/F5C300/000000?text=V';">
+                    <img src="https://images-ext-1.discordapp.net/external/QcCXMVuKNEoEb_9alTgJcJNqrYPeZaeTnMCN1NDdcZw/https/pbs.twimg.com/profile_images/1767351110228918272/3Pndc5OT_400x400.png?format=webp&quality=lossless" alt="Vercel" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/40x40/F5C300/000000?text=V';">
                     <div class="follow-details">
                         <!-- CORREÇÃO 3: Ícone de Verificação -->
                         <span class="user-name">Vercel<i class="verified-icon"></i></span>
@@ -2140,6 +2279,24 @@
         // --- 2. LÓGICA DA RÉPLICA DO X (de script.js e explore.js) ---
 
         // --- Lógica de Context Menu (toggleSidebarContextMenu e o listener 'click') foi REMOVIDA ---
+
+        function abrirZoom(elementoClicado) {
+            const overlay = document.getElementById("overlay");
+            const imgGrande = document.getElementById("img-grande");
+
+            // Pega o src da imagem que você clicou e passa para a imagem grande
+            imgGrande.src = elementoClicado.src;
+            
+            // Mostra o overlay mudando o display para flex (para centralizar)
+            overlay.style.display = "flex"; 
+        }
+
+        function fecharZoom() {
+            const overlay = document.getElementById("overlay");
+            
+            // Esconde novamente
+            overlay.style.display = "none";
+        }
 
         function initializePageContent(contentRoot) {
             const textarea = contentRoot.querySelector('.composer-content textarea');
